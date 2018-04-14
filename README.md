@@ -1,21 +1,6 @@
 
 # Ticketing System - Final Project Assignment
 
-
-# Contents
-
-General Project Requirements        3
-
-Development Requirements        5
-
-Optional Requirements        5
-
-Deliverables        6
-
-Public Project Defense        6
-
-Final Projects Examples From Previous Years        7
-
 # **General Project Requirements**
 
 **Angular Final Project**

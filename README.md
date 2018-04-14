@@ -1,8 +1,5 @@
 
-# Ticketing System
-
-# Final Project Assignment
-
+# Ticketing System - Final Project Assignment
 
 
 # Contents
@@ -31,7 +28,7 @@ A large corporation consists of multiple teams which develop products and provid
 
 Your task is to create such system using **Angular.** The system should allow creating tickets with information for the issue, assigning tickets to the responsible person, attaching comments to the tickets with questions and progress updates, as well as reassigning the ticket and marking its current status until it reaches &quot;COMPLETED&quot;. For an example of such system, look at Atlassian JIRA. See an example ticket here: [https://jira.atlassian.com/browse/CONFCLOUD-57005](https://jira.atlassian.com/browse/CONFCLOUD-57005)
 
-**Public Part**
+# **Public Part**
 
 The  **public part**  of your projects should be  **visible without authentication**.
 
@@ -41,7 +38,7 @@ The  **public part**  of your projects should be  **visible without authenticati
 
 
 
-**Private Part (Users only)**
+# **Private Part (Users only)**
 
 **Registered users**   **MUST** have private area in the web application accessible after  **successful login** , where they could see all tickets assigned to them, all tickets where the user is the requester, a list of all the teams the user is part of and optionally a list of pending team invitations (if no other notification method was implemented).
 
@@ -64,7 +61,7 @@ The  **public part**  of your projects should be  **visible without authenticati
 
 - Users **COULD** be able to create a ticket &quot;on behalf of&quot; someone else as requester
 
-**Administration Part (Optional requirement)**
+# **Administration Part (Optional requirement)**
 
 **System administrators**  should have administrative access to the system and permissions to administer all major information objects in the system.
 
@@ -80,63 +77,62 @@ The  **public part**  of your projects should be  **visible without authenticati
 
 - Any changes to ticket status, assignee, ticket information (title and/or description) edits, user registration and user password change **COULD** be reflected in an audit log visible to administrators which **MUST NOT** be editable or modifiable.
 
-#
-**Development Requirements**
+# **Development Requirements**
 
 Your Web application should use the following technologies, frameworks and development techniques:
 
-- **** Use  **Angular**  and  **preferably Visual Studio Code**
-- **** Create beautiful and responsive UI
+- Use  **Angular**  and  **preferably Visual Studio Code**
+- Create beautiful and responsive UI
   - Implement responsive UI using Bootstrap 3 or 4, or Materialize or don&#39;t use a framework at all
   - You may change the standard theme and modify it to apply own web design and visual styles
-- **** Use modules to split your application logic
+- Use modules to split your application logic
   - Core, Shared and Feature modules
-- **** Create several  **different pipes**  and use them
-- **** Create several  **different directives**  and use them
-- **** Create several  **modules**  and use them in the  **routing**
-- **** Use lazy loading for the routing
+- Create several  **different pipes**  and use them
+- Create several  **different directives**  and use them
+- Create several  **modules**  and use them in the  **routing**
+- Use lazy loading for the routing
   - Decide on the strategy used
-- **** Use guards to prevent the user to access the routes
-- **** All of the data should be loaded from a web server using  **services**
+- Use guards to prevent the user to access the routes
+- All of the data should be loaded from a web server using  **services**
   - You can either use Firebase, Kinvey or any other back-end service.
   - Or you can use your own server written in Node.js, ASP.NET WebAPI or any other technology
-- **** Unit test **a few components**
-- **** Your project should pass the default TS linting configuration without any errors
-- **** You can use Angular CLI
+- Unit test **a few components**
+- Your project should pass the default TS linting configuration without any errors
+- You can use Angular CLI
   - Or Webpack, SystemJS and any other module loader/bundler
-- **** Your application should compile, work and produce an adequate result
-- **** Use GitHub and take advantage of the  **branches**  for writing your features.
-- ****** Documentation** of the project and project architecture (as .md file, including screenshots)
+- Your application should compile, work and produce an adequate result
+- Use GitHub and take advantage of the  **branches**  for writing your features.
+- Documentation** of the project and project architecture (as .md file, including screenshots)
 
 # **Optional Requirements**
 
-- **** Write integration tests
-- **** Use reactive forms
-- **** Originality of the implementation (uniqueness)
-- **** Host your application in the web (any public hosting provider of your choice)
-- **** Not every user in an enterprise has the same access rights. Your application **COULD** allow different actions to different classes of users. For example, only a certain role of users **COULD** have the ability to create teams, create tickets or change ticket&#39;s status. For the purpose of your project, users can simply specify their roles/entitlements when signing up (user, team lead and project owner). You **COULD** extend your application so that only the team lead can invite and remove users from the team, the project owner could have full control over the team&#39;s tickets (open, reopen, close).
-- ****** BONUS**: &quot;Progressify&quot; your app (aka extend your app into a PWA – Progressive Web App)
-  - **oo** There should not be any failed PWA audits in Google&#39;s Lighthouse.
-  - **oo** Opening your app on a mobile device should prompt the user to add it to the home screen.
-  - **oo** Your app should display something (something simple like the logo and some text) when no network connectivity.
-  - **oo** Your new and shiny PWA app should send desktop notifications in addition to the normal notifications you have implemented so far as a part of this assignment.
+- Write integration tests
+- Use reactive forms
+- Originality of the implementation (uniqueness)
+- Host your application in the web (any public hosting provider of your choice)
+- Not every user in an enterprise has the same access rights. Your application **COULD** allow different actions to different classes of users. For example, only a certain role of users **COULD** have the ability to create teams, create tickets or change ticket&#39;s status. For the purpose of your project, users can simply specify their roles/entitlements when signing up (user, team lead and project owner). You **COULD** extend your application so that only the team lead can invite and remove users from the team, the project owner could have full control over the team&#39;s tickets (open, reopen, close).
+- BONUS: &quot;Progressify&quot; your app (aka extend your app into a PWA – Progressive Web App)
+  - There should not be any failed PWA audits in Google&#39;s Lighthouse.
+  - Opening your app on a mobile device should prompt the user to add it to the home screen.
+  - Your app should display something (something simple like the logo and some text) when no network connectivity.
+  - Your new and shiny PWA app should send desktop notifications in addition to the normal notifications you have implemented so far as a part of this assignment.
 
 # **Deliverables**
 
 Put the following in a  **ZIP archive**  and submit it:
 
-- **** The  **source code**  (everything except /bin/, /obj/, /packages/)
-- **** The project documentation
-- **** Screenshots of your application
-- **** If hosted online - the URL of the application
+- The  **source code**  (everything except /bin/, /obj/, /packages/)
+- The project documentation
+- Screenshots of your application
+- If hosted online - the URL of the application
 
 # **Public Project Defense**
 
 Each student must make a  **public defense**  of its work to the trainers, Partner and students (~30-40 minutes). It includes:
 
-- **** Live  **demonstration**  of the developed web application (please prepare sample data)
-- **** Explain application structure and its  **source code**
-- **** Show the  **commit logs**  in the source control repository to prove a contribution from all team members
+- Live  **demonstration**  of the developed web application (please prepare sample data)
+- Explain application structure and its  **source code**
+- Show the  **commit logs**  in the source control repository to prove a contribution from all team members
 
 Many projects in the enterprise suffer from degradation of design and increasing complexity over time, leading them to develop defects and gradually become unmanageable.
 
@@ -146,17 +142,17 @@ You need to understand the system you have created. Any defects or incomplete fu
 
 Some things you need to be able to explain during your project presentation:
 
-- **** What are the most important things you&#39;ve learned while working on this project?
-- **** What are the worst &quot;hacks&quot; in the project, or where do you think it needs more work?
-- **** What would you do differently if you were implementing the system again?
+- What are the most important things you&#39;ve learned while working on this project?
+- What are the worst &quot;hacks&quot; in the project, or where do you think it needs more work?
+- What would you do differently if you were implementing the system again?
 
 # **Final projects examples from previous years**
 
-- **** [https://pizza-ng.herokuapp.com/home](https://pizza-ng.herokuapp.com/home)
-  - **oo** https://github.com/TeamElfinBison/PizzaNG
-- **** [https://the-godly-chimpanzees.firebaseapp.com/home](https://the-godly-chimpanzees.firebaseapp.com/home)
-  - **oo** https://github.com/teamgodlychimpanzees/thezoo
-- **** [https://findaroommate.herokuapp.com/offers/all](https://findaroommate.herokuapp.com/offers/all)
-  - **oo** https://github.com/TheMomentousOwls/FindARoomMate
-- **** [https://telerik-porftolios.herokuapp.com/portfolios/all](https://telerik-porftolios.herokuapp.com/portfolios/all)
-  - **oo** https://github.com/TelerikTeamTheMaliciousPorcupines/WebPortfolios
+- [https://pizza-ng.herokuapp.com/home](https://pizza-ng.herokuapp.com/home)
+  - https://github.com/TeamElfinBison/PizzaNG
+- [https://the-godly-chimpanzees.firebaseapp.com/home](https://the-godly-chimpanzees.firebaseapp.com/home)
+  - https://github.com/teamgodlychimpanzees/thezoo
+- [https://findaroommate.herokuapp.com/offers/all](https://findaroommate.herokuapp.com/offers/all)
+  - https://github.com/TheMomentousOwls/FindARoomMate
+- [https://telerik-porftolios.herokuapp.com/portfolios/all](https://telerik-porftolios.herokuapp.com/portfolios/all)
+  - https://github.com/TelerikTeamTheMaliciousPorcupines/WebPortfolios

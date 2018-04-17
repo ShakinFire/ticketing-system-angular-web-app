@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    height: 929px;
+    font-family: 'National-Book',Helvetica,sans-serif;
+    padding-top: 66px;
+    color: #4d4d4d;
+}
+
+a, a:hover {
+    color: #4d4d4d;
+    text-decoration: none;
+}

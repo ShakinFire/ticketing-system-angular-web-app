@@ -1,0 +1,59 @@
+.home-wrapper {
+    background: linear-gradient(#c2fadc, white);
+}
+
+.line-break {
+    display: block;
+}
+
+.content-section .front-text {
+    margin-top: 60px;
+}
+
+.content-section .front-text .slogan {
+    font-size: 40px;
+    line-height: 1.25;
+    letter-spacing: 2px;
+}
+
+.content-section .btn-wrapper {
+    margin-top: 40px;
+}
+
+.content-section .btn-wrapper a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+    background: #25c16f;
+    border-radius: 3px;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+.content-section .btn-wrapper a:hover {
+    background: #1c9755;
+}
+
+.content-section img {
+    margin-top: 60px;
+    max-width: 100%;
+}
+
+.content-section .what-you-can {
+    margin-top: 80px;
+}
+
+.content-section .what-you-can .title-benefits {
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.content-section .what-you-can .benefits fa {
+    color: #1c9755;
+    padding-right: 5px;
+}

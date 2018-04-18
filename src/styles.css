@@ -18,6 +18,9 @@ time, mark, audio, video {
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
 
 body {
     font-family: 'National-Book',Helvetica,sans-serif;

@@ -8,11 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +22,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     NgbModule.forRoot(),
     AppRoutingModule,
     AngularFontAwesomeModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

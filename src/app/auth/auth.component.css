@@ -1,0 +1,82 @@
+section .page-wrapper {
+    margin: 70px 0;
+}
+
+section .all-forms {
+    padding: 0 65px;
+}
+
+section .forms-wrapper {
+    border-radius: 2px;
+    border: 1px solid rgb(201, 201, 201);
+}
+
+section .forms-switch {
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+
+section .forms-switch a:first-child {
+    border-right: 1px solid rgb(201, 201, 201);
+}
+
+section .forms-switch .forms-top-btn {
+    padding-top: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid transparent;
+    font-size: 18px;
+}
+
+section .forms-switch .forms-top-btn:hover {
+    border-bottom: 2px solid #25c16f;
+}
+
+section .sign-in-form, .register-form {
+    padding: 15px;
+    transition: height 2s linear 1s;
+}
+
+section label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+section input {
+    width: 100%;
+    border-radius: 2px;
+    border: 1px solid rgb(201, 201, 201);
+    padding: 6px 10px;
+}
+
+section button {
+    margin-top: 10px;
+    width: 100%;
+    background: #25c16f;
+    border-radius: 3px;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    border: 0;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+section button:hover {
+    background: #1c9755;
+}
+
+section .forgot {
+    display: block;
+    font-size: 13px;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+.active {
+    border-bottom: 2px solid #25c16f;
+    font-weight: bold;
+}

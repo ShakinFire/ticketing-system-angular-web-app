@@ -1,6 +1,50 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6">Text here</div>
-    <div class="col-lg-6">Forms here</div>
+<section>
+  <div class="container">
+    <div class="row page-wrapper">
+      <div class="col-lg-6">Text here</div>
+      <div class="col-lg-6 text-center all-forms">
+        <div class="forms-wrapper">
+          <div class="row forms-switch">
+            <a (click)="formShow()" class="col-lg-6 forms-top-btn" href="">Sign in</a>
+            <a (click)="formShow()" class="col-lg-6 forms-top-btn" href="">Register</a>
+          </div>
+          <div *ngIf="!formSwitch" class="sign-in-form">
+            <form>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="text">
+              </div>
+              <button>Sign in</button>
+              <a class="forgot" href="">Forgot password?</a>
+            </form>
+          </div>
+          <div *ngIf="formSwitch" class="register-form">
+            <form>
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text">
+                </div>
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="text">
+                </div>
+                <div class="form-group">
+                  <label>Repeat password</label>
+                  <input type="text">
+                </div>
+                <button>Register</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

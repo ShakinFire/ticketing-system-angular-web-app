@@ -23,9 +23,10 @@ html {
 }
 
 body {
+    /* background: red; */
     font-family: 'National-Book',Helvetica,sans-serif;
     color: #4d4d4d;
-    
+
     /* prevent fixed nav */
     padding-top: 66px;
 

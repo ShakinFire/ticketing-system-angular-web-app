@@ -11,4 +11,8 @@ import { AuthComponent } from './auth.component';
   ],
   declarations: [AuthComponent]
 })
-export class AuthModule { }
+export class AuthModule { 
+  constructor() {
+    console.log('i am lazy');
+  }
+}

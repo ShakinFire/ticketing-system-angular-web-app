@@ -1,5 +1,6 @@
 .home-wrapper {
     background: linear-gradient(#c2fadc, white);
+    padding: 60px 0;
 }
 
 .line-break {
@@ -7,7 +8,7 @@
 }
 
 .content-section .front-text {
-    margin-top: 60px;
+    /* margin-top: 60px; */
 }
 
 .content-section .front-text .slogan {
@@ -37,7 +38,6 @@
 }
 
 .content-section img {
-    margin-top: 60px;
     max-width: 100%;
 }
 
@@ -56,4 +56,8 @@
 .content-section .what-you-can .benefits fa {
     color: #1c9755;
     padding-right: 5px;
+}
+
+.content-section .what-you-can .benefits {
+    margin-bottom: 10px;
 }

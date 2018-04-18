@@ -1,4 +1,56 @@
 footer {
+    padding: 20px 0;
     background: rgb(245, 245, 245);
     border-top: 1px solid rgb(177, 177, 177);
+    color: rgb(87, 87, 87);
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+footer .footer-logo {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+footer .project {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+footer .icons-wrapper {
+    margin-bottom: 5px;
+}
+
+footer .icons-wrapper a {
+    font-size: 22px;
+    padding-right: 3px;
+}
+
+footer .icons-wrapper a:hover {
+    color: #1c9755;
+}
+
+footer .copy-right {
+    font-size: 12px;
+    color: rgb(136, 136, 136);
+}
+
+footer .ul-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+footer ul li {
+    padding-bottom: 5px;
+    font-size: 13px;
+}
+
+footer ul a:hover {
+    text-decoration: underline;
 }

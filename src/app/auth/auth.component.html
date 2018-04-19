@@ -5,8 +5,8 @@
       <div class="col-lg-6 text-center all-forms">
         <div class="forms-wrapper">
           <div class="row forms-switch">
-            <a (click)="formShow()" class="col-lg-6 forms-top-btn" href="">Sign in</a>
-            <a (click)="formShow()" class="col-lg-6 forms-top-btn" href="">Register</a>
+            <a [ngClass]="{'active': !isActive}" (click)="isActive && formShow()" class="col-lg-6 forms-top-btn">Sign in</a>
+            <a [ngClass]="{'active': isActive}"(click)="!isActive && formShow()" class="col-lg-6 forms-top-btn" >Register</a>
           </div>
           <div *ngIf="!formSwitch" class="sign-in-form">
             <form>

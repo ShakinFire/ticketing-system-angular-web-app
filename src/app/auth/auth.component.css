@@ -34,6 +34,15 @@ section .forms-switch .forms-top-btn:hover {
     color: #4d4d4d;
 }
 
+section .error-message {
+    padding: 10px 5px;
+    margin: 15px 25px 0 25px;
+    background: rgb(167, 55, 55);
+    color: white;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
 section .sign-in-form, .register-form {
     padding: 15px 25px;
     transition: height 2s linear 1s;

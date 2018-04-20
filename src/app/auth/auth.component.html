@@ -1,0 +1,53 @@
+<section>
+  <div class="container">
+    <div class="row page-wrapper">
+      <div class="col-lg-6">Text here</div>
+      <div class="col-lg-6 text-center all-forms">
+        <div class="forms-wrapper">
+          <div class="row forms-switch">
+            <a [ngClass]="{'active': !formSwitch}" (click)="formSwitch && formShow()" class="col-lg-6 forms-top-btn">Sign in</a>
+            <a [ngClass]="{'active': formSwitch}"(click)="!formSwitch && formShow()" class="col-lg-6 forms-top-btn" >Register</a>
+          </div>
+          <div *ngIf="isError" class="error-message">
+            {{ errorMessage }}
+          </div>
+          <div *ngIf="!formSwitch" class="sign-in-form">
+            <form #signInForm="ngForm" (ngSubmit)="formsData(signInForm)">
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" required ngModel>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required ngModel>
+              </div>
+              <button>Sign in</button>
+              <a class="forgot" href="">Forgot password?</a>
+            </form>
+          </div>
+          <div *ngIf="formSwitch" class="register-form">
+            <form #signUpForm="ngForm" (ngSubmit)="formsData(signUpForm)">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input name="name" type="text" ngModel>
+                </div>
+                <div class="form-group">
+                  <label>Username</label>
+                  <input name="username" type="text" ngModel>
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input name="password" type="password" ngModel>
+                </div>
+                <div class="form-group">
+                  <label>Repeat password</label>
+                  <input name="repeatPassword" type="password" ngModel>
+                </div>
+                <button>Register</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

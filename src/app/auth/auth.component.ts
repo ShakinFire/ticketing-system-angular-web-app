@@ -6,6 +6,7 @@ import { LoginRegisterUser } from '../models/user/login-register-user';
 import { HttpResponse } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,7 @@ export class AuthComponent implements OnInit {
   errorMessage: string;
   isError: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.formSwitch = false;
@@ -73,8 +74,7 @@ export class AuthComponent implements OnInit {
             this.isError = false;
 
             // should redirect to dashboard
-            console.log('You logged in successfully');
-            console.log(res);
+            this.router.navigate(['dashboard']);
           }
         }
       )

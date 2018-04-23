@@ -1,3 +1,4 @@
+import { TicketsModule } from './tickets/tickets.module';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +36,7 @@ import { tokenGetter } from './models/token/token-getter';
     AuthModule,
     CoreModule,
     HttpClientModule,
+    TicketsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -5,6 +5,11 @@ header {
 }
 
 /* #b8f5d4 */
+img {
+    height: 40px;
+    width: 40px;
+}
+
 
 header h2 {
     padding: 14px 0;
@@ -20,8 +25,15 @@ header .sign-in a {
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
+    padding: 10px;
 }
 
 header .sign-in a:hover {
     color: #25c16f;
+}
+
+header .sign-in li {
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 15px;
 }

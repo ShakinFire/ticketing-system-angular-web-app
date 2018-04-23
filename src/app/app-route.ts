@@ -8,4 +8,7 @@ export const ROUTES: Routes = [
     { 
         path: 'auth', loadChildren: './auth/auth.module#AuthModule'
     },
+    {
+        path: 'dashboard', loadChildren: './tickets/tickets.module#TicketsModule'
+    }
 ];

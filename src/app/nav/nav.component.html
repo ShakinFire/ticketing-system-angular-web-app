@@ -7,7 +7,11 @@
         </h2>
       </div>
       <div class="col-lg-3 offset-lg-6 sign-in text-right">
-        <a [routerLink]="['/auth/sign-in']">Sign In/Register</a>
+        <a *ngIf="!isLoggedNav()" [routerLink]="['/auth/sign-in']">Sign In/Register</a>
+        <ul *ngIf="isLoggedNav()" class="list-unstyled">
+          <li><a href="#">test1</a></li>
+          <li><a href="#">test2</a></li>
+        </ul>
       </div>
     </div>
   </nav>

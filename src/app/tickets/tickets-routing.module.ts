@@ -1,15 +1,14 @@
+import { AllTicketsComponent } from './all-tickets/all-tickets.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './auth.component';
 import { AuthGuard } from '../core/auth-guard/auth-guard.service';
 
 const routes: Routes = [
-  // {path: 'sign-in', component: AuthComponent, canActivate: [AuthGuard]}
-  { path: 'sign-in', component: AuthComponent}
+  { path: '', component: AllTicketsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AuthRoutingModule { }
+export class TicketsRoutingModule { }

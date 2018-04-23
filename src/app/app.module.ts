@@ -9,11 +9,12 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AuthModule } from './auth/auth.module';
+import { TicketsModule } from './tickets/tickets.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent,  
   ],
   imports: [
     BrowserModule,
@@ -23,6 +24,7 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     AngularFontAwesomeModule,
     AuthModule,
+    TicketsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

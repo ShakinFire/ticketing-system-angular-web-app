@@ -1,0 +1,54 @@
+<div class="home-wrapper">
+<div class = "row container page-wraper text-center mrg " >
+<div class="col-md-8 text-center all-forms forms-wrapper cold">
+    <h1>Create ticket:</h1>
+  <div class = "sign-in-form">
+    <form #ticketForm = 'ngForm' (ngSubmit)='ticketFormsData(ticketForm)'  return='falce'>
+      <div class = "form-group">
+        <label for='title'>Title:</label>
+        <input type='text'  name='title' required ngModel>
+        <label for='label'>Label:</label>
+        <input type='text'  name='label' required ngModel>
+    </div>
+    <div class = "form-group">
+        <label for='description'>Description:</label>
+        <textarea  class = "form-control" name='description' required ngModel></textarea>
+    </div>
+    <div class="form-group">
+        <label for='team'>Choose a team:</label>
+        <select class =  "form-control" [(ngModel)]='teamss' name='team' (click)='fun()' >
+          <option  *ngFor="let team of teams" [value]="team" >{{team}}</option>
+        </select>
+      </div>
+    <div class = "form-group">
+        <label for='requester'>Requester:</label>
+        <!-- <input type='text'  name='requester' required ngModel> -->
+        <select class =  "form-control"  name='requester' required ngModel >
+            <option #requester *ngFor="let user of userss" [value]='user' >{{user}}</option>
+        </select>
+    </div>
+    <div class = "form-group">
+        <label for='assignee'>Assignee:</label>
+        <!-- <input type='text'  name='assignee' required ngModel> -->
+        <select class =  "form-control"  name='assignee' required ngModel >
+            <option #assignee *ngFor="let user of userss" [value]='user' >{{user}}</option>
+        </select>
+
+    </div>
+    <input type='hidden' name = 'status'  [ngModel]= 'isOpen' required >
+    <div class = "form-group">
+        <label for='estimated'>Estimated:</label>
+        <input type='date' class = "form-control" name='estimated' required ngModel>
+    </div>
+    
+    <div class = "form-group">
+        <label for='attach'>Attach:</label>
+        <input type='text' class = "form-control" name='attach'  ngModel>
+    </div>
+    <button  >Create</button>
+    </form>
+  </div>
+  </div>
+</div>
+</div>
+

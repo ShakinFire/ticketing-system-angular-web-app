@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,11 +11,24 @@ import { HomeComponent } from './home/home.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AuthModule } from './auth/auth.module';
 import { TicketsModule } from './tickets/tickets.module';
+import { CoreModule } from './core/core.module';
+import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './nav/nav.component';
+import { AppConfig } from './config/app-config';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,  
+    HomeComponent,
+    FooterComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +38,20 @@ import { TicketsModule } from './tickets/tickets.module';
     AppRoutingModule,
     AngularFontAwesomeModule,
     AuthModule,
-    TicketsModule
+    TicketsModule,
+    CoreModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3001'],
+        blacklistedRoutes: []
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    AppConfig,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

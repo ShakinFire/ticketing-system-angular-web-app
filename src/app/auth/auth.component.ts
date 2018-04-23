@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms/src/model';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { AuthService } from '../core/auth/auth.service';
-import { LoginUser } from '../models/user/login-user';
-import { RegUser } from '../models/user/reg-user';
+import { LoginRegisterUser } from '../models/user/login-register-user';
 import { HttpResponse } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
@@ -15,8 +14,7 @@ import 'rxjs/add/operator/map';
 })
 export class AuthComponent implements OnInit {
   formSwitch: boolean;
-  loginData: LoginUser;
-  regData: RegUser;
+  formData: LoginRegisterUser;
   errorMessage: string;
   isError: boolean;
 
@@ -60,13 +58,13 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  onLogin(form: NgForm): void {
-    this.loginData = form.value;
-    this.errorMessage = this.validate(this.loginData);
+  onLogin(form: NgForm, route: string): void {
+    this.formData = form.value;
+    this.errorMessage = this.validate(this.formData);
     if (this.errorMessage) {
       this.isError = true;
     } else {
-      this.authService.login(this.loginData).map(x=><{message: string}>(x)).subscribe(
+      this.authService.login(this.formData, route).map(x=><{message: string}>(x)).subscribe(
         (res) => {
           if (res.message) {
             this.errorMessage = res.message;
@@ -80,17 +78,6 @@ export class AuthComponent implements OnInit {
           }
         }
       )
-    }
-  }
-
-  onReg(form: NgForm): void {
-    this.regData = form.value;
-    this.errorMessage = this.validate(this.regData);
-    if (this.errorMessage) {
-      this.isError = true;
-    } else {
-      this.isError = false;
-
     }
   }
 

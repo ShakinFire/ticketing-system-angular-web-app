@@ -7,7 +7,7 @@ const routes: Routes = [
   /*
   {path: 'sign-in', component: AuthComponent, canActivate: [AuthGuard]}
   */
-  {path: 'sign-in', component: AuthComponent}
+  { path: 'sign-in', component: AuthComponent }
 ];
 
 @NgModule({

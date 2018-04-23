@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms/src/model';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { AuthService } from '../core/auth/auth.service';
+import { LoginUser } from '../models/user/login-user';
+import { RegUser } from '../models/user/reg-user';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',
@@ -9,11 +13,12 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 export class AuthComponent implements OnInit {
   formSwitch: boolean;
-  loginData: Object;
+  loginData: LoginUser;
+  regData: RegUser;
   errorMessage: string;
   isError: boolean;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.formSwitch = false;
@@ -38,11 +43,12 @@ export class AuthComponent implements OnInit {
       return 'Error: Password should be at least 6 characters';
     }
 
-    if (data.username.length < 4) {
+    // this should be regex
+    if (data.email.length < 4) {
       return 'Error: Username should be at least 4 characters';
     }
-    if(data.name) {
-      if (data.name.length < 2) {
+    if(data.firstName) {
+      if (data.firstName.length < 2 || data.lastName.length < 2) {
         return 'Error: Invalid name length';
       }
 
@@ -52,13 +58,37 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  formsData(form: FormGroup): void {
+  onLogin(form: NgForm): void {
     this.loginData = form.value;
     this.errorMessage = this.validate(this.loginData);
     if (this.errorMessage) {
       this.isError = true;
     } else {
+      this.authService.login(this.loginData).subscribe(
+        (res: HttpResponse<object>) => {
+          if (res.message) {
+            this.errorMessage = res.message;
+            this.isError = true;
+          } else {
+            this.isError = false;
+
+            // should redirect to dashboard
+            console.log('You logged in successfully');
+            console.log(res);
+          }
+        }
+      )
+    }
+  }
+
+  onReg(form: NgForm): void {
+    this.regData = form.value;
+    this.errorMessage = this.validate(this.regData);
+    if (this.errorMessage) {
+      this.isError = true;
+    } else {
       this.isError = false;
+
     }
   }
 }

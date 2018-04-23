@@ -12,10 +12,10 @@
             {{ errorMessage }}
           </div>
           <div *ngIf="!formSwitch" class="sign-in-form">
-            <form #signInForm="ngForm" (ngSubmit)="formsData(signInForm)">
+            <form #signInForm="ngForm" (ngSubmit)="onLogin(signInForm)">
               <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" required ngModel>
+                <label>Email</label>
+                <input type="email" name="email" required ngModel>
               </div>
               <div class="form-group">
                 <label>Password</label>
@@ -26,17 +26,21 @@
             </form>
           </div>
           <div *ngIf="formSwitch" class="register-form">
-            <form #signUpForm="ngForm" (ngSubmit)="formsData(signUpForm)">
+            <form #signUpForm="ngForm" (ngSubmit)="onReg(signUpForm)">
                 <div class="form-group">
-                  <label>Name</label>
-                  <input name="name" type="text" ngModel>
+                  <label>First name</label>
+                  <input name="firstName" type="text" ngModel>
                 </div>
                 <div class="form-group">
-                  <label>Username</label>
-                  <input name="username" type="text" ngModel>
+                  <label>Last Name</label>
+                  <input name="lastName" type="text" ngModel>
                 </div>
                 <div class="form-group">
-                  <label>Password</label>
+                  <label>Email</label>
+                  <input name="email" type="text" ngModel>
+                </div>
+                <div class="form-group">
+                  <label>Password</label> 
                   <input name="password" type="password" ngModel>
                 </div>
                 <div class="form-group">

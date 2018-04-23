@@ -2,6 +2,28 @@ section .page-wrapper {
     margin: 70px 0;
 }
 
+section .title {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    color: rgb(65, 65, 65);
+}
+
+section .reg-free {
+    margin-top: 40px;
+    color: rgb(165, 165, 165);
+}
+
+section .reg-free p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+section .reg-free li {
+    margin-left: 25px;
+    padding-left: 10px;
+}
+
 section .all-forms {
     padding: 0 65px;
 }

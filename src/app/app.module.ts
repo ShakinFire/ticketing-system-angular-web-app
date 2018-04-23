@@ -16,6 +16,12 @@ import { NavComponent } from './nav/nav.component';
 import { AppConfig } from './config/app-config';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,14 +39,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AuthModule,
     CoreModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3001'],
+        blacklistedRoutes: []
+      }
+    })
   ],
   providers: [
     AppConfig,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    }
   ],
   bootstrap: [AppComponent]
 })

@@ -7,15 +7,23 @@ import { LoginUser } from '../../models/user/login-user';
 import { RegUser } from '../../models/user/reg-user';
 import { Observable } from 'rxjs/Observable';
 import { AppConfig } from '../../config/app-config';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private config: AppConfig, private http: HttpClient) { }
+  constructor(private config: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) { }
 
   login(user: LoginUser): Observable<object> {
     return this.http.post<object>(`${this.config.apiUrl}/login`, user)
       .do(res => this.setSession(res))
+      .shareReplay();
+  }
+
+  // Testing auth
+  test(): Observable<object> {
+    return this.http.post<object>(`${this.config.apiUrl}/test`, {})
+      .do(res => console.log(res))
       .shareReplay();
   }
 
@@ -35,6 +43,12 @@ export class AuthService {
       localStorage.setItem('token', authResult.token);
       localStorage.setItem("expiresAt", JSON.stringify(expiresAt.valueOf()));
     }
+  }
+
+  public isAuth(): boolean{
+    const token = this.jwtService.tokenGetter();
+
+    return !!token;
   }
 
   getExpiration() {

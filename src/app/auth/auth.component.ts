@@ -6,6 +6,8 @@ import { LoginUser } from '../models/user/login-user';
 import { RegUser } from '../models/user/reg-user';
 import { HttpResponse } from '@angular/common/http';
 
+import 'rxjs/add/operator/map';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -64,8 +66,8 @@ export class AuthComponent implements OnInit {
     if (this.errorMessage) {
       this.isError = true;
     } else {
-      this.authService.login(this.loginData).subscribe(
-        (res: HttpResponse<object>) => {
+      this.authService.login(this.loginData).map(x=><{message: string}>(x)).subscribe(
+        (res) => {
           if (res.message) {
             this.errorMessage = res.message;
             this.isError = true;
@@ -90,5 +92,10 @@ export class AuthComponent implements OnInit {
       this.isError = false;
 
     }
+  }
+
+  // Testing auth
+  onAuth(): void{
+    this.authService.test().subscribe(x=>x);
   }
 }

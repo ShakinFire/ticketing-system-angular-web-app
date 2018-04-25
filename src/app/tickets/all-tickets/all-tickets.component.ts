@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-tickets.component.css']
 })
 export class AllTicketsComponent implements OnInit {
-
+  tabId: number;
   constructor() { }
 
   ngOnInit() {
+    this.tabId = 0;
   }
 
+
+  changeActive(id: number): void {
+    this.tabId = id;
+  }
 }

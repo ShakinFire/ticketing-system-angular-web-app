@@ -26,7 +26,7 @@ export class AuthService {
       .shareReplay();
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem("token");
     localStorage.removeItem("expiresAt");
   }

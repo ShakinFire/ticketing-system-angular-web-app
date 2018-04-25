@@ -1,0 +1,87 @@
+.assigned-tickets .ticket {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 15px 20px;
+    border-bottom: 1px dashed rgb(192, 192, 192);
+}
+
+.assigned-tickets .ticket:hover {
+    background: rgb(240, 240, 240);
+}
+
+.assigned-tickets img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+.assigned-tickets .left-side-ticket {
+    display: flex;
+}
+
+.assigned-tickets .main-info {
+    margin-left: 10px;
+}
+
+.assigned-tickets .main-info .title-status-label {
+    display: flex;
+}
+
+.assigned-tickets .main-info .info {
+    background-color: #3ec435;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 3px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.assigned-tickets .main-info .status {
+    margin-right: 4px;
+}
+
+.assigned-tickets .main-info .label {
+    margin-right: 8px;
+}
+
+.assigned-tickets .main-info .title {
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 35px;
+}
+
+.assigned-tickets .main-info .name-date {
+    margin-top: 8px;
+    font-size: 14px;
+    color: rgb(172, 172, 172);
+}
+
+.assigned-tickets .main-info .full-name {
+    margin-right: 5px;
+}
+
+.assigned-tickets .comments {
+    margin-top: 14px;
+}
+
+.assigned-tickets .comments .wrapper-comments {
+    display: flex;
+    font-size: 15px;
+    color: rgb(172, 172, 172);
+    cursor: pointer;
+}
+
+.assigned-tickets .comments .total {
+    padding-left: 7px;
+}
+
+/* 
+OPEN - #3ec435
+IN PROGRESS - #2a81bb
+CLOSED - #a83636;
+RE-OPENED - #3ec435
+*/

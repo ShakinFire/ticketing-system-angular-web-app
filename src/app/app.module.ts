@@ -18,6 +18,7 @@ import { AppConfig } from './config/app-config';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { tokenGetter } from './models/token/token-getter';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { tokenGetter } from './models/token/token-getter';
     NgbModule.forRoot(),
     AppRoutingModule,
     AngularFontAwesomeModule,
+    ClickOutsideModule,
     AuthModule,
     CoreModule,
     HttpClientModule,

@@ -1,18 +1,35 @@
 <header class="fixed-top">
   <nav class="container">
     <div class="row">
-      <div class="logo col-lg-3">
+      <div class="logo col-lg-3 col-sm-3">
         <h2>
           <a [routerLink]="['']">Fera</a>
         </h2>
       </div>
-      <div class="col-lg-3 offset-lg-6 sign-in text-right">
+      <div class="col-lg-6 offset-lg-3 col-sm-9 sign-in text-right">
         <a *ngIf="!isLoggedNav()" [routerLink]="['/auth/sign-in']">Sign In/Register</a>
-        <ul *ngIf="isLoggedNav()" class="list-unstyled">
-          <li><a href="#">test1</a></li>
-          <li><a href="#">test2</a></li>
-        </ul>
+        <div *ngIf="isLoggedNav()" class="logged-menu">
+          <ul class="list-unstyled">
+            <li><a href="#">notifications</a></li>
+            <li><a href="#">Create ticket</a></li>
+          </ul>
+          <div class="first-name">
+            <a href="#">Georgi</a>
+          </div>
+          <div (click)="dropDown()" class="drop-down">
+            <img src="../../assets/img/the-guy.jpeg">
+            <fa name="fas fa-caret-down {{rotate}}"></fa>
+          </div>
+        </div>
       </div>
+    </div>
+    <div (clickOutside)="onClickedOutside($event)" [exclude]="'.drop-down'" *ngIf="dropDownSwitch" class="drop-down-container">
+      <ul class="list-unstyled">
+        <li><a href="#">My profile</a></li>
+        <li><a href="#">My teams</a></li>
+        <li class="line-break"></li>
+        <li><a (click)="logoutNav()" [routerLink]="['']">Logout</a></li>
+      </ul>
     </div>
   </nav>
 </header>

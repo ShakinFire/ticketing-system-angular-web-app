@@ -5,11 +5,9 @@ header {
 }
 
 /* #b8f5d4 */
-img {
-    height: 40px;
-    width: 40px;
+header nav {
+    position: relative;
 }
-
 
 header h2 {
     padding: 14px 0;
@@ -34,6 +32,77 @@ header .sign-in a:hover {
 
 header .sign-in li {
     display: inline-block;
-    padding-left: 15px;
-    font-size: 15px;
+}
+
+header .sign-in li:last-child a {
+    font-size: 16px;
+    color: #25c16f;
+}
+
+header .sign-in li:last-child a:hover {
+    color: #1c9755;
+}
+
+header .sign-in a {
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+header .first-name {
+    align-self: flex-start;
+    margin-right: 10px;
+}
+
+header .first-name a {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+header .drop-down {
+    cursor: pointer;
+}
+
+header .drop-down img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+header .logged-menu {
+    display: flex;
+    align-items: center;
+}
+
+header .logged-menu ul {
+    margin-right: 20px;
+}
+
+header .drop-down-container {
+    position: absolute;
+    right: 10px;
+    top: 60px; /* This should be changed on mobile to lower value */
+
+    background: rgb(248, 248, 248);
+    border-radius: 3px;
+    border: 1px solid rgb(192, 192, 192);
+}
+
+header .drop-down-container a {
+    display: block;
+    padding: 6px 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+header .drop-down-container a:hover {
+    background: rgb(238, 238, 238);
+    color: #25c16f;
+}
+
+header .drop-down-container .line-break {
+    margin: 5px 0;
+    height: 1px;
+    background: rgb(192, 192, 192);
 }

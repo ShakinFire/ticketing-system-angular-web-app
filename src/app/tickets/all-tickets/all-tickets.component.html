@@ -9,7 +9,7 @@
     </div>
     <div class="tickets-content">
       <div *ngIf="tabId === 0" class="assigned-tickets">
-        <app-assigned-tickets></app-assigned-tickets>
+        <app-assigned-tickets *ngFor="let ticket of assigTickets" [ticket]="ticket"></app-assigned-tickets>
       </div>
       <div *ngIf="tabId === 1" class="my-tickets">
         my-tickets

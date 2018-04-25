@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
 import { AllTicketsComponent } from './all-tickets/all-tickets.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     TicketsRoutingModule,
     NgbModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    SharedModule,
   ],
   declarations: [
     AssignedTicketsComponent,

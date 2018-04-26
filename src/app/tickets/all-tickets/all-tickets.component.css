@@ -27,3 +27,9 @@
 .tab-menu .tickets-content {
     border-top: 1px solid rgb(192, 192, 192);
 }
+
+.nothing-here {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}

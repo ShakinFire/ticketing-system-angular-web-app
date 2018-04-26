@@ -65,14 +65,18 @@
 }
 
 .assigned-tickets .comments {
-    /* margin-top: 14px; */
+    position: relative;
 }
 
 .assigned-tickets .comments .comments-wrapper {
     display: flex;
     font-size: 15px;
-    color: rgb(172, 172, 172);
+    color: rgb(121, 121, 121);
     cursor: pointer;
+}
+
+.assigned-tickets .comments .comments-wrapper:hover {
+    color: #25c16f;
 }
 
 .assigned-tickets .comments .total {
@@ -81,4 +85,20 @@
 
 .assigned-tickets .comments .edit {
     display: block;
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+.assigned-tickets .comments .edit fa {
+    font-size: 17px;
+    cursor: pointer;
+    color: rgb(145, 145, 145);
+}
+
+.assigned-tickets .comments .edit fa:hover {
+    color: #25c16f;
+}
+
+.comments-margin {
+    margin-top: 14px;
 }

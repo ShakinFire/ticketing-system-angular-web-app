@@ -1,4 +1,4 @@
-<section class="assigned-tickets">
+<section [appSetAttribute]="ticket.id" class="assigned-tickets">
   <div class="ticket">
     <div class="left-side-ticket">
       <img src="../../../assets/img/the-guy.jpeg">
@@ -11,7 +11,7 @@
             <span class="label info">
               {{ ticket.labels }}
             </span>
-            <a href="#" class="title">
+            <a (click)="openTicket(false)" href="" class="title">
               {{ ticket.title | wordBreak }}
             </a>
           </div>
@@ -24,9 +24,11 @@
         </div>
       </div>
     </div>
-    <div class="comments">
-        <div class="edit">
-          da
+    <div [ngClass]="{'comments-margin': !tabId}" class="comments">
+        <div *ngIf="tabId" class="edit">
+          <a (click)="openTicket(true)" href="">
+            <fa name="fas fa-edit"></fa>
+          </a>
         </div>
         <div class="comments-wrapper">
           <fa name="fas fa-comment"></fa>

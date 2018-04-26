@@ -10,12 +10,14 @@
     <div class="tickets-content">
       <div *ngIf="tabId === 0" class="assigned-tickets">
         <app-assigned-tickets *ngFor="let ticket of assigTickets" [ticket]="ticket"></app-assigned-tickets>
+        <app-nothing-here class="nothing-here" *ngIf="assigTickets.length === 0"></app-nothing-here>
       </div>
       <div *ngIf="tabId === 1" class="my-tickets">
-        my-tickets
-      </div>
+          <app-assigned-tickets *ngFor="let ticket of assigTickets" [ticket]="ticket" [tabId]='1'></app-assigned-tickets>
+          <app-nothing-here class="nothing-here" *ngIf="assigTickets.length === 0"></app-nothing-here>
+        </div>
       <div *ngIf="tabId === 2" class="teams">
-        teams
+          <app-nothing-here class="nothing-here" *ngIf="assigTickets.length === 0"></app-nothing-here>
       </div>
     </div>
   </div>

@@ -17,6 +17,7 @@ import { NavComponent } from './nav/nav.component';
 import { AppConfig } from './config/app-config';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TeamsModule } from './teams/teams.module';
 import { tokenGetter } from './models/token/token-getter';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tickets.service';
@@ -37,6 +38,8 @@ import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tick
     AngularFontAwesomeModule,
     ClickOutsideModule,
     AuthModule,
+    TicketsModule,
+    TeamsModule,
     CoreModule,
     HttpClientModule,
     TicketsModule,

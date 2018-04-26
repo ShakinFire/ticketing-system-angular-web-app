@@ -1,4 +1,5 @@
 export class AppConfig {
+    static apiUrl: any;
     public readonly apiUrl: string;
 
     constructor() {

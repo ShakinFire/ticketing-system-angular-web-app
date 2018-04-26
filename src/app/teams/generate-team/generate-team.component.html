@@ -1,0 +1,23 @@
+<div class="home-wrapper">
+  <div class="row container page-wraper text-center mrg ">
+    <div class="col-md-6 text-center all-forms forms-wrapper cold">
+      <h1>Create team:</h1>
+      <div class="sign-in-form">
+        <div *ngIf="isError" class="error-message">
+          {{ errorMessage }}
+        </div>
+        <form #teamsForm='ngForm' (ngSubmit)='teamsFormsData(teamsForm)' return='falce'>
+          <div class="form-group">
+            <label for='title'>Title:</label>
+            <input type='text' name='title' required ngModel>
+          </div>
+          <div class="form-group">
+            <label for='avatar'>Avatar:</label>
+            <input type='text' name='avatar' required ngModel>
+          </div>
+          <button>Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

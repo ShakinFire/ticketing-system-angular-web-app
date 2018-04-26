@@ -3,10 +3,6 @@
   padding: 60px 0;
 }
 
-.cold {
-  background-color: ghostwhite;
-}
-
 .page-wrapper {
   margin: 70px 0;
 }
@@ -18,11 +14,6 @@
 .forms-wrapper {
   border-radius: 2px;
   border: 1px solid rgb(201, 201, 201);
-}
-
-.sign-in-form {
-  padding: 15px 25px;
-  transition: height 2s linear 1s;
 }
 
 label {
@@ -61,10 +52,6 @@ button:hover {
   background: #1c9755;
 }
 
-textarea {
-  height: 150px;
-}
-
 .error-message {
   padding: 10px 5px;
   margin: 15px 25px 0 25px;
@@ -72,4 +59,13 @@ textarea {
   color: white;
   border-radius: 3px;
   font-size: 14px;
+}
+
+.cold {
+  background-color: ghostwhite;
+}
+
+.sign-in-form {
+  padding: 15px 25px;
+  transition: height 2s linear 1s;
 }

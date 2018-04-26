@@ -18,6 +18,7 @@ import { AppConfig } from './config/app-config';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { JwtModule } from '@auth0/angular-jwt';
+import { TeamsModule } from './teams/teams.module';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -39,6 +40,7 @@ export function tokenGetter() {
     AngularFontAwesomeModule,
     AuthModule,
     TicketsModule,
+    TeamsModule,
     CoreModule,
     HttpClientModule,
     JwtModule.forRoot({

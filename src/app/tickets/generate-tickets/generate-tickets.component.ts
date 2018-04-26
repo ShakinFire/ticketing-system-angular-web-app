@@ -1,56 +1,106 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from '../../models/ticket';
+import { TicketsService } from '../tickets.service';
+import { NgForm } from '@angular/forms';
+import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+
 
 @Component({
   selector: 'app-generate-tickets',
   templateUrl: './generate-tickets.component.html',
-  styleUrls: ['./generate-tickets.component.css']
+  styleUrls: ['./generate-tickets.component.css'],
+  providers: [NgbTypeaheadConfig]
 })
 export class GenerateTicketsComponent implements OnInit {
-
-  user = {
-    name: 'user 1',
-    teamsUser:['team 1', 'team 2', 'team 3', 'team 4',]
-  };
-  teams = this.user.teamsUser;
-  teamss= '';
-
-  teamsis = {
-    'team 1':['user 1', 'user 2', 'user 3'],
-    'team 2':['user 1', 'user 3', 'user 4'],
-    'team 3':['user 1', 'user 5', 'user 6'],
-    'team 4':['user 1', 'user 6', 'user 2'],
-  }
-  userss=[];
-fun(){
-  this.userss=this.teamsis[this.teamss];
-  return this.userss;
-}
-
- 
-  isOpen='open';
-  
-
+  public teamss: any;
+  public model: any;
+  teamsis = [];
+  isOpen = 'open';
   ticket = new Ticket();
-
-  submited = false;
-
-  onSubmit(){
-    this.submited=true;
-  }
-
+  teams: any[];
   ticketData: Object;
   errorMessage: string;
+  isError: boolean;
+  userss: any;
+  submited = false;
 
-  constructor() { }
+  userId = 1;
 
+  constructor(private readonly ticketService: TicketsService, config: NgbTypeaheadConfig) {
+    config.showHint = true;
+  }
   ngOnInit() {
+    this.ticketService.getUserTeams(1).subscribe(data => {
+      this.teams = data.teams;
+    });
+
   }
 
-  ticketFormsData(ticketForm:any) {
-    console.log(ticketForm.value);
-    ticketForm.resetForm();
-    
+  validate(data): string {
+    if (data.title.length < 4) {
+      return 'Error: Title should be at least 4 characters'
+    }
+    if (data.labels.length < 2) {
+      return 'Error: Labels should be at least 2 characters'
+    }
+    if (data.description.length < 1) {
+      return 'Error: Write a description'
+    }
+    if (data.team.length < 1) {
+      return 'Error: You have not chosen a team'
+    }
+    if (data.assignee.length < 1) {
+      return 'Error: You have not chosen a assignee'
+    }
+    if (data.assignee.length < 1) {
+      return 'Error: You have not chosen a assignee'
+    }
+    if (data.estimated.length < 10) {
+      return 'Error: you did not select the correct date'
+    }
+  }
+
+
+
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 2 ? []
+        : this.userss.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
+
+  search2 = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 2 ? []
+        : this.teams.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
+
+
+  fun() {
+    console.log(this.teamss);
+    this.userss = this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
+      this.userss = data.users;
+      return this.userss;
+    });
+  }
+
+
+
+  ticketFormsData(ticketForm: NgForm) {
+    this.errorMessage = this.validate(ticketForm.value);
+    if (this.errorMessage) {
+      this.isError = true;
+    } else {
+      // ticketForm.value.status = 'open';
+      ticketForm.value.userId = this.userId;
+      this.ticketService.addTicket(ticketForm.value);
+      ticketForm.resetForm();
+    }
   }
 
 }

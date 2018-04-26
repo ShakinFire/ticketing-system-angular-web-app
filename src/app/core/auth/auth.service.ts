@@ -3,8 +3,7 @@ import 'rxjs/add/operator/shareReplay'
 import * as moment from 'moment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { LoginUser } from '../../models/user/login-user';
-import { RegUser } from '../../models/user/reg-user';
+import { LoginRegisterUser } from '../../models/user/login-register-user';
 import { Observable } from 'rxjs/Observable';
 import { AppConfig } from '../../config/app-config';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -14,8 +13,8 @@ export class AuthService {
 
   constructor(private config: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) { }
 
-  login(user: LoginUser): Observable<object> {
-    return this.http.post<object>(`${this.config.apiUrl}/login`, user)
+  login(user: LoginRegisterUser, route: string): Observable<object> {
+    return this.http.post<object>(`${this.config.apiUrl}${route}`, user)
       .do(res => this.setSession(res))
       .shareReplay();
   }
@@ -27,7 +26,7 @@ export class AuthService {
       .shareReplay();
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem("token");
     localStorage.removeItem("expiresAt");
   }

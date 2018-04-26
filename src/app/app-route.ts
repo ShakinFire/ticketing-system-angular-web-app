@@ -10,7 +10,10 @@ export const ROUTES: Routes = [
     {
         path: 'auth', loadChildren: './auth/auth.module#AuthModule'
     },
+    {
+        path: 'dashboard', loadChildren: './tickets/tickets.module#TicketsModule'
+    },
     // {path: 'create-ticket', loadChildren: './tickets/tickets.module#TicketsModule'}
     { path: 'create-ticket', component: GenerateTicketsComponent },
-    { path: 'create-team', component: GenerateTeamComponent }
+    { path: 'create-team', component: GenerateTeamComponent },
 ];

@@ -1,7 +1,17 @@
 <section>
   <div class="container">
     <div class="row page-wrapper">
-      <div class="col-lg-6">Text here</div>
+      <div class="col-lg-6">
+        <p class="title">Begin your path to success</p>
+        <div class="reg-free">
+          <p>Register for free and get:</p>
+          <ul>
+            <li>Unlimited teams and projects</li>
+            <li>Access to all your logged data</li>
+            <li>Unlimited storage</li>
+          </ul>
+        </div>
+      </div>
       <div class="col-lg-6 text-center all-forms">
         <div class="forms-wrapper">
           <div class="row forms-switch">
@@ -12,7 +22,7 @@
             {{ errorMessage }}
           </div>
           <div *ngIf="!formSwitch" class="sign-in-form">
-            <form #signInForm="ngForm" (ngSubmit)="onLogin(signInForm)">
+            <form #signInForm="ngForm" (ngSubmit)="onLogin(signInForm, '/login')">
               <div class="form-group">
                 <label>Email</label>
                 <input type="email" name="email" required ngModel>
@@ -26,7 +36,7 @@
             </form>
           </div>
           <div *ngIf="formSwitch" class="register-form">
-            <form #signUpForm="ngForm" (ngSubmit)="onReg(signUpForm)">
+            <form #signUpForm="ngForm" (ngSubmit)="onLogin(signUpForm, '/register')">
                 <div class="form-group">
                   <label>First name</label>
                   <input name="firstName" type="text" ngModel>

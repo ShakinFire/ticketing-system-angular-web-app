@@ -1,3 +1,4 @@
+import { TicketsModule } from './tickets/tickets.module';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,19 +11,15 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AuthModule } from './auth/auth.module';
-import { TicketsModule } from './tickets/tickets.module';
 import { CoreModule } from './core/core.module';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { AppConfig } from './config/app-config';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { JwtModule } from '@auth0/angular-jwt';
 import { TeamsModule } from './teams/teams.module';
-
-export function tokenGetter() {
-  return localStorage.getItem('token');
-}
+import { tokenGetter } from './models/token/token-getter';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 @NgModule({
   declarations: [
@@ -38,11 +35,13 @@ export function tokenGetter() {
     NgbModule.forRoot(),
     AppRoutingModule,
     AngularFontAwesomeModule,
+    ClickOutsideModule,
     AuthModule,
     TicketsModule,
     TeamsModule,
     CoreModule,
     HttpClientModule,
+    TicketsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

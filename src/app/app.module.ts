@@ -17,6 +17,7 @@ import { NavComponent } from './nav/nav.component';
 import { AppConfig } from './config/app-config';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TeamsModule } from './teams/teams.module';
 import { tokenGetter } from './models/token/token-getter';
 import { ClickOutsideModule } from 'ng4-click-outside';
 
@@ -36,6 +37,8 @@ import { ClickOutsideModule } from 'ng4-click-outside';
     AngularFontAwesomeModule,
     ClickOutsideModule,
     AuthModule,
+    TicketsModule,
+    TeamsModule,
     CoreModule,
     HttpClientModule,
     TicketsModule,

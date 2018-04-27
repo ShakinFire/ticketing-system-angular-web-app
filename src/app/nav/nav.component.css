@@ -106,3 +106,7 @@ header .drop-down-container .line-break {
     height: 1px;
     background: rgb(192, 192, 192);
 }
+
+.logout {
+    cursor: pointer;
+}

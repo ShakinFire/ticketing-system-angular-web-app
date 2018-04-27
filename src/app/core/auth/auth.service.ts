@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay'
 import * as moment from 'moment';
@@ -11,7 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable()
 export class AuthService {
 
-  constructor(private config: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) { }
+  constructor(private config: AppConfig, private http: HttpClient, private jwtService: JwtHelperService, private router: Router) { }
 
   login(user: LoginRegisterUser, route: string): Observable<object> {
     return this.http.post<object>(`${this.config.apiUrl}${route}`, user)
@@ -29,6 +30,8 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem("token");
     localStorage.removeItem("expiresAt");
+
+    this.router.navigate(['']);
   }
 
   public isLoggedIn() {

@@ -9,6 +9,10 @@ import { CommonModule } from '@angular/common';
 import { AssignedTicketsComponent } from './assigned-tickets/assigned-tickets.component';
 import { AllTicketsComponent } from './all-tickets/all-tickets.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from '../shared/shared.module';
+import { MyTeamDashboardComponent } from './my-teams-dashboard/my-team-dashboard.component';
+import { MyTeamsDashboardService } from './my-teams-dashboard/my-teams-dashboard.service';
+import { AssignedTicketsService } from './assigned-tickets/assigned-tickets.service';
 
 @NgModule({
   imports: [
@@ -18,15 +22,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TicketsRoutingModule,
     NgbModule,
     AngularFontAwesomeModule,
+    SharedModule,
   ],
   declarations: [
     GenerateTicketsComponent,
     AssignedTicketsComponent,
     AllTicketsComponent,
+    MyTeamDashboardComponent,
   ],
-  providers: [TicketsService, NgbTypeaheadConfig, NgbTypeaheadModule],
+  providers: [
+    TicketsService,
+    MyTeamsDashboardService,
+    AssignedTicketsService,
+    NgbTypeaheadConfig,
+    NgbTypeaheadModule,
+  ],
   exports: [
-    GenerateTicketsComponent
+    GenerateTicketsComponent,
+    AssignedTicketsComponent,
   ],
 
 })

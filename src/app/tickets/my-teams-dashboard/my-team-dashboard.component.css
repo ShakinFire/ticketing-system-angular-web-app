@@ -1,0 +1,43 @@
+.my-teams {
+    margin-bottom: 70px;
+}
+
+.my-teams .team {
+    background-image: url('/../../../assets/img/avatar-team-default.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+    height: 150px;
+
+    border: 1px solid gray;
+    border-radius: 4px;
+    position: relative;
+    margin: 50px 50px 0 0;
+    cursor: pointer;
+}
+
+.my-teams .team:hover .show-team {
+    display: block;
+}
+
+.my-teams .show-team {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+
+    background: rgba(190, 190, 190, 0.568);
+    width: 100%;
+
+    padding: 5px 5px;
+}
+
+.my-teams .title {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.my-teams .members {
+    font-size: 16px;
+}

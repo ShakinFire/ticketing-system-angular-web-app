@@ -20,6 +20,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { TeamsModule } from './teams/teams.module';
 import { tokenGetter } from './models/token/token-getter';
 import { ClickOutsideModule } from 'ng4-click-outside';
+import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tickets.service';
 
 @NgModule({
   declarations: [

@@ -9,13 +9,15 @@
     </div>
     <div class="tickets-content">
       <div *ngIf="tabId === 0" class="assigned-tickets">
-        <app-assigned-tickets></app-assigned-tickets>
+        <app-assigned-tickets *ngFor="let ticket of assigTickets" [ticket]="ticket"></app-assigned-tickets>
+        <app-nothing-here class="nothing-here" *ngIf="notingHereSwitch"></app-nothing-here>
       </div>
       <div *ngIf="tabId === 1" class="my-tickets">
-        my-tickets
-      </div>
+          <app-assigned-tickets *ngFor="let ticket of assigTickets" [ticket]="ticket" [tabId]='1'></app-assigned-tickets>
+          <app-nothing-here class="nothing-here" *ngIf="notingHereSwitch"></app-nothing-here>
+        </div>
       <div *ngIf="tabId === 2" class="teams">
-        teams
+        <app-my-team-dashboard></app-my-team-dashboard>
       </div>
     </div>
   </div>

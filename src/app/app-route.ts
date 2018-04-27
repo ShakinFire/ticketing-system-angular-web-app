@@ -4,9 +4,10 @@ import { HomeComponent } from "./home/home.component";
 import { AuthComponent } from "./auth/auth.component";
 import { GenerateTicketsComponent } from "./tickets/generate-tickets/generate-tickets.component";
 import { GenerateTeamComponent } from "./teams/generate-team/generate-team.component";
+import { HomeGuard } from "./core/auth-guard/home-guard.service";
 
 export const ROUTES: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: HomeComponent, canActivate: [HomeGuard] },
     {
         path: 'auth', loadChildren: './auth/auth.module#AuthModule'
     },

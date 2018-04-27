@@ -40,3 +40,15 @@ a, a:hover {
     color: #4d4d4d;
     text-decoration: none;
 }
+
+.open, .reopened {
+    background: #3ec435;
+}
+
+.inprogress {
+    background: #2a81bb
+}
+
+.closed {
+    background: #a83636;
+}

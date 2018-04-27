@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AssigneeTicket } from './../../models/tickets/assigned-ticket';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-assigned-tickets',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assigned-tickets.component.css']
 })
 export class AssignedTicketsComponent implements OnInit {
-
+  @Input() ticket: AssigneeTicket;
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

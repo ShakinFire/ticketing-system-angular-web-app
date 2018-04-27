@@ -32,7 +32,6 @@
 }
 
 .assigned-tickets .main-info .info {
-    background-color: #3ec435;
     color: #fff;
     font-size: 12px;
     padding: 2px 3px;
@@ -46,6 +45,7 @@
 
 .assigned-tickets .main-info .label {
     margin-right: 8px;
+    background: #3a4d55;
 }
 
 .assigned-tickets .main-info .title {
@@ -65,10 +65,10 @@
 }
 
 .assigned-tickets .comments {
-    margin-top: 14px;
+    /* margin-top: 14px; */
 }
 
-.assigned-tickets .comments .wrapper-comments {
+.assigned-tickets .comments .comments-wrapper {
     display: flex;
     font-size: 15px;
     color: rgb(172, 172, 172);
@@ -79,9 +79,6 @@
     padding-left: 7px;
 }
 
-/* 
-OPEN - #3ec435
-IN PROGRESS - #2a81bb
-CLOSED - #a83636;
-RE-OPENED - #3ec435
-*/
+.assigned-tickets .comments .edit {
+    display: block;
+}

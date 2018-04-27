@@ -5,32 +5,35 @@
       <div class="main-info">
         <div class="title-status-label">
           <div class="wrapper-slt">
-            <span class="status info">
-              OPEN
+            <span [appLabelStatusColor]="ticket.status" class="status info">
+              {{ ticket.status }}
             </span>
             <span class="label info">
-              BUG
+              {{ ticket.labels }}
             </span>
             <a href="#" class="title">
-              Lorem ipsum dolor sit amet consectetur.
+              {{ ticket.title | wordBreak }}
             </a>
           </div>
         </div>
         <div class="name-date">
           <div class="wrapper-name-date">
-            <span class="full-name">Georgi Enev</span>
-            <span class="date">Jul 28 '12 at 12:25</span>
+            <span class="full-name">{{ ticket.users.firstName }} {{ ticket.users.lastName }}</span>
+            <span class="date">{{ ticket.date }}</span>
           </div>
         </div>
       </div>
     </div>
     <div class="comments">
-      <div class="wrapper-comments">
+        <div class="edit">
+          da
+        </div>
+        <div class="comments-wrapper">
           <fa name="fas fa-comment"></fa>
           <div class="total">
             32
           </div>
-      </div>
+        </div>
     </div>
   </div>
 </section>

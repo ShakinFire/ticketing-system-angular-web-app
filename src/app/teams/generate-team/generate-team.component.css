@@ -69,3 +69,8 @@ button:hover {
   padding: 15px 25px;
   transition: height 2s linear 1s;
 }
+
+.board {
+  border-radius: 2px;
+  border: 1px solid rgb(201, 201, 201);
+}

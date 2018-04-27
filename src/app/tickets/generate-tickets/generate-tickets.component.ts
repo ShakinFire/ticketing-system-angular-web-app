@@ -27,6 +27,7 @@ export class GenerateTicketsComponent implements OnInit {
   isError: boolean;
   userss: any;
   submited = false;
+  us: any;
 
   userId = 1;
 
@@ -36,6 +37,7 @@ export class GenerateTicketsComponent implements OnInit {
   ngOnInit() {
     this.ticketService.getUserTeams(1).subscribe(data => {
       this.teams = data.teams;
+
     });
 
   }
@@ -53,10 +55,7 @@ export class GenerateTicketsComponent implements OnInit {
     if (data.team.length < 1) {
       return 'Error: You have not chosen a team'
     }
-    if (data.assignee.length < 1) {
-      return 'Error: You have not chosen a assignee'
-    }
-    if (data.assignee.length < 1) {
+    if (data.assigneeId.length < 1) {
       return 'Error: You have not chosen a assignee'
     }
     if (data.estimated.length < 10) {
@@ -82,9 +81,12 @@ export class GenerateTicketsComponent implements OnInit {
 
 
   fun() {
-    console.log(this.teamss);
-    this.userss = this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
-      this.userss = data.users;
+    console.log(this.teams);
+    this.us = this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
+      this.us = data.users;
+      console.log(this.us);
+      this.userss = this.us.map(x => x.name);
+      console.log(this.userss);
       return this.userss;
     });
   }
@@ -97,7 +99,10 @@ export class GenerateTicketsComponent implements OnInit {
       this.isError = true;
     } else {
       // ticketForm.value.status = 'open';
+      const result = this.us.find(x => x.name === ticketForm.value.assigneeId);
+      ticketForm.value.assigneeId = result.id;
       ticketForm.value.userId = this.userId;
+      console.log(ticketForm.value);
       this.ticketService.addTicket(ticketForm.value);
       ticketForm.resetForm();
     }

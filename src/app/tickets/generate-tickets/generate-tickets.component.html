@@ -22,12 +22,12 @@
             <!-- <select class="form-control" [(ngModel)]='teamss' name='team' (click)='fun()'>
               <option *ngFor="let team of teams" [value]="team">{{team}}</option>
             </select> -->
-            <input id='team' name='team' type='text' class='form-control' (click)='fun()' (keyup.enter)='fun()' [(ngModel)]='teamss'
-              [ngbTypeahead]="search2" />
+            <input id='team' name='team' type='text' class='form-control' [(ngModel)]='teamss' [ngbTypeahead]="search2" />
           </div>
           <div class="form-group">
-            <label for="assignee">Assignee:</label>
-            <input id="assignee" name='assignee' type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+            <label for="assigneeId">Assignee:</label>
+            <input id="assigneeId" name='assigneeId' type="text" (click)='fun()' class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"
+            />
 
           </div>
           <input type='hidden' name='status' [ngModel]='isOpen' required>

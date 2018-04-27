@@ -53,7 +53,6 @@ import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tick
   ],
   providers: [
     AppConfig,
-    AssignedTicketsService,
   ],
   bootstrap: [AppComponent]
 })

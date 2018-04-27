@@ -6,6 +6,7 @@ import { NgbTypeaheadConfig, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstr
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TeamsService } from './generate-team/teams.service';
+import { TicketsModule } from '../tickets/tickets.module';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { TeamsService } from './generate-team/teams.service';
     NgbTypeaheadModule,
     NgbModule,
     AngularFontAwesomeModule,
-
+    TicketsModule,
   ],
   declarations: [GenerateTeamComponent],
   providers: [TeamsService, NgbTypeaheadConfig, NgbTypeaheadModule],

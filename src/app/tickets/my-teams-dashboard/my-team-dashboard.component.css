@@ -1,5 +1,9 @@
 .my-teams {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
+}
+
+.my-teams .team-wrapper {
+    margin: 50px 50px 0 0;
 }
 
 .my-teams .team {
@@ -10,10 +14,10 @@
     background-clip: border-box;
     height: 150px;
 
-    border: 1px solid gray;
+    border: 1px solid rgb(165, 165, 165);
     border-radius: 4px;
     position: relative;
-    margin: 50px 50px 0 0;
+    
     cursor: pointer;
 }
 
@@ -35,6 +39,13 @@
 
 .my-teams .title {
     font-size: 17px;
+    font-weight: bold;
+}
+
+.my-teams .main-title {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 

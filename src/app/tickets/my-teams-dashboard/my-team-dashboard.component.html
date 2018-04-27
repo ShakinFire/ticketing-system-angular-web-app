@@ -1,30 +1,14 @@
 <div class="my-teams container">
   <div class="row offset-lg-1">
-    <div class="title">
-      Title22
-    </div>
-    <div class="team col-lg-2">
-      <div class="show-team">
-        <div class="title">Team 20</div>
-        <div class="members">Members: 10</div>
+    <div *ngFor="let team of teams" (click)="getTeam(team.id)" class="team-wrapper col-lg-3 col-sm-3 col-sm-5">
+      <div class="main-title">
+        {{ team.name }}
       </div>
-    </div>
-    <div class="team col-lg-2">
-      <div class="show-team">
-        <div class="title">Team 20</div>
-        <div class="members">Members: 10</div>
-      </div>
-    </div>
-    <div class="team col-lg-2">
-      <div class="show-team">
-        <div class="title">Team 20</div>
-        <div class="members">Members: 10</div>
-      </div>
-    </div>
-    <div class="team col-lg-2">
-      <div class="show-team">
-        <div class="title">Team 20</div>
-        <div class="members">Members: 10</div>
+      <div class="team">
+        <div class="show-team">
+          <div class="title">{{ team.name }}</div>
+          <div class="members">Members: 10</div>
+        </div>
       </div>
     </div>
   </div>

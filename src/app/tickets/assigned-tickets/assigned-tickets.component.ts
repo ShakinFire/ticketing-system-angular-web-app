@@ -15,10 +15,7 @@ export class AssignedTicketsComponent implements OnInit {
   ngOnInit() {
   }
 
-  openTicket(edit): boolean {
-    // *TODO: ticketId is a string, should be parsed to int
-    this.ticketId = this.el.nativeElement.children[0].getAttribute('ticketId');
-
+  openTicket(edit: boolean, id: number): boolean {
     if (edit) {
       // *TODO: sends ticketId to service to edit the ticket
     } else {

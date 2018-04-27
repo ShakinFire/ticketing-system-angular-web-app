@@ -1,0 +1,61 @@
+.ticket-description .ticket-wrapper {
+    display: flex;
+}
+
+.ticket-description .image-wrapper {
+    margin: 20px;
+}
+
+.ticket-description .image-wrapper img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.ticket-description .image-wrapper .full-name {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(146, 146, 146);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.ticket-description .image-wrapper .full-name:hover {
+    text-decoration: underline;
+}
+
+.ticket-description .description-wrapper {
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 4px;
+    background: rgb(248, 248, 248);
+
+    flex-basis: 100%;
+    padding: 15px;
+}
+
+.ticket-description .top-description {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(192, 192, 192);
+}
+
+.ticket-description .top-description .title {
+    font-weight: bold;
+    font-size: 25px;
+    flex-basis: 70%;
+}
+
+.ticket-description .top-description .created-at {
+    font-size: 14px;
+    padding-left: 30px;
+    color: rgb(197, 197, 197);
+}
+
+.ticket-description .description {
+    margin-top: 25px;
+    font-size: 15px;
+}

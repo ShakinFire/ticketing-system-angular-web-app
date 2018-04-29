@@ -1,21 +1,25 @@
+.ticket-description {
+    margin-bottom: 25px;
+}
+
 .ticket-description .ticket-wrapper {
     display: flex;
 }
 
 .ticket-description .image-wrapper {
-    margin: 20px;
+    margin: 20px 20px 20px 0;
+    flex-basis: 8%;
 }
 
 .ticket-description .image-wrapper img {
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
 
     border-radius: 50%;
 }
 
 .ticket-description .image-wrapper .full-name {
-    text-align: center;
     font-size: 12px;
     font-weight: bold;
     color: rgb(146, 146, 146);
@@ -34,6 +38,7 @@
 
     flex-basis: 100%;
     padding: 15px;
+    border-left: 3px solid #2a81bb;
 }
 
 .ticket-description .top-description {
@@ -52,7 +57,7 @@
 .ticket-description .top-description .created-at {
     font-size: 14px;
     padding-left: 30px;
-    color: rgb(197, 197, 197);
+    color: rgb(180, 180, 180);
 }
 
 .ticket-description .description {

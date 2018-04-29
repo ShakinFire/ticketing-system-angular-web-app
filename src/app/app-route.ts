@@ -16,7 +16,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'ticket-view', loadChildren: './ticket-view-comments/ticket-view.module#TicketViewModule'
-    }
+    },
     // {path: 'create-ticket', loadChildren: './tickets/tickets.module#TicketsModule'}
     { path: 'create-ticket', component: GenerateTicketsComponent },
     { path: 'create-team', component: GenerateTeamComponent },

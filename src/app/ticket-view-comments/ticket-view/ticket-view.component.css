@@ -2,10 +2,10 @@
     margin-top: 40px;
 }
 
-.comment-section {
-    background: rgb(194, 194, 194);
+.aside-wrapper {
+    padding-left: 0;
 }
 
-.advanced-information {
-    background: rgb(161, 161, 161);
+.create-comment {
+    margin-top: 15px;
 }

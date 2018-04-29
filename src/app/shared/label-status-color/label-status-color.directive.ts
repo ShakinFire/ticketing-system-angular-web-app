@@ -8,8 +8,9 @@ export class LabelStatusColorDirective implements AfterViewInit {
   constructor(private el: ElementRef, private renderer: Renderer2) { }
   
   ngAfterViewInit(): void {
-      this.status = this.status.replace(/[ -]+/g, '').toLowerCase();
-      this.renderer.addClass(this.el.nativeElement, this.status);
+    console.log(this.status);
+    this.status = this.status.replace(/[ -]+/g, '').toLowerCase();
+    this.renderer.addClass(this.el.nativeElement, this.status);
   }
 
 }

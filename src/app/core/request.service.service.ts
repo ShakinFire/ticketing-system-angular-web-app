@@ -13,12 +13,10 @@ export class RequestService {
   }
 
   post(rout: string, body: any, headers?: HttpHeaders): Observable<object> {
-    console.log('i am here');
     return this.http.post<object>(this.reqDomain.apiUrl + rout, body, { headers });
   }
 
   put(rout: string, body: any, headers?: HttpHeaders): Observable<object> {
     return this.http.put<object>(this.reqDomain.apiUrl + rout, body, { headers });
   }
-
 }

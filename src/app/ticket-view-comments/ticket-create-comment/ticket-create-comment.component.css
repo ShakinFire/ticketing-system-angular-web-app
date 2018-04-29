@@ -1,0 +1,7 @@
+.create-comment {
+    display: flex;
+}
+
+.create-comment .empty-space {
+    flex-basis: 10%;
+}

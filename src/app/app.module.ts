@@ -24,7 +24,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tickets.service';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HomeComponent,
     FooterComponent,

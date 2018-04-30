@@ -44,7 +44,7 @@
 .ticket-description .top-description {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgb(192, 192, 192);
 }
 

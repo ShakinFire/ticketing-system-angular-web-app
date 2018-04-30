@@ -7,7 +7,7 @@
       <div class="comment-section">
         <app-ticket-comments *ngFor="let comment of ticket?.comments" [comment]="comment"></app-ticket-comments>
         <div class="create-comment">
-          <app-ticket-create-comment></app-ticket-create-comment>
+          <app-ticket-create-comment (outputCommentDat)="commentFromChild($event)" [id]="id"></app-ticket-create-comment>
         </div>
       </div>
     </div>

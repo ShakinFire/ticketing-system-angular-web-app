@@ -3,6 +3,7 @@ import { TicketViewService } from './ticket-view.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SingleTicket } from '../../models/tickets/single-ticket';
+import { TicketComments } from '../../models/comments/ticket-comments';
 
 @Component({
   selector: 'app-ticket-view',
@@ -15,6 +16,7 @@ export class TicketViewComponent implements OnInit {
   ticket: SingleTicket;
   requester: AssigneeTicketUsers;
   assignee: AssigneeTicketUsers;
+  newComment: TicketComments;
   constructor(private route: ActivatedRoute, private ticketView: TicketViewService) { }
 
   ngOnInit() {
@@ -26,6 +28,13 @@ export class TicketViewComponent implements OnInit {
         this.requester = res.requester;
         this.assignee = res.assignee;
       });
+    });
+  }
+
+  commentFromChild(commentData) {
+    this.ticketView.postComment(commentData).subscribe((res) => {
+      this.ticket.comments.push(res.comment);
+      console.log(this.ticket.comments);
     });
   }
 

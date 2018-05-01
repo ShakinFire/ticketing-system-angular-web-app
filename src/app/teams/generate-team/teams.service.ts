@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { RequestService } from '../../core/request.service.service';
 
+
 @Injectable()
 export class TeamsService {
 
@@ -19,5 +20,14 @@ export class TeamsService {
         return users;
 
     }
+    postNewTeam(team) {
+
+        return this.req.post('/create-team', team);
+    }
+
+    postUserInTeam(team) {
+        return this.req.post('/addUserInTeam', team);
+    }
+
 
 }

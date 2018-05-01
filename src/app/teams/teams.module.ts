@@ -5,8 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { NgbTypeaheadConfig, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { TeamsService } from './generate-team/teams.service';
 import { TicketsModule } from '../tickets/tickets.module';
+import { TeamsService } from './generate-team/teams.service';
+import { NotificationModule } from '../notification/notification.module';
+import { NotificationService } from '../notification/notification.service';
+
 
 
 @NgModule({
@@ -17,9 +20,10 @@ import { TicketsModule } from '../tickets/tickets.module';
     NgbModule,
     AngularFontAwesomeModule,
     TicketsModule,
+    NotificationModule
   ],
   declarations: [GenerateTeamComponent],
-  providers: [TeamsService, NgbTypeaheadConfig, NgbTypeaheadModule],
+  providers: [TeamsService, NgbTypeaheadConfig, NgbTypeaheadModule, NotificationService],
   exports: [GenerateTeamComponent]
 })
 export class TeamsModule { }

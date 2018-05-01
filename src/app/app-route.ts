@@ -5,6 +5,8 @@ import { AuthComponent } from "./auth/auth.component";
 import { GenerateTicketsComponent } from "./tickets/generate-tickets/generate-tickets.component";
 import { GenerateTeamComponent } from "./teams/generate-team/generate-team.component";
 import { HomeGuard } from "./core/auth-guard/home-guard.service";
+import { NotificationComponent } from "./notification/notification.component";
+// import { NotificationComponent } from "./notification/notification.component";
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent, canActivate: [HomeGuard] },
@@ -20,4 +22,5 @@ export const ROUTES: Routes = [
     // {path: 'create-ticket', loadChildren: './tickets/tickets.module#TicketsModule'}
     { path: 'create-ticket', component: GenerateTicketsComponent },
     { path: 'create-team', component: GenerateTeamComponent },
+    { path: 'notification', component: NotificationComponent }
 ];

@@ -8,8 +8,8 @@
         </div>
         <form #teamsForm='ngForm' (ngSubmit)='teamsFormsData(teamsForm)' return='falce'>
           <div class="form-group">
-            <label for='title'>Title:</label>
-            <input type='text' name='title' required ngModel>
+            <label for='name'>Title:</label>
+            <input type='text' name='name' required ngModel>
           </div>
           <div class="form-group">
             <label for='avatar'>Avatar:</label>
@@ -21,7 +21,12 @@
             />
           </div>
           <div>
-            <div *ngFor='let us of usr' class='board'>{{us}}</div>
+            <div *ngFor='let us of usr' class="form-group">
+              <div class='col-mg-8  in' #uss>{{us}}</div>
+
+              <img src='../../assets/img/ikon-remove.jpg' class='  in' (click)='delUser(uss)'>
+
+            </div>
           </div>
           <button>Create</button>
         </form>

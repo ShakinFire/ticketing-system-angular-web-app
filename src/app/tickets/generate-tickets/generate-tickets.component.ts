@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { NotificationService } from '../../notification/notification.service';
 
 
 @Component({
@@ -30,8 +31,9 @@ export class GenerateTicketsComponent implements OnInit {
   us: any;
 
   userId = 1;
-
-  constructor(private readonly ticketService: TicketsService, config: NgbTypeaheadConfig) {
+  userName = 'desi karova';
+  constructor(private ticketService: TicketsService, private config: NgbTypeaheadConfig,
+    private notService: NotificationService) {
     config.showHint = true;
   }
   ngOnInit() {
@@ -74,9 +76,9 @@ export class GenerateTicketsComponent implements OnInit {
 
   search2 = (text$: Observable<string>) =>
     text$
-      .debounceTime(200)
+      .debounceTime(100)
       .distinctUntilChanged()
-      .map(term => term.length < 2 ? []
+      .map(term => term.length < 1 ? []
         : this.teams.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
 
 
@@ -99,11 +101,23 @@ export class GenerateTicketsComponent implements OnInit {
       this.isError = true;
     } else {
       // ticketForm.value.status = 'open';
+      const usName = ticketForm.value.assigneeId;
       const result = this.us.find(x => x.name === ticketForm.value.assigneeId);
       ticketForm.value.assigneeId = result.id;
       ticketForm.value.userId = this.userId;
+      ticketForm.value.status = 'open';
       console.log(ticketForm.value);
+      const obj = {
+
+        content: `${this.userName.trim()} assignee you a ticket ${ticketForm.value.title.trim()}`,
+        type: 'ticket',
+        nameType: ticketForm.value.title,
+        user: usName,
+      }
+      console.log(obj)
+      this.notService.addNotification(obj);
       this.ticketService.addTicket(ticketForm.value);
+
       ticketForm.resetForm();
     }
   }

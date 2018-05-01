@@ -22,6 +22,7 @@ import { TeamsModule } from './teams/teams.module';
 import { tokenGetter } from './models/token/token-getter';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tickets.service';
+import { NotificationModule } from './notification/notification.module';
 
 @NgModule({
   declarations: [ 
@@ -45,6 +46,7 @@ import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tick
     CoreModule,
     HttpClientModule,
     TicketsModule,
+    NotificationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

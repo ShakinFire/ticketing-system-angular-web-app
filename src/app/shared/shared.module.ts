@@ -8,18 +8,22 @@ import { NothingHereComponent } from './nothing-here/nothing-here.component';
 @NgModule({
   imports: [
     CommonModule,
+
   ],
   declarations: [
     WordBreakPipe,
     LabelStatusColorDirective,
     SetAttributeDirective,
     NothingHereComponent,
-    ],
+
+
+  ],
   exports: [
     WordBreakPipe,
     LabelStatusColorDirective,
     SetAttributeDirective,
     NothingHereComponent,
+
   ]
 })
 export class SharedModule { }

@@ -1,11 +1,16 @@
 <aside>
   <div class="status outline">
     <div class="status-wrapper">
-      <div *ngIf="ticket" [appLabelStatusColor]="ticket?.status" class="status-info  label-status">
-        {{ ticket?.status }}
+      <div class="label-status-wrapper">
+        <div *ngIf="ticket" [appLabelStatusColor]="ticket?.status" class="status-info label-status">
+            {{ ticket?.status }}
+        </div>
+        <div class="label-info label-status">
+          {{ ticket?.labels }}
+        </div>
       </div>
-      <div class="label-info label-status">
-        {{ ticket?.labels }}
+      <div class="edit-status">
+        <fa name="fas fa-ellipsis-h"></fa>
       </div>
     </div>
     <div class="due-in">

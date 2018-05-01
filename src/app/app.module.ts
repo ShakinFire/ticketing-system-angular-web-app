@@ -1,3 +1,4 @@
+import { TicketViewModule } from './ticket-view-comments/ticket-view.module';
 import { TicketsModule } from './tickets/tickets.module';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,7 @@ import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tick
 import { NotificationModule } from './notification/notification.module';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HomeComponent,
     FooterComponent,
@@ -40,6 +41,7 @@ import { NotificationModule } from './notification/notification.module';
     ClickOutsideModule,
     AuthModule,
     TicketsModule,
+    TicketViewModule,
     TeamsModule,
     CoreModule,
     HttpClientModule,
@@ -55,6 +57,7 @@ import { NotificationModule } from './notification/notification.module';
   ],
   providers: [
     AppConfig,
+    AssignedTicketsService,
   ],
   bootstrap: [AppComponent]
 })

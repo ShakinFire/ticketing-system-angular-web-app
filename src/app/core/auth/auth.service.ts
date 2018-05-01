@@ -1,3 +1,4 @@
+import { TokenUser } from './../../models/user/token-user';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay'
@@ -40,11 +41,16 @@ export class AuthService {
 
   private setSession(authResult) {
     const expiresAt = moment().add(authResult.expiresIn,'second');
-    
+
     if (!authResult.message) {
       localStorage.setItem('token', authResult.token);
       localStorage.setItem("expiresAt", JSON.stringify(expiresAt.valueOf()));
     }
+  }
+
+  public getUser(): TokenUser {
+    const token: string = localStorage.getItem('token');
+    return this.jwtService.decodeToken(token);
   }
 
   public isAuth(): boolean{

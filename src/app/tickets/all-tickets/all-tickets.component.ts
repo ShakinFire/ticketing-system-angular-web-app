@@ -49,15 +49,16 @@ export class AllTicketsComponent implements OnInit {
   }
 
   myTeamsTab() {
-    // this.teamService.getMyTeams()
-    //   .subscribe((res) => {
-    //     this.myTeams = res.teams;
-    //   });
-    //   if (this.myTeams.length === 0) {
-    //     this.notingHereSwitch = true;
-    //   } else {
-    //     this.notingHereSwitch = false;          
-    //   }
+    this.teamService.getMyTeams()
+      .subscribe((res) => {
+        this.myTeams = res.teams;
+        console.log(this.myTeams);
+        if (this.myTeams.length === 0) {
+          this.notingHereSwitch = true;
+        } else {
+          this.notingHereSwitch = false;          
+        }
+      });
   }
 
   changeActive(id: number): void {

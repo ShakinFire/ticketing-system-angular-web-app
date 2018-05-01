@@ -1,0 +1,20 @@
+<div class="container ticket-view">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="ticket-description">
+        <app-ticket-description [ticket]="ticket" [requester]="requester"></app-ticket-description>
+      </div>
+      <div class="comment-section">
+        <app-ticket-comments *ngFor="let comment of ticket?.comments" [comment]="comment"></app-ticket-comments>
+        <div class="create-comment">
+          <app-ticket-create-comment (outputCommentDat)="commentFromChild($event)" [id]="id"></app-ticket-create-comment>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 aside-wrapper">
+      <div class="advanced-information">
+        <app-ticket-aside [ticket]="ticket" [requester]="requester" [assignee]="assignee"></app-ticket-aside>
+      </div>
+    </div>
+  </div>
+</div>

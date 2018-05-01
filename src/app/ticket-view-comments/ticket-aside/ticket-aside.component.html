@@ -1,0 +1,52 @@
+<aside>
+  <div class="status outline">
+    <div class="status-wrapper">
+      <div *ngIf="ticket" [appLabelStatusColor]="ticket?.status" class="status-info  label-status">
+        {{ ticket?.status }}
+      </div>
+      <div class="label-info label-status">
+        {{ ticket?.labels }}
+      </div>
+    </div>
+    <div class="due-in">
+      Due in 3 days
+    </div>
+    <div class="deadline">
+      on {{ ticket?.estimated }} 
+    </div>
+  </div>
+  <div class="about-author outline">
+    <div class="title">
+      Assignee
+    </div>
+    <div class="picture-name">
+      <div class="img-wrapper">
+        <img src="../../../assets/img/the-guy.jpeg">
+      </div>
+      <div class="full-name">
+        {{ assignee?.firstName }} {{ assignee?.lastName }}
+      </div>
+    </div>
+    <div class="author-email">
+      <fa name="fas fa-envelope"></fa>
+      <p>{{ assignee?.email }}</p>
+    </div>
+  </div>
+  <div class="about-author outline">
+    <div class="title">
+      Requester
+    </div>
+    <div class="picture-name">
+      <div class="img-wrapper">
+        <img src="../../../assets/img/the-guy.jpeg">
+      </div>
+      <div class="full-name">
+        {{ requester?.firstName }} {{ requester?.lastName }}
+      </div>
+    </div>
+    <div class="author-email">
+      <fa name="fas fa-envelope"></fa>
+      <p>{{ requester?.email }}</p>
+    </div>
+  </div>
+</aside>

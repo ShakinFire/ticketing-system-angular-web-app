@@ -9,4 +9,5 @@ export class AssigneeTicket {
     title: string;
     userId: number;
     users: AssigneeTicketUsers;
+    totalComments: number;
 }

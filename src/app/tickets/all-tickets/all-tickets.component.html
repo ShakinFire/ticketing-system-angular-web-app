@@ -17,7 +17,7 @@
           <app-nothing-here class="nothing-here" *ngIf="notingHereSwitch"></app-nothing-here>
         </div>
       <div *ngIf="tabId === 2" class="teams">
-        <app-my-team-dashboard></app-my-team-dashboard>
+        <app-my-team-dashboard [teams]="myTeams"></app-my-team-dashboard>
       </div>
     </div>
   </div>

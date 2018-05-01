@@ -52,3 +52,14 @@ a, a:hover {
 .closed {
     background: #a83636;
 }
+
+.break-long-words {
+/* for breaking long letter words */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}

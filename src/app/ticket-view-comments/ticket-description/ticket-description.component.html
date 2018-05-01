@@ -1,0 +1,23 @@
+<section class="ticket-description">
+  <div class="ticket-wrapper">
+    <div class="image-wrapper">
+      <img src="../../../assets/img/the-guy.jpeg">
+      <div class="full-name">
+        {{ requester?.firstName }} {{ requester?.lastName }}
+      </div>
+    </div>
+    <div class="description-wrapper">
+      <div class="top-description">
+        <div class="title">
+          {{ ticket?.title }}
+        </div>
+        <div class="created-at">
+          {{ ticket?.date }}
+        </div>
+      </div>
+      <div class="description break-long-words">
+        {{ ticket?.description }}
+      </div>
+    </div>
+  </div>
+</section>

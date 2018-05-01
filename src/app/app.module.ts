@@ -1,3 +1,4 @@
+import { TicketViewModule } from './ticket-view-comments/ticket-view.module';
 import { TicketsModule } from './tickets/tickets.module';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +24,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tickets.service';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HomeComponent,
     FooterComponent,
@@ -39,6 +40,7 @@ import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tick
     ClickOutsideModule,
     AuthModule,
     TicketsModule,
+    TicketViewModule,
     TeamsModule,
     CoreModule,
     HttpClientModule,
@@ -53,6 +55,7 @@ import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tick
   ],
   providers: [
     AppConfig,
+    AssignedTicketsService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,49 @@
+.comments {
+    margin-top: 10px;
+}
+
+.comments .comments-wrapper {
+    display: flex;
+}
+
+.comments .image-wrapper {
+    flex-basis: 11%;
+}
+
+.comments .image-wrapper img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 5px;
+}
+
+.comment {
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 4px;
+    background: rgb(248, 248, 248);
+
+    flex-basis: 100%;
+    padding: 15px;
+}
+
+.comments .top-section-comment {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.comments .top-section-comment .full-name {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(49, 137, 238);
+}
+
+.comments .top-section-comment .minutes-ago {
+    font-size: 14px;
+    color: rgb(180, 180, 180);
+}
+
+.comments .comment-content {
+    font-size: 15px;
+}

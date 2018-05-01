@@ -11,10 +11,10 @@
         <div *ngIf="isLoggedNav()" class="logged-menu">
           <ul class="list-unstyled">
             <li><a href="#">notifications</a></li>
-            <li><a href="#">Create ticket</a></li>
+            <li><a [routerLink]="['create-ticket']">Create ticket</a></li>
           </ul>
           <div class="first-name">
-            <a href="#">Georgi</a>
+            <a href="#">{{ userFirstName }}</a>
           </div>
           <div (click)="dropDown()" class="drop-down">
             <img src="../../assets/img/the-guy.jpeg">

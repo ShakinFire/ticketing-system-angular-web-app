@@ -1,0 +1,20 @@
+<section class="comments">
+  <div class="comments-wrapper">
+    <div class="image-wrapper">
+        <img src="../../../assets/img/the-guy.jpeg">
+    </div>
+    <div class="comment">
+      <div class="top-section-comment">
+        <div class="full-name">
+          {{ comment?.users?.firstName }} {{ comment?.users?.lastName }}
+        </div>
+        <div class="minutes-ago">
+          replied {{ comment?.createdAt }}
+        </div>
+      </div>
+      <div class="comment-content break-long-words">
+        {{ comment?.content }}
+      </div>
+    </div>
+  </div>
+</section>

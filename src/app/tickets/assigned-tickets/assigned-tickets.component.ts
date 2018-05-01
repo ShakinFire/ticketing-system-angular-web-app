@@ -1,5 +1,6 @@
 import { AssigneeTicket } from './../../models/tickets/assigned-ticket';
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { AssignedTicketsService } from './assigned-tickets.service';
 
 @Component({
   selector: 'app-assigned-tickets',
@@ -10,19 +11,16 @@ export class AssignedTicketsComponent implements OnInit {
   @Input() ticket: AssigneeTicket;
   @Input() tabId: number;
   ticketId: string;
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef, private assignedTickets: AssignedTicketsService) { }
 
   ngOnInit() {
   }
 
-  openTicket(edit): boolean {
-    // *TODO: ticketId is a string, should be parsed to int
-    this.ticketId = this.el.nativeElement.children[0].getAttribute('ticketId');
-
+  openTicket(edit: boolean, id: number): boolean {
     if (edit) {
-      // *TODO: sends ticketId to service to edit the ticket
+      // *TODO: sends ticketId to service to get the edit ticket
     } else {
-      // *TODO: sends ticketId to service to get the ticket
+      this.assignedTickets.goToTicket(id);
     }
 
     return false;

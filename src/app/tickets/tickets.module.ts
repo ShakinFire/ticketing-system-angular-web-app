@@ -29,6 +29,7 @@ import { AssignedTicketsService } from './assigned-tickets/assigned-tickets.serv
     AssignedTicketsComponent,
     AllTicketsComponent,
     MyTeamDashboardComponent,
+
   ],
   providers: [
     TicketsService,

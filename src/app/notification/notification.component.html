@@ -1,0 +1,20 @@
+<div class="container notifications">
+  <div class="notification-content" *ngFor='let notification of notifications'>
+    <div class='img-wrapper'>
+      <img src='../../../assets/img/ikon-mail.jpg' />
+    </div>
+    <div class='content-wrapper'>
+      <div class='main-content content'>
+        {{notification.content}}
+      </div>
+
+      <div class='date-content wrapper-name-date date'>
+        {{notification.createdAt}}
+      </div>
+    </div>
+    <div class="accept-see">
+      <button (click)='accseptTeam(notification.nameType)' *ngIf='notification.type === "team"'>Accept</button>
+      <button *ngIf='notification.type === "ticket"'>See</button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { TeamsService } from './teams.service';
+import { k } from '@angular/core/src/render3';
+import { NotificationService } from '../../notification/notification.service';
 
 
 @Component({
@@ -19,11 +21,14 @@ export class GenerateTeamComponent implements OnInit {
   errorMessage: string;
   isError: boolean;
   userId = 1;
+  userName = 'desi karova';
   users: any[];
   usr = [];
   user: any;
   userss: any;
-  constructor(private readonly service: TeamsService, config: NgbTypeaheadConfig) {
+  // k: any;
+  constructor(private readonly service: TeamsService, config: NgbTypeaheadConfig,
+    private readonly nService: NotificationService) {
     config.showHint = true;
   }
 
@@ -39,7 +44,7 @@ export class GenerateTeamComponent implements OnInit {
   }
 
   validate(data): string {
-    if (data.title.length < 4) {
+    if (data.name.length < 4) {
       return 'Error: Title should be at least 4 characters'
     }
   }
@@ -62,19 +67,52 @@ export class GenerateTeamComponent implements OnInit {
       this.user = '';
     }
   }
+  delUser(uss: HTMLElement) {
+    const el = uss.textContent;
+    this.usr.splice(this.usr.indexOf(el), 1);
+    console.log(this.usr);
+  }
+
 
   teamsFormsData(teamsForm: NgForm) {
     this.errorMessage = this.validate(teamsForm.value);
     if (this.errorMessage) {
       this.isError = true;
     } else {
-      // ticketForm.value.status = 'open';
-      teamsForm.value.userId = this.userId;
 
-      // this.teamsForm.addTicket(teamsForm.value);
+
+      teamsForm.value.userId = this.userId;
+      this.service.postNewTeam(teamsForm.value).subscribe(data => {
+        console.log(data);
+      });
+
+      while (this.usr.length) {
+        let item = this.usr.pop();
+
+        const obj = {
+
+          content: `${this.userName.trim()} invited you to join a team ${teamsForm.value.name.trim()} `,
+          type: 'team',
+          nameType: teamsForm.value.name,
+          user: item
+        };
+        console.log(obj);
+        this.nService.addNotification(obj);//.map(data =>{
+        //   console.log(data);
+
+        // });
+      };
+
+
+
+
       teamsForm.resetForm();
+
+
+
     }
   }
+
 
 }
 

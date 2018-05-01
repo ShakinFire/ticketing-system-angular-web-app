@@ -1,35 +1,34 @@
 .tab-menu {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .tab-menu .tabs ul {
-    position: relative;
-    top: 1px;
+  position: relative;
+  top: 1px;
 }
 
 .tab-menu .tabs ul li {
-    display: inline-block;
-    padding: 10px 15px;
-    cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
 }
 
 .active {
-    border-top: 3px solid #25c16f;
-    border-right: 1px solid rgb(192, 192, 192);
-    border-bottom: 1px solid white;
-    border-left: 1px solid rgb(192, 192, 192);
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-
-    font-weight: bold;
+  border-top: 3px solid #25c16f;
+  border-right: 1px solid rgb(192, 192, 192);
+  border-bottom: 1px solid white;
+  border-left: 1px solid rgb(192, 192, 192);
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  font-weight: bold;
 }
 
 .tab-menu .tickets-content {
-    border-top: 1px solid rgb(192, 192, 192);
+  border-top: 1px solid rgb(192, 192, 192);
 }
 
 .nothing-here {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }

@@ -60,8 +60,6 @@ export class GenerateTeamComponent implements OnInit {
     if (this.usr.find(x => x === this.user)) {
       this.user = '';
       return console.error('this is user exist');
-
-
     } else {
       this.usr.push(this.user);
       this.user = '';
@@ -70,7 +68,6 @@ export class GenerateTeamComponent implements OnInit {
   delUser(uss: HTMLElement) {
     const el = uss.textContent;
     this.usr.splice(this.usr.indexOf(el), 1);
-    console.log(this.usr);
   }
 
 
@@ -90,26 +87,15 @@ export class GenerateTeamComponent implements OnInit {
         let item = this.usr.pop();
 
         const obj = {
-
           content: `${this.userName.trim()} invited you to join a team ${teamsForm.value.name.trim()} `,
           type: 'team',
           nameType: teamsForm.value.name,
           user: item
         };
-        console.log(obj);
-        this.nService.addNotification(obj);//.map(data =>{
-        //   console.log(data);
-
-        // });
+        this.nService.addNotification(obj).subscribe(data => {
+        });
       };
-
-
-
-
       teamsForm.resetForm();
-
-
-
     }
   }
 

@@ -23,6 +23,7 @@ import { tokenGetter } from './models/token/token-getter';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { AssignedTicketsService } from './tickets/assigned-tickets/assigned-tickets.service';
 import { NotificationModule } from './notification/notification.module';
+import { TeamDashboardModule } from './team-dashboard/team-dashboard.module';
 
 @NgModule({
   declarations: [ 
@@ -43,6 +44,7 @@ import { NotificationModule } from './notification/notification.module';
     TicketsModule,
     TicketViewModule,
     TeamsModule,
+    TeamDashboardModule,
     CoreModule,
     HttpClientModule,
     TicketsModule,

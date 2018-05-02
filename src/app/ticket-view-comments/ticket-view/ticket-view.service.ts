@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { TicketComments } from '../../models/comments/ticket-comments';
+import { SingleTicket } from '../../models/tickets/single-ticket';
 
 @Injectable()
 export class TicketViewService {
@@ -19,5 +20,17 @@ export class TicketViewService {
 
   postComment(comment: CreateComment): Observable<{ comment: TicketComments }> {
     return this.reqService.post('/createComment', comment).pipe(map((res) => res as { comment: TicketComments }));
+  }
+
+  updateStatus(newStatus: { status: string, ticketId: number }): Observable<SingleTicket> {
+    return this.reqService.post('/updateStatus', newStatus).pipe(map(res => res as SingleTicket));
+  }
+
+  newAssignee(changeAssigneePayload: { newId: number, ticketId: number }): Observable<{ name: string }> {
+    return this.reqService.post('/updateAssignee', changeAssigneePayload).pipe(map(res => res as { name: string }))
+  }
+
+  newRequester(changeRequesterPayload: { newId: number, ticketId: number }): Observable<{ name: string }> {
+    return this.reqService.post('/updateRequester', changeRequesterPayload).pipe(map(res => res as { name: string }))
   }
 }

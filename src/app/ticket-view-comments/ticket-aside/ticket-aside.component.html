@@ -1,4 +1,4 @@
-<aside>
+<aside *ngIf="requester && ticket && assignee">
   <div class="status outline">
     <div class="status-wrapper">
       <div class="label-status-wrapper">
@@ -10,7 +10,30 @@
         </div>
       </div>
       <div class="edit-status">
-        <fa name="fas fa-ellipsis-h"></fa>
+        <fa (click)="showChangeStatus()" class="icon-exclude" name="fas fa-ellipsis-h"></fa>
+      </div>
+      <div (clickOutside)="onClickedOutside($event)" [exclude]="'.icon-exclude'" *ngIf="editSwitch" class="drop-down-container">
+        <ul class="list-unstyled">
+          <li>
+            <p>Change Status</p>
+          </li>
+          <li class="line-break"></li>
+          <li>
+            <a (click)="changeStatus('OPEN')">Open</a>
+          </li>
+          <li>
+            <a (click)="changeStatus('IN-PROGRESS')">In-progress</a>
+          </li>
+          <li>
+            <a (click)="changeStatus('COMPLETED')">Completed</a>
+          </li>
+          <li *ngIf="checkIfRequester() && ticket?.status === 'COMPLETED'">
+            <a (click)="changeStatus('RE-OPENED')">Re-opened</a>
+          </li>
+          <li *ngIf="checkIfRequester() && ticket?.status === 'COMPLETED'">
+            <a (click)="changeStatus('CLOSED')">Closed</a>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="due-in">
@@ -21,8 +44,32 @@
     </div>
   </div>
   <div class="about-author outline">
-    <div class="title">
-      Assignee
+    <div class="title-wrapper">
+      <div class="title">
+        Assignee
+      </div>
+      <div class="assignee-edit edit-drop-down">
+        <fa (click)="openAssigneeModal(assigneeModal)" name="fas fa-ellipsis-h"></fa>
+      </div>
+      <ng-template #rt let-r="result" let-t="term">
+        {{ r.name}}
+      </ng-template>
+      <ng-template windowClass="form-title input-field btn-modal footer-wrapper" #assigneeModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Change Assignee</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="form-title">*The person MUST be in your team in order to reassigne the ticket to him</label>
+          <input placeholder="e.g. Jonh Doe" type="text" class="form-control input-field" [(ngModel)]="assigneeModel" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" />
+        </div>
+        <div class="footer-wrapper modal-footer">
+          <button (click)="changeAssignee()" (click)="c('Close click')" class="btn-modal">Change</button>
+          <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
     </div>
     <div class="picture-name">
       <div class="img-wrapper">
@@ -38,8 +85,32 @@
     </div>
   </div>
   <div class="about-author outline">
-    <div class="title">
-      Requester
+    <div class="title-wrapper">
+      <div class="title">
+        Requester
+      </div>
+      <div *ngIf="checkIfRequester()" class="requester-edit edit-drop-down">
+        <fa (click)="openRequesterModal(requesterModal)" class="icon-exclude" name="fas fa-ellipsis-h"></fa>
+      </div>
+      <ng-template *ngIf="checkIfRequester()" #rt let-r="result" let-t="term">
+        {{ r.name}}
+      </ng-template>
+      <ng-template *ngIf="checkIfRequester()" windowClass="form-title input-field btn-modal footer-wrapper" #requesterModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Change Requester</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="form-title">*The person MUST be in your team in order to make him the requester of that ticket</label>
+          <input placeholder="e.g. Jonh Doe" type="text" class="form-control input-field" [(ngModel)]="requesterModel" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" />
+        </div>
+        <div class="footer-wrapper modal-footer">
+          <button (click)="changeRequester()" (click)="c('Close click')" class="btn-modal">Change</button>
+          <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
     </div>
     <div class="picture-name">
       <div class="img-wrapper">

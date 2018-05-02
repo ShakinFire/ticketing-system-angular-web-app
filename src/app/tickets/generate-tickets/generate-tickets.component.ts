@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { NotificationService } from '../../notification/notification.service';
+import { AuthService } from '../../core/auth/auth.service';
+import { TokenUser } from '../../models/user/token-user';
 
 
 @Component({
@@ -29,11 +31,10 @@ export class GenerateTicketsComponent implements OnInit {
   userss: any;
   submited = false;
   us: any;
-
-  userId = 1;
+  user: TokenUser;
   userName = 'desi karova';
   constructor(private ticketService: TicketsService, private config: NgbTypeaheadConfig,
-    private notService: NotificationService) {
+    private notService: NotificationService, private authService: AuthService) {
     config.showHint = true;
   }
   ngOnInit() {
@@ -101,10 +102,11 @@ export class GenerateTicketsComponent implements OnInit {
       this.isError = true;
     } else {
       // ticketForm.value.status = 'open';
+      this.user = this.authService.getUser();
       const usName = ticketForm.value.assigneeId;
       const result = this.us.find(x => x.name === ticketForm.value.assigneeId);
       ticketForm.value.assigneeId = result.id;
-      ticketForm.value.userId = this.userId;
+      ticketForm.value.userId = this.user.id;
       ticketForm.value.status = 'open';
       console.log(ticketForm.value);
       const obj = {

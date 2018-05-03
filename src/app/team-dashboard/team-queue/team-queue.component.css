@@ -1,0 +1,34 @@
+.main-queue {
+    display: flex;
+}
+
+.main-queue .image-wrapper {
+    margin-right: 5px;
+}
+
+.main-queue .date {
+    margin-left: 6px;
+    font-size: 15px;
+    color: rgb(180, 180, 180);
+}
+
+.main-queue .image-wrapper img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.main-queue .main-information {
+    display: flex;
+    font-size: 15px;
+}
+
+.main-queue .full-name {
+    font-weight: bold;
+    color: rgb(49, 137, 238);
+    cursor: pointer;
+
+    margin-left: 6px;
+}

@@ -14,7 +14,7 @@
 
     </div>
     <div class="button-wrapper">
-      <button (click)='accseptTeam(notification.nameType)' *ngIf='notification.type === "team"'>Accept</button>
+      <button (click)='accseptTeam(notification?.nameType)' *ngIf='notification.type === "team"'>Accept</button>
       <button (click)='viewTicket(notification?.nameType)' *ngIf='notification.type === "ticket"'>View Ticket</button>
     </div>
   </div>

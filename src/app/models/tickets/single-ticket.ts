@@ -1,6 +1,8 @@
+import { myTeamsDash } from './../teams/my-teams';
 import { TicketComments } from './../comments/ticket-comments';
 
 export class SingleTicket {
+    id: number;
     title: string;
     description: string;
     labels: string;
@@ -10,4 +12,5 @@ export class SingleTicket {
     updatedAt: Date;
     attach: string;
     comments: TicketComments[];
+    teams: myTeamsDash[];
 }

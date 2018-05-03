@@ -48,14 +48,9 @@ export class NotificationComponent implements OnInit {
 
     this.ticketService.getTicketByName(name).subscribe(res => {
       this.ticket = res;
-      // console.log(this.ticket.ticket)
+      console.log(res);
       const ticketId = this.ticket.ticket.id;
       this.viewTicketService.goToTicket(ticketId);
-
     });
-
-
-
-
   }
 }

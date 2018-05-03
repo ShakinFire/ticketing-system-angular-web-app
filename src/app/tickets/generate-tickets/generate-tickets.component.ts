@@ -32,18 +32,12 @@ export class GenerateTicketsComponent implements OnInit {
   usersRequester: any;
   usersAssignee: any;
   submited = false;
-<<<<<<< HEAD
   assigneeUsers: any;
   requerterUsers: any;
-
-
   userId: number;
-  // userName = 'desi karova';
-=======
   us: any;
   user: TokenUser;
-  userName = 'desi karova';
->>>>>>> 3ca0db32507c670f66ab6866fde336ecc2b10c8c
+
   constructor(private ticketService: TicketsService, private config: NgbTypeaheadConfig,
     private notService: NotificationService, private authService: AuthService) {
     config.showHint = true;
@@ -126,7 +120,6 @@ export class GenerateTicketsComponent implements OnInit {
     if (this.errorMessage) {
       this.isError = true;
     } else {
-<<<<<<< HEAD
       // ticketForm.value.status = 'open'
       const assigneeUserId = this.assigneeUsers.find(x => x.name === ticketForm.value.assigneeName);
       ticketForm.value.assigneeId = assigneeUserId.id;
@@ -137,19 +130,6 @@ export class GenerateTicketsComponent implements OnInit {
       const notification = {
 
         content: `${ticketForm.value.requesterName} assignee you a ticket ${ticketForm.value.title}`,
-=======
-      // ticketForm.value.status = 'open';
-      this.user = this.authService.getUser();
-      const usName = ticketForm.value.assigneeId;
-      const result = this.us.find(x => x.name === ticketForm.value.assigneeId);
-      ticketForm.value.assigneeId = result.id;
-      ticketForm.value.userId = this.user.id;
-      ticketForm.value.status = 'open';
-      console.log(ticketForm.value);
-      const obj = {
-
-        content: `${this.userName.trim()} assignee you a ticket ${ticketForm.value.title.trim()}`,
->>>>>>> 3ca0db32507c670f66ab6866fde336ecc2b10c8c
         type: 'ticket',
         nameType: ticketForm.value.title,
         user: ticketForm.value.assigneeName

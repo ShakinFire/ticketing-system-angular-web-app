@@ -15,15 +15,19 @@ export class TicketsService {
   }
   getUserTeams(id): Observable<any> {
     const rout = '/user-teams/' + id;
-    console.log('i am uset-teams');
     return this.req.get(rout).map(x => <any>(x))
 
   }
   getTeamUsers(team) {
     const rout = '/teams-users/' + team;
-    console.log('i am teams-user');
     return this.req.get(rout).map(x => <any>(x));
 
   }
+  getTicketByName(name) {
+    const rout = '/ticketByName/' + name;
+    console.log(rout);
+    return this.req.get(rout)//.subscribe((res) =>
+    //     console.log(res));
+    // }
 
-}
+  }

@@ -27,7 +27,9 @@ export class AllTicketsComponent implements OnInit {
   assignedTicketsTab() {
     this.assignedTickets.getAssigneeTicket()
       .subscribe((res) => {
+        console.log(res.tickets);
         this.assigTickets = res.tickets;
+
         if (this.assigTickets.length === 0) {
           this.notingHereSwitch = true;
         } else {
@@ -43,7 +45,7 @@ export class AllTicketsComponent implements OnInit {
         if (this.assigTickets.length === 0) {
           this.notingHereSwitch = true;
         } else {
-          this.notingHereSwitch = false;          
+          this.notingHereSwitch = false;
         }
       });
   }
@@ -56,7 +58,7 @@ export class AllTicketsComponent implements OnInit {
         if (this.myTeams.length === 0) {
           this.notingHereSwitch = true;
         } else {
-          this.notingHereSwitch = false;          
+          this.notingHereSwitch = false;
         }
       });
   }

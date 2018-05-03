@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { NotificationService } from '../../notification/notification.service';
+import { AuthService } from '../../core/auth/auth.service';
+import { TokenUser } from '../../models/user/token-user';
 
 
 @Component({
@@ -18,7 +20,8 @@ import { NotificationService } from '../../notification/notification.service';
 })
 export class GenerateTicketsComponent implements OnInit {
   public teamss: any;
-  public model: any;
+  public requester: any;
+  public assignee: any;
   teamsis = [];
   isOpen = 'open';
   ticket = new Ticket();
@@ -26,18 +29,23 @@ export class GenerateTicketsComponent implements OnInit {
   ticketData: Object;
   errorMessage: string;
   isError: boolean;
-  userss: any;
+  usersRequester: any;
+  usersAssignee: any;
   submited = false;
-  us: any;
+  assigneeUsers: any;
+  requerterUsers: any;
 
-  userId = 1;
-  userName = 'desi karova';
+
+  userId: number;
+  // userName = 'desi karova';
   constructor(private ticketService: TicketsService, private config: NgbTypeaheadConfig,
-    private notService: NotificationService) {
+    private notService: NotificationService, private authService: AuthService) {
     config.showHint = true;
   }
   ngOnInit() {
-    this.ticketService.getUserTeams(1).subscribe(data => {
+    this.userId = this.authService.getUser().id
+    console.log(this.userId);
+    this.ticketService.getUserTeams(this.userId).subscribe(data => {
       this.teams = data.teams;
 
     });
@@ -57,7 +65,10 @@ export class GenerateTicketsComponent implements OnInit {
     if (data.team.length < 1) {
       return 'Error: You have not chosen a team'
     }
-    if (data.assigneeId.length < 1) {
+    if (data.assigneeName.length < 1) {
+      return 'Error: You have not chosen a assignee'
+    }
+    if (data.requesterName.length < 1) {
       return 'Error: You have not chosen a assignee'
     }
     if (data.estimated.length < 10) {
@@ -67,14 +78,8 @@ export class GenerateTicketsComponent implements OnInit {
 
 
 
-  search = (text$: Observable<string>) =>
-    text$
-      .debounceTime(200)
-      .distinctUntilChanged()
-      .map(term => term.length < 2 ? []
-        : this.userss.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
 
-  search2 = (text$: Observable<string>) =>
+  searchTeam = (text$: Observable<string>) =>
     text$
       .debounceTime(100)
       .distinctUntilChanged()
@@ -83,39 +88,56 @@ export class GenerateTicketsComponent implements OnInit {
 
 
   fun() {
-    console.log(this.teams);
-    this.us = this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
-      this.us = data.users;
-      console.log(this.us);
-      this.userss = this.us.map(x => x.name);
-      console.log(this.userss);
-      return this.userss;
+
+    this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
+      this.requerterUsers = data.users;
+      this.usersRequester = this.requerterUsers.map(x => x.name);
+    });
+    this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
+      this.assigneeUsers = data.users;
+      this.usersAssignee = this.assigneeUsers.map(x => x.name);
     });
   }
 
+  searchRequester = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 1 ? []
+        : this.usersRequester.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
+
+  searchAssignee = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 1 ? []
+        : this.usersAssignee.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
 
 
   ticketFormsData(ticketForm: NgForm) {
+    console.log(ticketForm);
     this.errorMessage = this.validate(ticketForm.value);
     if (this.errorMessage) {
       this.isError = true;
     } else {
-      // ticketForm.value.status = 'open';
-      const usName = ticketForm.value.assigneeId;
-      const result = this.us.find(x => x.name === ticketForm.value.assigneeId);
-      ticketForm.value.assigneeId = result.id;
-      ticketForm.value.userId = this.userId;
-      ticketForm.value.status = 'open';
-      console.log(ticketForm.value);
-      const obj = {
+      // ticketForm.value.status = 'open'
+      const assigneeUserId = this.assigneeUsers.find(x => x.name === ticketForm.value.assigneeName);
+      ticketForm.value.assigneeId = assigneeUserId.id;
+      const requesterUserId = this.requerterUsers.find(x => x.name === ticketForm.value.requesterName);
+      ticketForm.value.userId = requesterUserId.id;
+      //ticketForm.value.userId = this.userId;
+      ticketForm.value.status = 'OPEN';
+      const notification = {
 
-        content: `${this.userName.trim()} assignee you a ticket ${ticketForm.value.title.trim()}`,
+        content: `${ticketForm.value.requesterName} assignee you a ticket ${ticketForm.value.title}`,
         type: 'ticket',
         nameType: ticketForm.value.title,
-        user: usName,
+        user: ticketForm.value.assigneeName
       }
-      console.log(obj)
-      this.notService.addNotification(obj);
+      console.log(notification)
+      this.notService.addNotification(notification).subscribe(data => {
+        console.log(data);
+      })
       this.ticketService.addTicket(ticketForm.value);
 
       ticketForm.resetForm();

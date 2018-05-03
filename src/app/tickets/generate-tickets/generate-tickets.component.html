@@ -19,14 +19,16 @@
           </div>
           <div class="form-group">
             <label for='team'>Choose a team:</label>
-            <!-- <select class="form-control" [(ngModel)]='teamss' name='team' (click)='fun()'>
-              <option *ngFor="let team of teams" [value]="team">{{team}}</option>
-            </select> -->
-            <input id='team' name='team' type='text' class='form-control' [(ngModel)]='teamss' [ngbTypeahead]="search2" />
+            <input id='team' name='team' type='text' class='form-control' [(ngModel)]='teamss' [ngbTypeahead]="searchTeam" />
           </div>
           <div class="form-group">
-            <label for="assigneeId">Assignee:</label>
-            <input id="assigneeId" name='assigneeId' type="text" (click)='fun()' class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"
+            <label for="requesterName">Requester:</label>
+            <input id="requesterName" name='requesterName' type="text" (click)='fun()' class="form-control" [(ngModel)]="requester" [ngbTypeahead]="searchRequester"
+            />
+          </div>
+          <div class="form-group">
+            <label for="assigneeName">Assignee:</label>
+            <input id="assigneeName" name='assigneeName' type="text" class="form-control" [(ngModel)]="assignee" [ngbTypeahead]="searchAssignee"
             />
 
           </div>
@@ -40,6 +42,7 @@
             <input type='text' class="form-control" name='attach' ngModel>
           </div>
           <button>Create</button>
+
         </form>
       </div>
     </div>

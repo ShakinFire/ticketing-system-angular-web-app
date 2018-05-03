@@ -3,6 +3,9 @@ import { AssignedTicketsService } from '../tickets/assigned-tickets/assigned-tic
 import { AssigneeTicket } from '../models/tickets/assigned-ticket';
 import { NotificationService } from './notification.service';
 import { TeamsService } from '../teams/generate-team/teams.service';
+import { NewNotification } from '../models/notifications/new-notification';
+import { AuthService } from '../core/auth/auth.service';
+import { TokenUser } from '../models/user/token-user';
 
 
 @Component({
@@ -11,34 +14,24 @@ import { TeamsService } from '../teams/generate-team/teams.service';
   styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit {
-  notifications = [];
-  userId = 1;
+  notifications: NewNotification[];
+  user: TokenUser;
 
-  constructor(private readonly notifService: NotificationService, private teamService: TeamsService) { }
+  constructor(private readonly notifService: NotificationService, private teamService: TeamsService, private authService: AuthService) { }
 
   ngOnInit() {
-    // this.notService.getTicket().subscribe((res) => {
-    //   this.assigTickets = res.result;
-    //   console.log(this.assigTickets);
-    //   // console.log(res.result);
-    // });
-    // console.log('i am onInit');
-    this.notifService.getNotification(this.userId).subscribe(res => {
-      // console.log(res.result);
+    this.user = this.authService.getUser();
+    this.notifService.getNotification(this.user.id).subscribe(res => {
       this.notifications = res.result;
-
     });
-
   }
+
   accseptTeam(name) {
-    // const teamName = name;
     const obj = {
-      userId: this.userId,
-      team: name
+      userId: this.user.id,
+      team: name,
     };
-    this.teamService.postUserInTeam(obj).subscribe(res => {
-      console.log(res);
-    })
+    this.teamService.postUserInTeam(obj).subscribe();
   }
 
 }

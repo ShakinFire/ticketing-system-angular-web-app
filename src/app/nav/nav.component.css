@@ -102,7 +102,7 @@ header .drop-down-container a:hover {
 }
 
 header .drop-down-container .line-break {
-    margin: 5px 0;
+    margin-bottom: 5px;
     height: 1px;
     background: rgb(192, 192, 192);
 }

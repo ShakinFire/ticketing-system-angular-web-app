@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, AfterViewInit, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appLabelStatusColor]'
@@ -6,9 +6,8 @@ import { Directive, Input, ElementRef, Renderer2, AfterViewInit } from '@angular
 export class LabelStatusColorDirective implements AfterViewInit {
   @Input('appLabelStatusColor') status: string;
   constructor(private el: ElementRef, private renderer: Renderer2) { }
-  
+
   ngAfterViewInit(): void {
-    console.log(this.status);
     this.status = this.status.replace(/[ -]+/g, '').toLowerCase();
     this.renderer.addClass(this.el.nativeElement, this.status);
   }

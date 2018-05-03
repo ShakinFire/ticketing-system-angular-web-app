@@ -1,3 +1,4 @@
+import { TokenUser } from './../../models/user/token-user';
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -8,6 +9,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { TeamsService } from './teams.service';
 import { k } from '@angular/core/src/render3';
 import { NotificationService } from '../../notification/notification.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 
 @Component({
@@ -20,7 +22,7 @@ export class GenerateTeamComponent implements OnInit {
 
   errorMessage: string;
   isError: boolean;
-  userId = 1;
+  userToken: TokenUser;
   userName = 'desi karova';
   users: any[];
   usr = [];
@@ -28,7 +30,7 @@ export class GenerateTeamComponent implements OnInit {
   userss: any;
   // k: any;
   constructor(private readonly service: TeamsService, config: NgbTypeaheadConfig,
-    private readonly nService: NotificationService) {
+    private readonly nService: NotificationService, private authService: AuthService) {
     config.showHint = true;
   }
 
@@ -76,9 +78,8 @@ export class GenerateTeamComponent implements OnInit {
     if (this.errorMessage) {
       this.isError = true;
     } else {
-
-
-      teamsForm.value.userId = this.userId;
+      this.userToken = this.authService.getUser();
+      teamsForm.value.userId = this.userToken.id;
       this.service.postNewTeam(teamsForm.value).subscribe(data => {
         console.log(data);
       });

@@ -1,0 +1,120 @@
+.options .title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: 1px solid rgb(192, 192, 192);
+    margin-bottom: 20px;
+    letter-spacing: 0.7px;
+}
+
+.options .add-form {
+    margin-left: 15px;
+}
+
+.options label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.options input, textarea {
+    padding: 6px 4px;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 4px;
+    width: 35%;
+}
+
+.options button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background: #25c16f;
+    border: 1px solid #1e9957;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.options .description {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.options .text-area-wrapper {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.options .descr-btn {
+    align-items: flex-start;
+    margin-left: 14px;
+}
+
+.options .danger-title {
+    border: 0;
+    margin: 0;
+}
+
+.options .danger-zone {
+    border: 1px solid rgb(180, 55, 55);
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.options .danger-zone p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.options .danger-zone .danger-btn {
+    background: #a83636;
+    border: 1px solid #6b2424;
+}
+
+.options .all-danger-zone {
+    margin-top: 25px;
+}
+
+.options .all-danger-zone .danger-leave-team-btn {
+    margin-top: 5px;
+    margin-left: 0;
+}
+
+/* ng-bootstrap modal */
+.form-title {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(158, 158, 158);
+    margin-bottom: 10px;
+}
+
+.input-field {
+    width: 100%;
+    border-radius: 3px;
+    padding: 10px 5px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+}
+
+.btn-modal {
+    background: #a83636;
+    border-radius: 3px;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    border: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-modal:hover {
+    background: #8a2e2e;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+}

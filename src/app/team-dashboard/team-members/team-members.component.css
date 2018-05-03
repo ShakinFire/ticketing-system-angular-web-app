@@ -1,0 +1,53 @@
+.team-members {
+    display: flex;
+    align-items:flex-start;
+    align-content:flex-start;
+}
+
+.team-members .members {
+    background: rgb(248, 248, 248);
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 4px;
+    padding: 0 0 25px 25px;
+    flex-basis: 77%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.team-members .member-wrapper img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.team-members .member-wrapper {
+    text-align: center;
+    position: relative;
+    flex-basis: 15%;
+    padding-bottom: 15px;
+    margin-right: 4.8%;
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+.team-members .member-wrapper:hover .name-wrapper {
+    background: #1d9957;
+}
+
+.team-members .member-wrapper .name-wrapper {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding: 5px;
+    background: #25c16f;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    border-radius: 4px;
+}
+
+.team-members .aside-information {
+    margin-left: 15px;
+    flex-basis: 23%;
+}

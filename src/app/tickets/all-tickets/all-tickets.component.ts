@@ -24,7 +24,7 @@ export class AllTicketsComponent implements OnInit {
     this.assignedTicketsTab();
   }
 
-  assignedTicketsTab() {
+  assignedTicketsTab(): void {
     this.assignedTickets.getAssigneeTicket()
       .subscribe((res) => {
         console.log(res.tickets);
@@ -38,7 +38,7 @@ export class AllTicketsComponent implements OnInit {
       });
   }
 
-  myTicketsTab() {
+  myTicketsTab(): void {
     this.assignedTickets.getMyTickets()
       .subscribe((res) => {
         this.assigTickets = res.tickets;

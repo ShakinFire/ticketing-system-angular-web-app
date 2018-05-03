@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-queue.component.css']
 })
 export class TeamQueueComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {

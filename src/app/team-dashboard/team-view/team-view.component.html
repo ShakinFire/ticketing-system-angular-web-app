@@ -1,15 +1,20 @@
-<div class="container">
+<div class="container team-view">
+  <div class="tabs">
+    <ul class="list-unstyled">
+      <li (click)="changeActive(0)" [ngClass]="{'activeTab': (tabId === 0)}">Team queue</li>
+      <li (click)="changeActive(1)" [ngClass]="{'activeTab': (tabId === 1)}">Members</li>
+      <li (click)="changeActive(2)" [ngClass]="{'activeTab': (tabId === 2)}">Settings</li>
+    </ul>
+  </div>
   <div class="team-wrapper">
-    <div class="queue-wrapper">
-      <div class="title-header">
-        Recent Activity
-      </div>
-      <div class="team-queue">
-        <app-team-queue></app-team-queue>
-      </div>
+    <div *ngIf="tabId === 0" class="queue-wrapper">
+      <app-team-queue></app-team-queue>
     </div>
-    <div class="aside-information">
-      aside
+    <div *ngIf="tabId === 1" class="members-wrapper">
+      <app-team-members></app-team-members>
+    </div>
+    <div *ngIf="tabId === 2" class="settings-wrapper">
+      <app-team-settings></app-team-settings>
     </div>
   </div>
 </div>

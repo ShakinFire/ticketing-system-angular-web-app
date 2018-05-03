@@ -23,5 +23,11 @@ export class TicketsService {
     const rout = '/teams-users/' + team;
     return this.req.get(rout).map(x => <{ users: myTeamsDash[] }>(x));
   }
-
+  getTicketByName(name) {
+    const rout = '/ticketByName/' + name;
+    console.log(rout);
+    return this.req.get(rout)//.subscribe((res) =>
+    //     console.log(res));
+    // }
+  }
 }

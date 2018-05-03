@@ -2,7 +2,7 @@ export class NewNotification {
     id: number;
     content: string;
     createdAt: Date;
-    typeName: string;
+    nameType: string;
     type: string;
     userId: number;
 }

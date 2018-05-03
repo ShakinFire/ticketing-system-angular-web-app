@@ -8,13 +8,14 @@
         {{notification.content}}
       </div>
 
-      <div class='date-content wrapper-name-date date'>
+      <div class='date-content wrapper-name-date date content-wrapper'>
         {{notification.createdAt}}
       </div>
+
     </div>
-    <div class="accept-see">
-      <button (click)='accseptTeam(notification.nameType)' *ngIf='notification.type === "team"'>Accept</button>
-      <button *ngIf='notification.type === "ticket"'>See</button>
+    <div class="button-wrapper">
+      <button (click)='accseptTeam(notification?.nameType)' *ngIf='notification.type === "team"'>Accept</button>
+      <button (click)='viewTicket(notification?.nameType)' *ngIf='notification.type === "ticket"'>View Ticket</button>
     </div>
   </div>
 </div>

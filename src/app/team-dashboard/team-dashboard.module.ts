@@ -15,6 +15,7 @@ import { OptionsComponent } from './team-settings/options/options.component';
 import { RemoveUserComponent } from './team-settings/remove-user/remove-user.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TeamViewService } from './team-view/team-view.service';
 
 @NgModule({
   imports: [
@@ -36,5 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OptionsComponent,
     RemoveUserComponent
   ],
+  providers: [
+    TeamViewService,
+  ]
 })
 export class TeamDashboardModule { }

@@ -23,7 +23,6 @@ export class GenerateTicketsComponent implements OnInit {
   public requester: any;
   public assignee: any;
   teamsis = [];
-  isOpen = 'open';
   ticket = new Ticket();
   teams: any[];
   ticketData: Object;
@@ -117,27 +116,30 @@ export class GenerateTicketsComponent implements OnInit {
   ticketFormsData(ticketForm: NgForm) {
     console.log(ticketForm);
     this.errorMessage = this.validate(ticketForm.value);
+
     if (this.errorMessage) {
       this.isError = true;
     } else {
       // ticketForm.value.status = 'open'
       const assigneeUserId = this.assigneeUsers.find(x => x.name === ticketForm.value.assigneeName);
       ticketForm.value.assigneeId = assigneeUserId.id;
+
       const requesterUserId = this.requerterUsers.find(x => x.name === ticketForm.value.requesterName);
       ticketForm.value.userId = requesterUserId.id;
-      //ticketForm.value.userId = this.userId;
-      ticketForm.value.status = 'OPEN';
-      const notification = {
 
+      ticketForm.value.status = 'OPEN';
+
+      const notification = {
         content: `${ticketForm.value.requesterName} assignee you a ticket ${ticketForm.value.title}`,
         type: 'ticket',
         nameType: ticketForm.value.title,
-        user: ticketForm.value.assigneeName
+        userId: ticketForm.value.assigneeName
       }
-      console.log(notification)
+
       this.notService.addNotification(notification).subscribe(data => {
         console.log(data);
       })
+
       this.ticketService.addTicket(ticketForm.value);
 
       ticketForm.resetForm();

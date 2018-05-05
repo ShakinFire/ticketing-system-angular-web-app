@@ -10,6 +10,7 @@ import { TeamsService } from './teams.service';
 import { k } from '@angular/core/src/render3';
 import { NotificationService } from '../../notification/notification.service';
 import { AuthService } from '../../core/auth/auth.service';
+import { myTeamsDash } from '../../models/teams/my-teams';
 
 
 @Component({
@@ -19,30 +20,28 @@ import { AuthService } from '../../core/auth/auth.service';
   providers: [NgbTypeaheadConfig]
 })
 export class GenerateTeamComponent implements OnInit {
-
+  userToken: TokenUser;
   errorMessage: string;
   isError: boolean;
-  userToken: TokenUser;
-  userName = 'desi karova';
-  users: any[];
-  usr = [];
-  user: any;
-  userss: any;
-  // k: any;
-  constructor(private readonly service: TeamsService, config: NgbTypeaheadConfig,
+  userId: number;
+  userName: string;
+  users: string[];
+  usr: string[] = [];
+  user: string;
+  userss: myTeamsDash[];
+  constructor(private readonly teamsService: TeamsService, config: NgbTypeaheadConfig,
     private readonly nService: NotificationService, private authService: AuthService) {
     config.showHint = true;
   }
 
   ngOnInit() {
-    this.service.getAllUsers().subscribe(data => {
+    this.teamsService.getAllUsers().subscribe(data => {
       this.userss = data.users;
-      // console.log(data.users);
-      this.users = this.userss.map(x => x.name);
-    })
-
-    // this.users = this.user.map(x => x.name);
-
+      this.userId = this.authService.getUser().id;
+      this.userName = this.userss.find(x => x.id === this.userId).name;
+      this.users = this.userss.filter(x => x.id !== this.userId).map(x => x.name);
+      console.log(this.users);
+    });
   }
 
   validate(data): string {
@@ -81,7 +80,7 @@ export class GenerateTeamComponent implements OnInit {
       this.userToken = this.authService.getUser();
       teamsForm.value.teamLead = this.userToken.id;
       console.log(teamsForm.value);
-      this.service.postNewTeam(teamsForm.value).subscribe(data => {
+      this.teamsService.postNewTeam(teamsForm.value).subscribe(data => {
         console.log(data);
       });
 
@@ -92,9 +91,10 @@ export class GenerateTeamComponent implements OnInit {
           content: `${this.userToken.firstName.trim()} invited you to join a team ${teamsForm.value.name.trim()} `,
           type: 'team',
           nameType: teamsForm.value.name,
-          user: item
+          userId: item
         };
         this.nService.addNotification(obj).subscribe(data => {
+          console.log(data)
         });
       };
       teamsForm.resetForm();

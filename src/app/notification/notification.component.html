@@ -1,21 +1,24 @@
 <div class="container notifications">
-  <div class="notification-content" *ngFor='let notification of notifications'>
-    <div class='img-wrapper'>
-      <img src='../../../assets/img/ikon-mail.jpg' />
-    </div>
-    <div class='content-wrapper'>
-      <div class='main-content content'>
-        {{notification.content}}
+  <div class='padd'>
+    <div class="notification-content" *ngFor='let notification of notifications'>
+      <div class='img-wrapper'>
+        <img src='../../../assets/img/ikon-mail.jpg' />
       </div>
+      <div class='content-wrapper'>
+        <div class='main-content content flc'>
+          {{notification.content}}
+        </div>
 
-      <div class='date-content wrapper-name-date date content-wrapper'>
-        {{notification.createdAt}}
+        <div class='date-content wrapper-name-date date content-wrapper fld'>
+          {{notification.createdAt}}
+        </div>
+
       </div>
-
-    </div>
-    <div class="button-wrapper">
-      <button (click)='accseptTeam(notification?.nameType)' *ngIf='notification.type === "team"'>Accept</button>
-      <button (click)='viewTicket(notification?.nameType)' *ngIf='notification.type === "ticket"'>View Ticket</button>
+      <div class="button-wrapper">
+        <button (click)='accseptTeam(notification.nameType, notification.id)' *ngIf='notification.type === "team"'>Accept</button>
+        <button (click)='viewTicket(notification.nameType)' *ngIf='notification.type === "ticket"'>View Ticket</button>
+        <button (click)='viewTeam(notification.nameType)' *ngIf='notification.type === "viewTeam"'>View Team</button>
+      </div>
     </div>
   </div>
 </div>

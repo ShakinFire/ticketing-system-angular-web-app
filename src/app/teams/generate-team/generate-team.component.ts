@@ -8,6 +8,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { TeamsService } from './teams.service';
 import { k } from '@angular/core/src/render3';
 import { NotificationService } from '../../notification/notification.service';
+import { AuthService } from '../../core/auth/auth.service';
+import { myTeamsDash } from '../../models/teams/my-teams';
 
 
 @Component({
@@ -20,27 +22,25 @@ export class GenerateTeamComponent implements OnInit {
 
   errorMessage: string;
   isError: boolean;
-  userId = 1;
-  userName = 'desi karova';
-  users: any[];
-  usr = [];
-  user: any;
-  userss: any;
-  // k: any;
-  constructor(private readonly service: TeamsService, config: NgbTypeaheadConfig,
-    private readonly nService: NotificationService) {
+  userId: number;
+  userName: string;
+  users: string[];
+  usr: string[] = [];
+  user: string;
+  userss: myTeamsDash[];
+  constructor(private readonly teamsService: TeamsService, config: NgbTypeaheadConfig,
+    private readonly nService: NotificationService, private authService: AuthService) {
     config.showHint = true;
   }
 
   ngOnInit() {
-    this.service.getAllUsers().subscribe(data => {
+    this.teamsService.getAllUsers().subscribe(data => {
       this.userss = data.users;
-      // console.log(data.users);
-      this.users = this.userss.map(x => x.name);
-    })
-
-    // this.users = this.user.map(x => x.name);
-
+      this.userId = this.authService.getUser().id;
+      this.userName = this.userss.find(x => x.id === this.userId).name;
+      this.users = this.userss.filter(x => x.id !== this.userId).map(x => x.name);
+      console.log(this.users);
+    });
   }
 
   validate(data): string {
@@ -79,7 +79,7 @@ export class GenerateTeamComponent implements OnInit {
 
 
       teamsForm.value.userId = this.userId;
-      this.service.postNewTeam(teamsForm.value).subscribe(data => {
+      this.teamsService.postNewTeam(teamsForm.value).subscribe(data => {
         console.log(data);
       });
 
@@ -87,12 +87,13 @@ export class GenerateTeamComponent implements OnInit {
         let item = this.usr.pop();
 
         const obj = {
-          content: `${this.userName.trim()} invited you to join a team ${teamsForm.value.name.trim()} `,
+          content: `${this.userName} invited you to join a team ${teamsForm.value.name} `,
           type: 'team',
           nameType: teamsForm.value.name,
-          user: item
+          userId: item
         };
         this.nService.addNotification(obj).subscribe(data => {
+          console.log(data)
         });
       };
       teamsForm.resetForm();

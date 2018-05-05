@@ -3,6 +3,7 @@ import { RequestService } from '../core/request.service.service';
 import { Ticket } from '../models/ticket';
 import { Observable } from 'rxjs/Observable';
 import { myTeamsDash } from '../models/teams/my-teams';
+import { SingleTicket } from '../models/tickets/single-ticket';
 
 @Injectable()
 export class TicketsService {
@@ -14,20 +15,17 @@ export class TicketsService {
       console.log(res);
     });
   }
-  getUserTeams(id): Observable<any> {
+  getUserTeams(id: Number): Observable<{ teams: String[] }> {
     const rout = '/user-teams/' + id;
-    return this.req.get(rout).map(x => <any>(x));
+    return this.req.get(rout).map(x => <{ teams: String[] }>(x));
 
   }
   getTeamUsers(team): Observable<{ users: myTeamsDash[] }> {
     const rout = '/teams-users/' + team;
     return this.req.get(rout).map(x => <{ users: myTeamsDash[] }>(x));
   }
-  getTicketByName(name) {
+  getTicketByName(name: String): Observable<{ ticket: SingleTicket }> {
     const rout = '/ticketByName/' + name;
-    console.log(rout);
-    return this.req.get(rout)//.subscribe((res) =>
-    //     console.log(res));
-    // }
+    return this.req.get(rout).map(x => <{ ticket: SingleTicket }>(x));
   }
 }

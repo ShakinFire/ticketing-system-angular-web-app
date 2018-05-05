@@ -11,6 +11,7 @@ export class SingleTicket {
     date: Date;
     updatedAt: Date;
     attach: string;
+    userId: number;
     comments: TicketComments[];
     teams: myTeamsDash[];
 }

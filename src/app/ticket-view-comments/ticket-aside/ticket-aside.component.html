@@ -3,7 +3,7 @@
     <div class="status-wrapper">
       <div class="label-status-wrapper">
         <div *ngIf="ticket" [appLabelStatusColor]="ticket?.status" class="status-info label-status">
-            {{ ticket?.status }}
+          {{ ticket?.status }}
         </div>
         <div class="label-info label-status">
           {{ ticket?.labels }}
@@ -40,7 +40,7 @@
       Due in 3 days
     </div>
     <div class="deadline">
-      on {{ ticket?.estimated }} 
+      on {{ ticket?.estimated }}
     </div>
   </div>
   <div class="about-author outline">
@@ -63,7 +63,8 @@
         </div>
         <div class="modal-body">
           <label class="form-title">*The person MUST be in your team in order to reassigne the ticket to him</label>
-          <input placeholder="e.g. Jonh Doe" type="text" class="form-control input-field" [(ngModel)]="assigneeModel" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" />
+          <input placeholder="e.g. Jonh Doe" type="text" class="form-control input-field" [(ngModel)]="assigneeModel" [ngbTypeahead]="search"
+            [inputFormatter]="formatter" [resultTemplate]="rt" />
         </div>
         <div class="footer-wrapper modal-footer">
           <button (click)="changeAssignee()" (click)="c('Close click')" class="btn-modal">Change</button>
@@ -95,7 +96,8 @@
       <ng-template *ngIf="checkIfRequester()" #rt let-r="result" let-t="term">
         {{ r.name}}
       </ng-template>
-      <ng-template *ngIf="checkIfRequester()" windowClass="form-title input-field btn-modal footer-wrapper" #requesterModal let-c="close" let-d="dismiss">
+      <ng-template *ngIf="checkIfRequester()" windowClass="form-title input-field btn-modal footer-wrapper" #requesterModal let-c="close"
+        let-d="dismiss">
         <div class="modal-header">
           <h4 class="modal-title">Change Requester</h4>
           <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -104,7 +106,8 @@
         </div>
         <div class="modal-body">
           <label class="form-title">*The person MUST be in your team in order to make him the requester of that ticket</label>
-          <input placeholder="e.g. Jonh Doe" type="text" class="form-control input-field" [(ngModel)]="requesterModel" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" />
+          <input placeholder="e.g. Jonh Doe" type="text" class="form-control input-field" [(ngModel)]="requesterModel" [ngbTypeahead]="search"
+            [inputFormatter]="formatter" [resultTemplate]="rt" />
         </div>
         <div class="footer-wrapper modal-footer">
           <button (click)="changeRequester()" (click)="c('Close click')" class="btn-modal">Change</button>

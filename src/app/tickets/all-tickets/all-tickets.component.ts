@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { TicketModel } from '../../models/tickets/ticket-model';
 import { MyTeamsDashboardService } from '../my-teams-dashboard/my-teams-dashboard.service';
 import { myTeamsDash } from '../../models/teams/my-teams';
+import { NotificationService } from '../../notification/notification.service';
 
 @Component({
   selector: 'app-all-tickets',
@@ -16,12 +17,31 @@ export class AllTicketsComponent implements OnInit {
   myTeams: myTeamsDash[];
   tabId: number;
   notingHereSwitch: boolean;
-  constructor(private assignedTickets: AssignedTicketsService, private teamService: MyTeamsDashboardService) { }
+  constructor(private assignedTickets: AssignedTicketsService, private teamService: MyTeamsDashboardService,
+    private notificatiomService: NotificationService) { }
 
   ngOnInit() {
     this.tabId = 0;
     this.notingHereSwitch = false;
     this.assignedTicketsTab();
+    // this.notificatiomService.getTicket().subscribe(res => {
+    //   const tickets = res.result;
+    //   console.log(tickets);
+    //   for (let ticket of tickets) {
+    //     if (ticket.status === 'open') {
+    //       const notificationRequest = {
+    //         content: `the ticket ${ticket.title} expires at ${ticket.estimated} `,
+    //         type: 'ticket',
+    //         nameType: ticket.title,
+    //         userId: ticket.userId
+    //       }
+    //       console.log(notificationRequest);
+    //       this.notificatiomService.addNotification(notificationRequest).subscribe(res =>
+    //         console.log(res));
+    //     }
+    //   }
+    // })
+
   }
 
   assignedTicketsTab() {

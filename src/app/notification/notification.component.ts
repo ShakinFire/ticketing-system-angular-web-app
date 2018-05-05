@@ -27,35 +27,33 @@ export class NotificationComponent implements OnInit {
     this.user = this.authService.getUser();
     this.notifService.getNotification(this.user.id).subscribe(res => {
       this.notifications = res.result;
+      this.notifications.reverse();
+      console.log(this.notifications);
     });
   }
-  // ngOnInit() {
-  //   this.user = this.authService.getUser();
-  //   this.notifService.getNotification(this.user.id).subscribe(res => {
-  //     this.notifications = res.result;
-  //   });
-  // }
 
-  accseptTeam(name) {
+
+  accseptTeam(name, notificationId) {
     const obj = {
       userId: this.user.id,
       team: name,
     };
-    this.teamService.postUserInTeam(obj).subscribe();
+    console.log(notificationId);
+    // this.teamService.postUserInTeam(obj).subscribe();
+    this.notifService.updateNotification(notificationId).subscribe(data => console.log(data));
+
   }
 
   viewTicket(name) {
 
     this.ticketService.getTicketByName(name).subscribe(res => {
       this.ticket = res;
-      // console.log(this.ticket.ticket)
       const ticketId = this.ticket.ticket.id;
       this.viewTicketService.goToTicket(ticketId);
 
     });
-
-
-
+  }
+  viewTeam(name) {
 
   }
 }

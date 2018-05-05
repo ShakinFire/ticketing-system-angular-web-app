@@ -6,6 +6,8 @@
 
 .notification-content .content-wrapper {
   display: flex;
+  width: 800px;
+  height: 50px;
 }
 
 .notifications img {
@@ -48,4 +50,13 @@
   flex-direction: column-reverse;
   align-items: flex-end;
   width: 500px;
+}
+
+.notifications .flc {
+  display: flex;
+  width: 800px;
+}
+
+.notifications .padd {
+  padding-top: 50px;
 }

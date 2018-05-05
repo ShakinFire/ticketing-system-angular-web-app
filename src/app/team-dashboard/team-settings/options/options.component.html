@@ -1,0 +1,56 @@
+<div class="options">
+  <div class="title">
+    Options
+  </div>
+  <div class="team-lead-only">
+    <div class="add-form">
+      <label>Team name</label>
+      <input placeholder="e.g. Team 1" type="text" [(ngModel)]="newTeamName" />
+      <button (click)="changeTeamName()">Change</button>
+    </div>
+    <div class="add-form description">
+      <label>Description</label>
+      <div class="text-area-wrapper">
+        <textarea placeholder="e.g. New event tomorrow" autosize type="text" [(ngModel)]="newTeamDescription"></textarea>
+        <button class="descr-btn" (click)="changeTeamDescription()">Change</button>
+      </div>
+    </div>
+  </div>
+  <div class="title danger-title">
+    Crucial changes
+  </div>
+  <div class="danger-zone">
+    <div class="team-lead-danger-zone">
+      <div class="change-teamlead">
+        <label>Change teamlead</label>
+        <p>*This change will remove all your rights for this team as a team leader. Please be certain.</p>
+        <ng-template #rt let-r="result" let-t="term">
+          {{ r.name}}
+        </ng-template>
+        <input placeholder="e.g. Jonh Doe" type="text" [(ngModel)]="newTeamLead" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" />
+        <button class="danger-btn" (click)="changeTeamLead()">Change Teamlead</button>
+      </div>
+    </div>
+    <div class="all-danger-zone">
+      <ng-template windowClass="form-title input-field btn-modal footer-wrapper" #leaveTeam let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm Password</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="form-title">*Confirm with your password before leaving the team</label>
+          <input placeholder="Enter password..." type="password" class="input-field" [(ngModel)]="assigneeModel" />
+        </div>
+        <div class="footer-wrapper modal-footer">
+          <button (click)="leaveTeam()" (click)="c('Close click')" class="btn-modal">Change</button>
+          <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
+      <label>Leave team</label>
+      <p>*This change will remove you from the team and you wouldn't be able to join the team yourself. Please be certain.</p>
+      <button class="danger-btn danger-leave-team-btn" (click)="leaveTeamModal(leaveTeam)">Leave Team</button>
+    </div>
+  </div>
+</div>

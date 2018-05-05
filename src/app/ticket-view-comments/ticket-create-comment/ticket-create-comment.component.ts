@@ -28,6 +28,7 @@ export class TicketCreateCommentComponent implements OnInit {
       this.commentData.ticketId = this.id;
       this.commentData.userId = userId.id;
       this.outputCommentDat.emit(this.commentData);
+      // *TODO: add to notifications
     }
 
     form.reset();

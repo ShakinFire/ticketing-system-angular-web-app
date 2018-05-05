@@ -1,0 +1,13 @@
+<div class="remove-user">
+  <div class="title">
+    Remove member
+  </div>
+  <div class="add-form">
+    <label>Full name</label>
+    <ng-template #rt let-r="result" let-t="term">
+      {{ r.name }}
+    </ng-template>
+    <input placeholder="e.g. Jonh Doe" type="text" [(ngModel)]="removedUser" [ngbTypeahead]="search" [inputFormatter]="formatter" [resultTemplate]="rt" />
+    <button (click)="removeMember()">Remove User</button>
+  </div>
+</div>

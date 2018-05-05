@@ -10,7 +10,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TicketViewService } from './ticket-view/ticket-view.service';
 import { SharedModule } from '../shared/shared.module';
 import { TicketCreateCommentComponent } from './ticket-create-comment/ticket-create-comment.component';
-import { Autosize } from 'ng-autosize';
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,7 +25,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
   ],
   declarations: [
-    Autosize,
     TicketViewComponent,
     TicketDescriptionComponent,
     TicketCommentsComponent,

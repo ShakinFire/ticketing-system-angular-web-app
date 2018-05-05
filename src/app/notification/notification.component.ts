@@ -50,7 +50,6 @@ export class NotificationComponent implements OnInit {
       this.ticket = res;
       const ticketId = this.ticket.ticket.id;
       this.viewTicketService.goToTicket(ticketId);
-
     });
   }
   viewTeam(name) {

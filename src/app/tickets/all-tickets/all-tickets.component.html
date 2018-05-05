@@ -2,9 +2,9 @@
   <div class="container">
     <div class="tabs">
       <ul class="list-unstyled">
-        <li (click)="changeActive(0)" [ngClass]="{'active': (tabId === 0)}">Assigned tickets</li>
-        <li (click)="changeActive(1)" [ngClass]="{'active': (tabId === 1)}">My tickets</li>
-        <li (click)="changeActive(2)" [ngClass]="{'active': (tabId === 2)}">Teams</li>
+        <li (click)="changeActive(0)" [ngClass]="{'activeTab': (tabId === 0)}">Assigned tickets</li>
+        <li (click)="changeActive(1)" [ngClass]="{'activeTab': (tabId === 1)}">My tickets</li>
+        <li (click)="changeActive(2)" [ngClass]="{'activeTab': (tabId === 2)}">Teams</li>
       </ul>
     </div>
     <div class="tickets-content">

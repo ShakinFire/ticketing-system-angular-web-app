@@ -93,7 +93,7 @@
       <div *ngIf="checkIfRequester()" class="requester-edit edit-drop-down">
         <fa (click)="openRequesterModal(requesterModal)" class="icon-exclude" name="fas fa-ellipsis-h"></fa>
       </div>
-      <ng-template *ngIf="checkIfRequester()" #rt let-r="result" let-t="term">
+      <ng-template #rt let-r="result" let-t="term">
         {{ r.name}}
       </ng-template>
       <ng-template *ngIf="checkIfRequester()" windowClass="form-title input-field btn-modal footer-wrapper" #requesterModal let-c="close"

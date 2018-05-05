@@ -1,0 +1,36 @@
+.remove-user .title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: 1px solid rgb(192, 192, 192);
+    margin-bottom: 20px;
+    letter-spacing: 0.7px;
+}
+
+.remove-user .add-form {
+    margin-left: 15px;
+}
+
+.remove-user label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.remove-user input {
+    padding: 6px 4px;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 4px;
+    width: 35%;
+}
+
+.remove-user button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background: #a83636;
+    border: 1px solid #6b2424;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}

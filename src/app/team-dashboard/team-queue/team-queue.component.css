@@ -1,18 +1,48 @@
-.main-queue {
+section {
+    display: flex;
+    align-items:flex-start;
+    align-content:flex-start;
+}
+
+section .main-queue {
+    background: rgb(248, 248, 248);
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    padding: 15px;
+    flex-basis: 77%;
+}
+
+section .aside-information {
+    flex-basis: 23%;
+    margin-left: 15px;
+}
+
+section .team-queue {
     display: flex;
 }
 
-.main-queue .image-wrapper {
-    margin-right: 5px;
+section .title-header {
+    font-size: 22px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
 }
 
-.main-queue .date {
-    margin-left: 6px;
+section  .image-wrapper {
+    margin-right: 10px;
+}
+
+section .information-wrapper {
+    flex-basis: 100%;
+}
+
+section .information-wrapper .date {
     font-size: 15px;
     color: rgb(180, 180, 180);
 }
 
-.main-queue .image-wrapper img {
+section .image-wrapper img {
     height: 40px;
     width: 40px;
     object-fit: cover;
@@ -20,15 +50,12 @@
     cursor: pointer;
 }
 
-.main-queue .main-information {
-    display: flex;
+section .information-wrapper .main-information {
     font-size: 15px;
 }
 
-.main-queue .full-name {
+section .main-information .full-name {
     font-weight: bold;
     color: rgb(49, 137, 238);
     cursor: pointer;
-
-    margin-left: 6px;
 }

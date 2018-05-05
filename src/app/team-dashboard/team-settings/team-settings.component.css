@@ -1,0 +1,44 @@
+.settings {
+    border-top: 1px solid rgb(192, 192, 192);
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.side-menu, .content {
+    margin-top: 15px;
+}
+
+.settings .side-menu {
+    flex-basis: 20%;
+    border-radius: 4px;
+    border: 1px solid rgb(192, 192, 192);
+}
+
+.settings .content {
+    flex-basis: 80%;
+    margin-left: 15px;
+}
+
+.settings ul li {
+    padding: 10px 8px;
+    border-left: 2px solid transparent;
+    font-size: 14px;
+    color: rgb(49, 137, 238);
+    border-bottom: 1px solid rgb(192, 192, 192);
+    cursor: pointer;
+}
+
+.settings ul li:hover {
+    background: rgb(240, 240, 240);
+}
+
+.settings ul li:last-child {
+    border-bottom: 0;
+}
+
+.activeMenu {
+    border-left: 2px solid #25c16f !important;
+    color: #4d4d4d !important;
+    font-weight: bold;
+}

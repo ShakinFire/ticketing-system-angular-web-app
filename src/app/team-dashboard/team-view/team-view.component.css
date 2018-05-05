@@ -1,19 +1,22 @@
-.title-header {
-    font-size: 22px;
-    font-weight: bold;
-
-    margin-bottom: 20px;
-}
-
-.team-wrapper {
-    display: flex;
+.team-view {
     margin-top: 30px;
 }
 
-.team-wrapper .queue-wrapper {
-    background: rgb(248, 248, 248);
-    border: 1px solid rgb(192, 192, 192);
-    border-radius: 4px;
+.team-view .team-wrapper {
+    display: flex;
+}
+
+.team-view .queue-wrapper, .team-wrapper, .settings-wrapper {
     flex-basis: 100%;
-    padding: 15px;
+}
+
+.team-view .tabs ul {
+    position: relative;
+    top: 1px;
+}
+
+.team-view .tabs ul li {
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
 }

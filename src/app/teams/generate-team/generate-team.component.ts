@@ -1,3 +1,4 @@
+import { TokenUser } from './../../models/user/token-user';
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +20,7 @@ import { myTeamsDash } from '../../models/teams/my-teams';
   providers: [NgbTypeaheadConfig]
 })
 export class GenerateTeamComponent implements OnInit {
-
+  userToken: TokenUser;
   errorMessage: string;
   isError: boolean;
   userId: number;
@@ -59,26 +60,26 @@ export class GenerateTeamComponent implements OnInit {
   addUser() {
     if (this.usr.find(x => x === this.user)) {
       this.user = '';
-      return console.error('this is user exist');
     } else {
       this.usr.push(this.user);
+      console.log(this.user);
       this.user = '';
     }
   }
+
   delUser(uss: HTMLElement) {
     const el = uss.textContent;
     this.usr.splice(this.usr.indexOf(el), 1);
   }
-
 
   teamsFormsData(teamsForm: NgForm) {
     this.errorMessage = this.validate(teamsForm.value);
     if (this.errorMessage) {
       this.isError = true;
     } else {
-
-
-      teamsForm.value.userId = this.userId;
+      this.userToken = this.authService.getUser();
+      teamsForm.value.teamLead = this.userToken.id;
+      console.log(teamsForm.value);
       this.teamsService.postNewTeam(teamsForm.value).subscribe(data => {
         console.log(data);
       });
@@ -87,7 +88,7 @@ export class GenerateTeamComponent implements OnInit {
         let item = this.usr.pop();
 
         const obj = {
-          content: `${this.userName} invited you to join a team ${teamsForm.value.name} `,
+          content: `${this.userToken.firstName.trim()} invited you to join a team ${teamsForm.value.name.trim()} `,
           type: 'team',
           nameType: teamsForm.value.name,
           userId: item

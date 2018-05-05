@@ -1,0 +1,58 @@
+aside .title {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgb(192, 192, 192);
+    font-weight: bold;
+}
+
+aside .team-main-info {
+    display: flex;
+}
+
+aside .image-wrapper img {
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+aside .team-main-info .name-members {
+    margin-left: 10px;
+}
+
+aside .name {
+    color: rgb(49, 137, 238);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+aside .team-main-info .members {
+    font-size: 14px;
+    color: rgb(180, 180, 180);
+}
+
+aside .team-info .team-description {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+aside .team-lead-info .team-lead-header, .team-lead-footer {
+    display: flex;
+}
+
+aside .team-lead-header {
+    margin-bottom: 10px;
+}
+
+aside .team-lead-header .full-name {
+    margin-left: 10px;
+}
+
+aside .team-lead-footer {
+    font-size: 14px;
+}
+
+aside .team-lead-footer p {
+    margin-left: 10px;
+}

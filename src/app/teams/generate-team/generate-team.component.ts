@@ -61,17 +61,17 @@ export class GenerateTeamComponent implements OnInit {
   addUser() {
     if (this.usr.find(x => x === this.user)) {
       this.user = '';
-      return console.error('this is user exist');
     } else {
       this.usr.push(this.user);
+      console.log(this.user);
       this.user = '';
     }
   }
+
   delUser(uss: HTMLElement) {
     const el = uss.textContent;
     this.usr.splice(this.usr.indexOf(el), 1);
   }
-
 
   teamsFormsData(teamsForm: NgForm) {
     this.errorMessage = this.validate(teamsForm.value);
@@ -79,7 +79,8 @@ export class GenerateTeamComponent implements OnInit {
       this.isError = true;
     } else {
       this.userToken = this.authService.getUser();
-      teamsForm.value.userId = this.userToken.id;
+      teamsForm.value.teamLead = this.userToken.id;
+      console.log(teamsForm.value);
       this.service.postNewTeam(teamsForm.value).subscribe(data => {
         console.log(data);
       });
@@ -88,7 +89,7 @@ export class GenerateTeamComponent implements OnInit {
         let item = this.usr.pop();
 
         const obj = {
-          content: `${this.userName.trim()} invited you to join a team ${teamsForm.value.name.trim()} `,
+          content: `${this.userToken.firstName.trim()} invited you to join a team ${teamsForm.value.name.trim()} `,
           type: 'team',
           nameType: teamsForm.value.name,
           user: item

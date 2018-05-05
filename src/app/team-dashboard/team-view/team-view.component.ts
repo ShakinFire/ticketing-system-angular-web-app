@@ -1,3 +1,4 @@
+import { TeamQueue } from './../../models/teams/team-queue';
 import { Component, OnInit } from '@angular/core';
 import { AssigneeTicket } from '../../models/tickets/assigned-ticket';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +12,7 @@ import { TeamViewService } from './team-view.service';
 export class TeamViewComponent implements OnInit {
   tabId: number;
   id: number;
+  teamQueue: TeamQueue;
   sub: any;
   constructor(private route: ActivatedRoute, private teamViewService: TeamViewService) { }
 
@@ -25,6 +27,7 @@ export class TeamViewComponent implements OnInit {
   teamQueueTab(id: number): void {
     this.teamViewService.getTeamAndTickets(id).subscribe((res) => {
       console.log(res);
+      this.teamQueue = res;
     });
   }
 

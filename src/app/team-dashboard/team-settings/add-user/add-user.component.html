@@ -3,6 +3,7 @@
     Add member
   </div>
   <div class="add-form">
+    <app-error-success-message *ngIf="showHide" [isError]="isError" [message]="message"></app-error-success-message>
     <label>Full name</label>
     <ng-template #rt let-r="result" let-t="term">
       {{ r.name}}

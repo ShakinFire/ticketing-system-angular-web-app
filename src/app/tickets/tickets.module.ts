@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MyTeamDashboardComponent } from './my-teams-dashboard/my-team-dashboard.component';
 import { MyTeamsDashboardService } from './my-teams-dashboard/my-teams-dashboard.service';
 import { AssignedTicketsService } from './assigned-tickets/assigned-tickets.service';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { AssignedTicketsService } from './assigned-tickets/assigned-tickets.serv
     NgbModule,
     AngularFontAwesomeModule,
     SharedModule,
+    MomentModule,
   ],
   declarations: [
     GenerateTicketsComponent,

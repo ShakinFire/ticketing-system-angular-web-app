@@ -3,16 +3,16 @@
     <ul class="list-unstyled">
       <li (click)="changeActiveMenu(0)" [ngClass]="{'activeMenu': (menuTab === 0)}">Add member</li>
       <li (click)="changeActiveMenu(1)" [ngClass]="{'activeMenu': (menuTab === 1)}">Options</li>
-      <li (click)="changeActiveMenu(2)" [ngClass]="{'activeMenu': (menuTab === 2)}">Remove member</li>
+      <li *ngIf="checkIfTeamLead()" (click)="changeActiveMenu(2)" [ngClass]="{'activeMenu': (menuTab === 2)}">Remove member</li>
     </ul>
   </aside>
   <div *ngIf="menuTab === 0" class="content">
-    <app-add-user></app-add-user>
+    <app-add-user [membersToAdd]="membersToAdd" [teamId]="teamId"></app-add-user>
   </div>
   <div *ngIf="menuTab === 1" class="content">
-    <app-options></app-options>
+    <app-options [allTeamUsers]="allTeamUsers" [teamId]="teamId"></app-options>
   </div>
-  <div *ngIf="menuTab === 2" class="content">
-    <app-remove-user></app-remove-user>
+  <div *ngIf="menuTab === 2 && checkIfTeamLead()" class="content">
+    <app-remove-user [allTeamUsers]="allTeamUsers" [teamId]="teamId"></app-remove-user>
   </div>
 </div>

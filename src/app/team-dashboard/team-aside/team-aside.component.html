@@ -9,15 +9,15 @@
       </div>
       <div class="name-members">
         <div class="name">
-          The Real Deal
+          {{ teamQueue?.name }}
         </div>
         <div class="members">
-          12 members
+          Members: {{ teamQueue?.totalMembers }}
         </div>
       </div>
     </div>
     <div class="team-description">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt voluptate earum impedit velit quaerat ipsum magni unde esse totam culpa, nesciunt quasi, odit ex corrupti neque consequatur. Et id dicta, accusantium unde repudiandae facilis, suscipit voluptate doloribus magnam quae aspernatur dolores libero quod accusamus cum laborum. Accusantium dolore quo obcaecati!
+      {{ teamQueue?.description }}
     </div>
   </div>
   <div class="team-lead-info outline">
@@ -30,12 +30,12 @@
           <img src="../../../assets/img/the-guy.jpeg">
         </div>
         <div class="name full-name">
-          Georgi Enev
+          {{ teamQueue?.teamLeadUser?.firstName }} {{ teamQueue?.teamLeadUser?.lastName }}
         </div>
       </div>
       <div class="team-lead-footer">
         <fa name="fas fa-envelope"></fa>
-        <p>abv@abv.bg</p>
+        <p>{{ teamQueue?.teamLeadUser?.email }}</p>
       </div>
     </div>
   </div>

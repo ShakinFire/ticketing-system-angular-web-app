@@ -9,7 +9,7 @@
           {{ comment?.users?.firstName }} {{ comment?.users?.lastName }}
         </div>
         <div class="minutes-ago">
-          replied {{ comment?.createdAt }}
+          replied {{ comment?.createdAt | amTimeAgo }}
         </div>
       </div>
       <div class="comment-content break-long-words">

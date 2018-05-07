@@ -1,0 +1,23 @@
+.error-message {
+    padding: 10px 5px;
+    margin-bottom: 25px;
+    background: #a83636;
+    border: 1px solid #6b2424;
+    color: white;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 300px;
+    text-align: center;
+}
+
+.success-message {
+    padding: 10px 5px;
+    margin-bottom: 25px;
+    background: #25c16f;
+    border: 1px solid #1e9957;
+    color: white;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 300px;
+    text-align: center;
+}

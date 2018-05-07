@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { TokenUser } from './../../../models/user/token-user';
+import { FullNameUserInput } from './../../../models/user/addMember';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
+import { TeamViewService } from '../../team-view/team-view.service';
+import { AuthService } from '../../../core/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-options',
@@ -10,19 +15,25 @@ import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [ NgbTypeaheadConfig ],
 })
 export class OptionsComponent implements OnInit {
+  @Input() teamId: number;
+  @Input() allTeamUsers: FullNameUserInput[];
   newTeamName: string;
+  closeResult: string;
+  message: string;
+  isError: boolean;
+  showHide: boolean;
+  modalShowHide: boolean;
   newTeamDescription: string;
-  newTeamLead: { id: number, name: string };
-  test: { id: number, name: string}[];
-  constructor(private modalService: NgbModal) { }
+  confirmPassword: string;
+  loggedUser: TokenUser;
+  modalRef: NgbModalRef;
+  newTeamLead: FullNameUserInput;
+  constructor(private modalService: NgbModal, private teamViewService: TeamViewService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.test = [
-      { id: 1, name: 'Gosho Enev' },
-      { id: 2, name: 'Toshko Toshef' },
-      { id: 3, name: 'Marq Mariikova' },
-      { id: 4, name: 'Penka Peneva' },
-    ];
+    this.showHide = false;
+    this.modalShowHide = false;
+    this.loggedUser = this.authService.getUser();
   }
 
   search = (text$: Observable<string>) =>
@@ -30,34 +41,98 @@ export class OptionsComponent implements OnInit {
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term => term.length < 1 ? []
-        : this.test.filter(member => member.name.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
+        : this.allTeamUsers.filter(user => user.name.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
   
   formatter = (x: {name: string}) => x.name;
 
-  changeTeamName() {
-    console.log(this.newTeamName);
+  changeTeamName(): void {
+    if (this.newTeamName.length > 3) {
+      this.changeToSuccess('You successfully changed the team name to ' + this.newTeamName);
+      this.teamViewService.changeName({ name: this.newTeamName, teamId: this.teamId }).subscribe();
+    } else {
+      this.changeToError('The team name must be at least 4 characters');
+    }
+    
     this.newTeamName = '';
-
-    // *TODO: change team name
   }
 
-  changeTeamDescription() {
-    console.log(this.newTeamDescription);
+  changeTeamDescription(): void {
+    if (this.newTeamDescription.length > 3) {
+      this.changeToSuccess('You successfully changed the description!');
+      this.teamViewService.changeDescription({ description: this.newTeamDescription, teamId: this.teamId }).subscribe();
+    } else {
+      this.changeToError('The description must be at least 4 characters');
+    }
+    
     this.newTeamDescription = '';
-
-    // *TODO: change team description
   }
 
-  changeTeamLead() {
-    console.log(this.newTeamLead);
+  changeTeamLead(): void {
+    const teamLeadId: number = this.newTeamLead.id;
+    if (teamLeadId) {
+      this.teamViewService.changeTeamLeadUser({ userId: this.newTeamLead.id, teamId: this.teamId }).subscribe((res) => {
+        // *TODO: Should send a notification to the new team lead user
+        this.teamViewService.setTeamLead(teamLeadId);
+        this.changeToSuccess('You successfully transfer team lead to ' + this.newTeamLead.name);
+      });
+    } else {
+      this.changeToError('There is no user with this name in your team!');
+    }
+
+    this.newTeamLead = null;
   }
 
-  leaveTeamModal(content) {
-    this.modalService.open(content);
+  leaveTeamModal(content): void {
+    this.modalShowHide = false;    
+    this.modalRef = this.modalService.open(content);
   }
 
-  leaveTeam() {
-    // *TODO: check if user password is correnct if it is, remove him from the team
+  leaveCurrentTeam(): void {
+    if (this.confirmPassword.length >= 6) {
+      this.teamViewService.leaveTeam({ confirmPassword: this.confirmPassword, userId: this.loggedUser.id, teamId: this.teamId }).subscribe((res) => {
+        if (res.isValid) {
+          this.message = 'You successfully left the team!';
+          this.isError = false;
+          this.modalShowHide = true;
+          setTimeout(() => {
+            this.modalShowHide = false;
+            this.router.navigate(['dashboard']);
+            this.modalRef.close();
+          }, 2500);
+        } else {
+          this.message = 'Password is incorrect';
+          this.isError = true;
+          this.modalShowHide = true;
+        }
+      });
+    } else {
+      this.message = 'Password must be at least 6 characters';
+      this.isError = true;
+      this.modalShowHide = true;
+    }
+  }
+
+  checkIfTeamLead(): boolean {
+    if (this.loggedUser.id === this.teamViewService.getTeamLead()) {
+      return true;
+    }
+
+    return false;
+  }
+
+  private changeToError(errorMessage): void {
+    this.message = errorMessage;
+    this.isError = true;
+    this.showHide = true;
+  }
+
+  private changeToSuccess(successMessage): void {
+    this.message = successMessage;
+    this.isError = false;
+    this.showHide = true;
+    setTimeout(() => {
+      this.showHide = false;
+    }, 3000);
   }
 
 }

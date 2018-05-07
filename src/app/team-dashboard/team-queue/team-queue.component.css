@@ -10,16 +10,12 @@ section .main-queue {
     border-radius: 4px;
     border-top-left-radius: 0;
     padding: 15px;
-    flex-basis: 77%;
-}
-
-section .aside-information {
-    flex-basis: 23%;
-    margin-left: 15px;
+    flex-basis: 100%;
 }
 
 section .team-queue {
     display: flex;
+    margin-top: 10px;
 }
 
 section .title-header {

@@ -13,6 +13,7 @@ import { TicketCreateCommentComponent } from './ticket-create-comment/ticket-cre
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ClickOutsideModule,
     NgbModule,
+    MomentModule,
   ],
   declarations: [
     TicketViewComponent,

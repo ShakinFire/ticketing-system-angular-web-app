@@ -3,11 +3,21 @@
 }
 
 .team-view .team-wrapper {
-    display: flex;
+    flex-basis: 77%;
+}
+
+.team-view .aside-information {
+    /* flex-basis: 33%; */
+    margin-left: 15px;
+    flex-basis: 23%;
 }
 
 .team-view .queue-wrapper, .team-wrapper, .settings-wrapper {
     flex-basis: 100%;
+}
+
+.team-view .content-aside-wrapper {
+    display: flex;
 }
 
 .team-view .tabs ul {
@@ -19,4 +29,8 @@
     display: inline-block;
     padding: 10px 15px;
     cursor: pointer;
+}
+
+.stretch {
+    flex-basis: 100% !important;
 }

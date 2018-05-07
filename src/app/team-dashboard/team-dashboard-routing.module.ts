@@ -1,11 +1,11 @@
-import { AuthGuard } from './../core/auth-guard/auth-guard.service';
 import { TeamViewComponent } from './team-view/team-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TeamViewGuardService } from '../core/auth-guard/team-view-guard.service';
 
 const routes: Routes = [
   {
-    path: ':id', component: TeamViewComponent, canActivate: [AuthGuard]
+    path: ':id', component: TeamViewComponent, canActivate: [TeamViewGuardService]
   }
 ];
 

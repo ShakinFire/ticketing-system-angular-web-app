@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TeamQueue } from '../../models/teams/team-queue';
 
 @Component({
   selector: 'app-team-queue',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-queue.component.css']
 })
 export class TeamQueueComponent implements OnInit {
-  
+  @Input() teamQueue: TeamQueue;
   constructor() { }
-
+  
   ngOnInit() {
   }
 

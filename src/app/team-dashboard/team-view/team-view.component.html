@@ -6,15 +6,20 @@
       <li (click)="changeActive(2)" [ngClass]="{'activeTab': (tabId === 2)}">Settings</li>
     </ul>
   </div>
-  <div class="team-wrapper">
-    <div *ngIf="tabId === 0" class="queue-wrapper">
-      <app-team-queue></app-team-queue>
+  <div class="content-aside-wrapper">
+    <div [ngClass]="{'stretch': (tabId === 2)}" class="team-wrapper">
+      <div *ngIf="tabId === 0 && teamQueue" class="queue-wrapper">
+        <app-team-queue [teamQueue]="teamQueue"></app-team-queue>
+      </div>
+      <div *ngIf="tabId === 1" class="members-wrapper">
+        <app-team-members [teamQueue]="teamQueue"></app-team-members>
+      </div>
+      <div *ngIf="tabId === 2" class="settings-wrapper">
+        <app-team-settings [teamId]="teamQueue?.id"></app-team-settings>
+      </div>
     </div>
-    <div *ngIf="tabId === 1" class="members-wrapper">
-      <app-team-members></app-team-members>
-    </div>
-    <div *ngIf="tabId === 2" class="settings-wrapper">
-      <app-team-settings></app-team-settings>
+    <div *ngIf="tabId !== 2" class="aside-information">
+      <app-team-aside [teamQueue]="teamQueue"></app-team-aside>
     </div>
   </div>
 </div>

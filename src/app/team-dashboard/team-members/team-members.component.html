@@ -1,13 +1,10 @@
 <div class="team-members">
-  <div class="members">
-     <div class="member-wrapper">
+  <div *ngIf="allUsers" class="members">
+     <div *ngFor="let user of allUsers" class="member-wrapper">
         <img src="../../../assets/img/the-guy.jpeg">
         <div class="name-wrapper">
-          Aleksandur
+          {{  user.firstName }} {{ user.lastName }}
         </div>
      </div>
-  </div>
-  <div class="aside-information">
-    <app-team-aside></app-team-aside>
   </div>
 </div>

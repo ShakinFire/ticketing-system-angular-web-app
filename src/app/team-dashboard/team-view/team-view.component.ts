@@ -26,17 +26,9 @@ export class TeamViewComponent implements OnInit {
 
   teamQueueTab(id: number): void {
     this.teamViewService.getTeamAndTickets(id).subscribe((res) => {
-      console.log(res);
       this.teamQueue = res;
+      this.teamViewService.setTeamLead(this.teamQueue.teamLeadUser.id);
     });
-  }
-
-  membersTab(): void {
-
-  }
-
-  settingsTab(): void {
-
   }
 
   changeActive(id: number): void {
@@ -44,10 +36,6 @@ export class TeamViewComponent implements OnInit {
 
     if (id === 0) {
       this.teamQueueTab(this.id);
-    } else if (id === 1) {
-      // Members    
-    } else {
-      // Settings
     }
   }
 }

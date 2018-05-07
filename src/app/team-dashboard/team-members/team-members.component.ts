@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TeamQueue } from '../../models/teams/team-queue';
+import { TeamViewService } from '../team-view/team-view.service';
+import { FullNameUserInput } from '../../models/user/addMember';
 
 @Component({
   selector: 'app-team-members',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-members.component.css']
 })
 export class TeamMembersComponent implements OnInit {
-
-  constructor() { }
+  @Input() teamQueue: TeamQueue;
+  allUsers: FullNameUserInput[];
+  constructor(private teamViewService: TeamViewService) { }
 
   ngOnInit() {
+    this.getAllUsers();
+  }
+
+  getAllUsers(): void {
+    if (!this.allUsers) {
+      this.teamViewService.getAllTeamUsers(this.teamQueue.id).subscribe((res) => {
+        this.allUsers = res;
+      });
+    }
   }
 
 }

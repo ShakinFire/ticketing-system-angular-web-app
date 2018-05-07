@@ -40,7 +40,7 @@
       Due in 3 days
     </div>
     <div class="deadline">
-      on {{ ticket?.estimated }}
+      on {{ ticket?.estimated | amDifference: today: 'days': true }}
     </div>
   </div>
   <div class="about-author outline">

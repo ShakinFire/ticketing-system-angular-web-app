@@ -11,4 +11,5 @@ export class TeamQueue {
     totalMembers: number;
     teamUser: AssigneeTicketUsers;
     tickets: TeamQueueTicket[];
+    teamLeadUser: AssigneeTicketUsers;
 }

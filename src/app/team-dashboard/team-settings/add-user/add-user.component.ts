@@ -1,6 +1,8 @@
+import { TeamViewService } from './../../team-view/team-view.service';
 import { myTeamsDash } from './../../../models/teams/my-teams';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { FullNameUserInput } from '../../../models/user/addMember';
 
 @Component({
   selector: 'app-add-user',
@@ -8,17 +10,16 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  newUser: myTeamsDash;
-  test: myTeamsDash[];
-  constructor() { }
+  @Input() membersToAdd: FullNameUserInput[];
+  @Input() teamId: number;
+  newUser: FullNameUserInput;
+  message: string;
+  isError: boolean;
+  showHide: boolean;
+  constructor(private teamViewService: TeamViewService) { }
 
   ngOnInit() {
-    this.test = [
-      { id: 1, name: 'Gosho Enev' },
-      { id: 2, name: 'Toshko Toshef' },
-      { id: 3, name: 'Marq Mariikova' },
-      { id: 4, name: 'Penka Peneva' },
-    ]
+    this.showHide = false;
   }
 
   search = (text$: Observable<string>) =>
@@ -26,11 +27,27 @@ export class AddUserComponent implements OnInit {
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term => term.length < 1 ? []
-        : this.test.filter(member => member.name.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
+        : this.membersToAdd.filter(member => member.name.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
   
   formatter = (x: {name: string}) => x.name;
 
   addMember() {
-    console.log(this.newUser);
+    // *TODO: First we should send notification, and if the notification is accepted, then use this function to add the member
+    if (this.newUser.id) {
+      this.message = 'You successfully added ' + this.newUser.name + ' to the team!';
+      this.teamViewService.addNewUser({ id: this.newUser.id, teamId: this.teamId }).subscribe(() => { // subscribe returns the newly added member
+        this.isError = false;
+        this.showHide = true;
+        setTimeout(() => {
+          this.showHide = false;
+        }, 3000);
+      });
+    } else {
+      this.message = 'No such user found!';
+      this.isError = true;
+      this.showHide = true;
+    }
+
+    this.newUser = null;
   }
 }

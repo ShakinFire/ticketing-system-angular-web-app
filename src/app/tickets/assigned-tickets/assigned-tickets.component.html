@@ -19,7 +19,7 @@
         <div class="name-date">
           <div class="wrapper-name-date">
             <span class="full-name">{{ ticket.users.firstName }} {{ ticket.users.lastName }}</span>
-            <span class="date">{{ ticket.date }}</span>
+            <span class="date">{{ ticket.createdAt | amTimeAgo }}</span>
           </div>
         </div>
       </div>

@@ -3,21 +3,18 @@
     <div class="title-header">
       Recent Activity
     </div>
-    <div class="team-queue">
+    <div *ngFor="let ticket of teamQueue?.tickets" class="team-queue">
       <div class="image-wrapper">
         <img src="../../../assets/img/the-guy.jpeg">
       </div>
       <div class="information-wrapper">
         <div class="main-information">
-          <span class="full-name">Georgi Enev</span> assigned the ticket <span class="full-name">Get the newsletter</span> to <span class="full-name">Peter Penev</span>
+          <span class="full-name">{{ ticket?.requester?.firstName }} {{ ticket?.requester?.lastName }}</span> assigned the ticket <span class="full-name">{{ ticket?.title }}</span> to <span class="full-name">{{ ticket?.assignee?.firstName }} {{ ticket?.assignee?.lastName }}</span>
         </div>
         <div class="date">
-          52 minutes ago
+          {{ ticket?.createdAt }}
         </div>
       </div>
     </div>
-  </div>
-  <div class="aside-information">
-    <app-team-aside></app-team-aside>
   </div>
 </section>

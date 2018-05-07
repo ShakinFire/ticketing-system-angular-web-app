@@ -2,17 +2,18 @@
   <div class="title">
     Options
   </div>
-  <div class="team-lead-only">
-    <div class="add-form">
+  <app-error-success-message *ngIf="showHide" [isError]="isError" [message]="message"></app-error-success-message>
+  <div *ngIf="checkIfTeamLead()" class="team-lead-only">
+    <div>
       <label>Team name</label>
       <input placeholder="e.g. Team 1" type="text" [(ngModel)]="newTeamName" />
-      <button (click)="changeTeamName()">Change</button>
+      <button class="success-btn" (click)="changeTeamName()">Change</button>
     </div>
-    <div class="add-form description">
+    <div class="description">
       <label>Description</label>
       <div class="text-area-wrapper">
         <textarea placeholder="e.g. New event tomorrow" autosize type="text" [(ngModel)]="newTeamDescription"></textarea>
-        <button class="descr-btn" (click)="changeTeamDescription()">Change</button>
+        <button class="descr-btn success-btn" (click)="changeTeamDescription()">Change</button>
       </div>
     </div>
   </div>
@@ -20,7 +21,7 @@
     Crucial changes
   </div>
   <div class="danger-zone">
-    <div class="team-lead-danger-zone">
+    <div *ngIf="checkIfTeamLead()" class="team-lead-danger-zone">
       <div class="change-teamlead">
         <label>Change teamlead</label>
         <p>*This change will remove all your rights for this team as a team leader. Please be certain.</p>
@@ -31,7 +32,7 @@
         <button class="danger-btn" (click)="changeTeamLead()">Change Teamlead</button>
       </div>
     </div>
-    <div class="all-danger-zone">
+    <div [ngClass]="{'danger-zone-regular-user': !checkIfTeamLead()}" class="all-danger-zone">
       <ng-template windowClass="form-title input-field btn-modal footer-wrapper" #leaveTeam let-c="close" let-d="dismiss">
         <div class="modal-header">
           <h4 class="modal-title">Confirm Password</h4>
@@ -40,17 +41,21 @@
           </button>
         </div>
         <div class="modal-body">
+          <app-error-success-message *ngIf="modalShowHide" [isError]="isError" [message]="message"></app-error-success-message>
           <label class="form-title">*Confirm with your password before leaving the team</label>
-          <input placeholder="Enter password..." type="password" class="input-field" [(ngModel)]="assigneeModel" />
+          <input placeholder="Enter password..." type="password" class="input-field" [(ngModel)]="confirmPassword" />
         </div>
         <div class="footer-wrapper modal-footer">
-          <button (click)="leaveTeam()" (click)="c('Close click')" class="btn-modal">Change</button>
+          <button (click)="leaveCurrentTeam()" class="btn-modal">Leave</button>
           <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
         </div>
       </ng-template>
       <label>Leave team</label>
       <p>*This change will remove you from the team and you wouldn't be able to join the team yourself. Please be certain.</p>
-      <button class="danger-btn danger-leave-team-btn" (click)="leaveTeamModal(leaveTeam)">Leave Team</button>
+      <div class="danger-btn-wrapper">
+        <button [ngClass]="(checkIfTeamLead())?'disabled-btn':'danger-btn'" class="danger-leave-team-btn" [attr.disabled]="checkIfTeamLead()?'disabled':null" (click)="leaveTeamModal(leaveTeam)">Leave Team</button>
+        <p *ngIf="checkIfTeamLead()">You can't leave the team while you are the team lead. Please change the team lead first!</p>
+      </div>
     </div>
   </div>
 </div>

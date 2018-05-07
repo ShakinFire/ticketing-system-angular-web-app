@@ -7,10 +7,6 @@
     letter-spacing: 0.7px;
 }
 
-.options .add-form {
-    margin-left: 15px;
-}
-
 .options label {
     display: block;
     font-size: 14px;
@@ -28,8 +24,6 @@
 .options button {
     padding: 5px 10px;
     margin-left: 10px;
-    background: #25c16f;
-    border: 1px solid #1e9957;
     border-radius: 4px;
     color: white;
     cursor: pointer;
@@ -60,6 +54,7 @@
     border: 1px solid rgb(180, 55, 55);
     border-radius: 4px;
     padding: 15px;
+    margin-bottom: 25px;
 }
 
 .options .danger-zone p {
@@ -67,18 +62,43 @@
     font-size: 14px;
 }
 
-.options .danger-zone .danger-btn {
-    background: #a83636;
-    border: 1px solid #6b2424;
-}
-
 .options .all-danger-zone {
     margin-top: 25px;
 }
 
 .options .all-danger-zone .danger-leave-team-btn {
-    margin-top: 5px;
     margin-left: 0;
+}
+
+.danger-btn {
+    background: #a83636;
+    border: 1px solid #6b2424;
+}
+
+.success-btn {
+    background: #25c16f;
+    border: 1px solid #1e9957;
+}
+
+.disabled-btn {
+    background: rgb(177, 177, 177);
+    border: 1px solid rgb(136, 136, 136);
+    cursor: default !important;
+}
+
+.options .danger-btn-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.options .danger-btn-wrapper p {
+    margin-top: 0;
+    margin-left: 10px;
+    color: #a83636;
+}
+
+.danger-zone-regular-user {
+    margin-top: 0 !important;
 }
 
 /* ng-bootstrap modal */

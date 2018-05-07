@@ -120,7 +120,7 @@ export class GenerateTicketsComponent implements OnInit {
     if (this.errorMessage) {
       this.isError = true;
     } else {
-      // ticketForm.value.status = 'open'
+      this.isError = false;
       const assigneeUserId = this.assigneeUsers.find(x => x.name === ticketForm.value.assigneeName);
       ticketForm.value.assigneeId = assigneeUserId.id;
 

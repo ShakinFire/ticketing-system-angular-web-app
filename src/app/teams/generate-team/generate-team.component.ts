@@ -93,6 +93,7 @@ export class GenerateTeamComponent implements OnInit {
           nameType: teamsForm.value.name,
           userId: item
         };
+        console.log(obj);
         this.nService.addNotification(obj).subscribe(data => {
           console.log(data)
         });

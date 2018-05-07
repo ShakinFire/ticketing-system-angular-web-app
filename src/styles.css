@@ -1,64 +1,133 @@
 /* You can add global styles to this file, and also import other style files */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-    border: 0;
-    box-sizing: border-box;
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    /* background: red; */
-    font-family: 'National-Book',Helvetica,sans-serif;
-    color: #4d4d4d;
-
-    /* prevent fixed nav */
-    padding-top: 66px;
-
-    /* prevent sticky footer overlap */
-    position: relative;
-    min-height: 100%;
-    padding-bottom: 156px;
+  /* background: red; */
+  font-family: 'National-Book', Helvetica, sans-serif;
+  color: #4d4d4d;
+  /* prevent fixed nav */
+  padding-top: 66px;
+  /* prevent sticky footer overlap */
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 156px;
 }
 
-a, a:hover {
-    color: #4d4d4d;
-    text-decoration: none;
+a,
+a:hover {
+  color: #4d4d4d;
+  text-decoration: none;
 }
 
-.open, .reopened {
-    background: #3ec435;
+.open,
+.reopened {
+  background: #3ec435;
 }
 
 .inprogress {
-    background: #2a81bb
+  background: #2a81bb
 }
 
 .closed {
-    background: #a83636;
+  background: #a83636;
 }
 
 .completed {
-    background: #fc7553;
+  background: #fc7553;
 }
 
 .break-long-words {
-/* for breaking long letter words */
+  /* for breaking long letter words */
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -69,21 +138,26 @@ a, a:hover {
 }
 
 .activeTab {
-    border-top: 3px solid #25c16f;
-    border-right: 1px solid rgb(192, 192, 192);
-    border-bottom: 1px solid white;
-    border-left: 1px solid rgb(192, 192, 192);
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-    font-weight: bold;
+  border-top: 3px solid #25c16f;
+  border-right: 1px solid rgb(192, 192, 192);
+  border-bottom: 1px solid white;
+  border-left: 1px solid rgb(192, 192, 192);
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  font-weight: bold;
 }
 
 .outline {
-    border: 1px solid rgb(192, 192, 192);
-    border-radius: 4px;
-    background: rgb(248, 248, 248);
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 4px;
+  background: rgb(248, 248, 248);
+  flex-basis: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+}
 
-    flex-basis: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
+.mandatory ::before {
+  content: "*";
+  margin-right: 6px;
+  color: red;
 }

@@ -20,6 +20,7 @@ export class TeamMembersComponent implements OnInit {
   getAllUsers(): void {
     if (!this.allUsers) {
       this.teamViewService.getAllTeamUsers(this.teamQueue.id).subscribe((res) => {
+        console.log(res);
         this.allUsers = res;
       });
     }

@@ -103,15 +103,15 @@ export class GenerateTicketsComponent implements OnInit {
 
 
   ticketFormsData(ticketForm: NgForm) {
-    console.log(ticketForm);
+    console.log(ticketForm.value);
     this.errorMessage = this.validate(ticketForm.value);
 
-    if (this.errorMessage) {
-      this.isError = true;
-    } else {
+    // if (this.errorMessage) {
+    //   this.isError = true;
+    // } else {
       this.isError = false;
       const assigneeUserId = this.users.find(x => x.name === ticketForm.value.assigneeName);
-      ticketForm.value.assigneeId = this.users.id;
+      ticketForm.value.assigneeId = assigneeUserId.id;
 
       const requesterUserId = this.users.find(x => x.name === ticketForm.value.requesterName);
       ticketForm.value.userId = requesterUserId.id;
@@ -132,7 +132,7 @@ export class GenerateTicketsComponent implements OnInit {
       this.ticketService.addTicket(ticketForm.value);
 
       ticketForm.resetForm();
-    }
+    // }
   }
 
 }

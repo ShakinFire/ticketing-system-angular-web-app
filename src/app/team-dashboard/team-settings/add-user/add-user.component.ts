@@ -30,7 +30,7 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {
     this.showHide = false;
-    this.teamViewService.getTeamName(this.teamId).subscribe(res => {
+    this.teamViewService.getTeamName(this.teamId).map(res => res as { teamName: string }).subscribe(res => {
       this.teamName = res.teamName;
       this.user = this.authService.getUser();
       console.log(this.user.firstName);

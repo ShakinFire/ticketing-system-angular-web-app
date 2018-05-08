@@ -23,5 +23,7 @@ export class TeamsService {
         return this.req.post('/addUserInTeam', team);
     }
 
-
+    getTeamId(name) {
+        return this.req.get('/getTeamId/' + name);
+    }
 }

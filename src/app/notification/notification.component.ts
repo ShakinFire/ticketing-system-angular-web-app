@@ -7,6 +7,7 @@ import { NewNotification } from '../models/notifications/new-notification';
 import { AuthService } from '../core/auth/auth.service';
 import { TokenUser } from '../models/user/token-user';
 import { TicketsService } from '../tickets/tickets.service';
+import { MyTeamsDashboardService } from '../tickets/my-teams-dashboard/my-teams-dashboard.service';
 
 
 @Component({
@@ -18,10 +19,11 @@ export class NotificationComponent implements OnInit {
   notifications: NewNotification[];
   user: TokenUser;
   ticket: any;
+  team: any;
 
   constructor(private readonly notifService: NotificationService, private teamService: TeamsService,
     private authService: AuthService, private ticketService: TicketsService,
-    private viewTicketService: AssignedTicketsService) { }
+    private viewTicketService: AssignedTicketsService, private teamViewService: MyTeamsDashboardService) { }
 
   ngOnInit() {
     this.user = this.authService.getUser();
@@ -53,6 +55,11 @@ export class NotificationComponent implements OnInit {
     });
   }
   viewTeam(name) {
-
+    this.teamService.getTeamId(name).subscribe(res => {
+      this.team = res;
+      console.log(this.team);
+      const teamId = this.team.id;
+      this.teamViewService.goToTeam(teamId);
+    });
   }
 }

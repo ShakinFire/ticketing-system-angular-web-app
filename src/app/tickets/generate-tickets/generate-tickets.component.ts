@@ -22,20 +22,13 @@ export class GenerateTicketsComponent implements OnInit {
   public teamss: any;
   public requester: any;
   public assignee: any;
-  teamsis = [];
-  ticket = new Ticket();
   teams: any[];
-  ticketData: Object;
   errorMessage: string;
   isError: boolean;
-  usersRequester: any;
-  usersAssignee: any;
-  submited = false;
-  assigneeUsers: any;
-  requerterUsers: any;
+  users: any;
+  usersReqAs: any;
   userId: number;
-  us: any;
-  user: TokenUser;
+
 
   constructor(private ticketService: TicketsService, private config: NgbTypeaheadConfig,
     private notService: NotificationService, private authService: AuthService) {
@@ -89,12 +82,8 @@ export class GenerateTicketsComponent implements OnInit {
   fun() {
 
     this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
-      this.requerterUsers = data.users;
-      this.usersRequester = this.requerterUsers.map(x => x.name);
-    });
-    this.ticketService.getTeamUsers(this.teamss).subscribe(data => {
-      this.assigneeUsers = data.users;
-      this.usersAssignee = this.assigneeUsers.map(x => x.name);
+      this.users = data.users;
+      this.usersReqAs = this.users.map(x => x.name);
     });
   }
 
@@ -103,14 +92,14 @@ export class GenerateTicketsComponent implements OnInit {
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term => term.length < 1 ? []
-        : this.usersRequester.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
+        : this.usersReqAs.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
 
   searchAssignee = (text$: Observable<string>) =>
     text$
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term => term.length < 1 ? []
-        : this.usersAssignee.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
+        : this.usersReqAs.filter(v => v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
 
 
   ticketFormsData(ticketForm: NgForm) {
@@ -120,11 +109,11 @@ export class GenerateTicketsComponent implements OnInit {
     if (this.errorMessage) {
       this.isError = true;
     } else {
-      // ticketForm.value.status = 'open'
-      const assigneeUserId = this.assigneeUsers.find(x => x.name === ticketForm.value.assigneeName);
-      ticketForm.value.assigneeId = assigneeUserId.id;
+      this.isError = false;
+      const assigneeUserId = this.users.find(x => x.name === ticketForm.value.assigneeName);
+      ticketForm.value.assigneeId = this.users.id;
 
-      const requesterUserId = this.requerterUsers.find(x => x.name === ticketForm.value.requesterName);
+      const requesterUserId = this.users.find(x => x.name === ticketForm.value.requesterName);
       ticketForm.value.userId = requesterUserId.id;
 
       ticketForm.value.status = 'OPEN';

@@ -1,48 +1,62 @@
 <div class="home-wrapper">
   <div class="row container page-wraper text-center mrg ">
     <div class="col-md-8 text-center all-forms forms-wrapper cold">
-      <h1>Create ticket:</h1>
+      <h1>Create ticket</h1>
       <div class="sign-in-form">
         <div *ngIf="isError" class="error-message">
           {{ errorMessage }}
         </div>
         <form #ticketForm='ngForm' (ngSubmit)='ticketFormsData(ticketForm)' return='falce'>
-          <div class="form-group">
-            <label for='title'>Title:</label>
-            <input type='text' name='title' required ngModel>
-            <label for='labels'>Label:</label>
-            <input type='text' name='labels' required ngModel>
+          <div class="form-group ">
+            <label for='title'>
+              <span class="star">*</span>Title:</label>
+            <input type='text' name='title' (click)='isError=false' required ngModel>
+          </div>
+          <div class="form-group ">
+            <label for='labels'>
+              <span class="star">*</span>Label:</label>
+            <input type='text' name='labels' (click)='isError=false' required ngModel>
           </div>
           <div class="form-group">
-            <label for='description'>Description:</label>
-            <textarea class="form-control" name='description' required ngModel></textarea>
+            <label for='description'>
+              <span class="star">*</span>Description:</label>
+            <textarea class="form-control " name='description' (click)='isError=false' required ngModel></textarea>
           </div>
           <div class="form-group">
-            <label for='team'>Choose a team:</label>
-            <input id='team' name='team' type='text' class='form-control' [(ngModel)]='teamss' [ngbTypeahead]="searchTeam" />
+            <label for='team'>
+              <span class="star">*</span>Choose a team:</label>
+            <input id='team' name='team' type='text' class='form-control' (keyup.enter)='fun()' (select)='fun()' (click)=' isError=false'
+              [(ngModel)]='teamss' [ngbTypeahead]="searchTeam" />
           </div>
           <div class="form-group">
-            <label for="requesterName">Requester:</label>
-            <input id="requesterName" name='requesterName' type="text" (click)='fun()' class="form-control" [(ngModel)]="requester" [ngbTypeahead]="searchRequester"
+            <label for="requesterName">
+              <span class="star">*</span>Requester:</label>
+            <input id="requesterName" name='requesterName' type="text" class="form-control" [(ngModel)]="requester" [ngbTypeahead]="searchRequester"
             />
           </div>
           <div class="form-group">
-            <label for="assigneeName">Assignee:</label>
-            <input id="assigneeName" name='assigneeName' type="text" class="form-control" [(ngModel)]="assignee" [ngbTypeahead]="searchAssignee"
-            />
+            <label for="assigneeName">
+              <span class="star">*</span>Assignee:</label>
+            <input id="assigneeName" name='assigneeName' type="text" class="form-control" (click)='isError=false' [(ngModel)]="assignee"
+              [ngbTypeahead]="searchAssignee" />
 
           </div>
           <!-- <input type='hidden' name='status' [ngModel]='isOpen' required> -->
           <div class="form-group">
-            <label for='estimated'>Estimated:</label>
+            <label for='estimated'>
+              <span class="star">*</span>Estimated:</label>
             <input type='date' class="form-control" name='estimated' required ngModel>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for='attach'>Attach:</label>
             <input type='text' class="form-control" name='attach' ngModel>
+          </div> -->
+          <div *ngIf="isError" class="error-message">
+            {{ errorMessage }}
           </div>
-          <button>Create</button>
-
+          <div class="form-group">
+            <button>Create</button>
+          </div>
         </form>
       </div>
     </div>

@@ -2,17 +2,18 @@ import { TokenUser } from './../../../models/user/token-user';
 import { FullNameUserInput } from './../../../models/user/addMember';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TeamViewService } from '../../team-view/team-view.service';
 import { AuthService } from '../../../core/auth/auth.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../../notification/notification.service';
 
 @Component({
   selector: 'app-options',
   templateUrl: './options.component.html',
   styleUrls: ['./options.component.css'],
-  providers: [ NgbTypeaheadConfig ],
+  providers: [NgbTypeaheadConfig],
 })
 export class OptionsComponent implements OnInit {
   @Input() teamId: number;
@@ -28,12 +29,17 @@ export class OptionsComponent implements OnInit {
   loggedUser: TokenUser;
   modalRef: NgbModalRef;
   newTeamLead: FullNameUserInput;
-  constructor(private modalService: NgbModal, private teamViewService: TeamViewService, private authService: AuthService, private router: Router) { }
+  teamName: string;
+  constructor(private modalService: NgbModal, private teamViewService: TeamViewService, private authService: AuthService, private router: Router,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.showHide = false;
     this.modalShowHide = false;
     this.loggedUser = this.authService.getUser();
+    this.teamViewService.getTeamName(this.teamId).subscribe(res => {
+      this.teamName = res.teamName;
+    });
   }
 
   search = (text$: Observable<string>) =>
@@ -42,8 +48,8 @@ export class OptionsComponent implements OnInit {
       .distinctUntilChanged()
       .map(term => term.length < 1 ? []
         : this.allTeamUsers.filter(user => user.name.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10));
-  
-  formatter = (x: {name: string}) => x.name;
+
+  formatter = (x: { name: string }) => x.name;
 
   changeTeamName(): void {
     if (this.newTeamName.length > 3) {
@@ -52,7 +58,7 @@ export class OptionsComponent implements OnInit {
     } else {
       this.changeToError('The team name must be at least 4 characters');
     }
-    
+
     this.newTeamName = '';
   }
 
@@ -63,7 +69,7 @@ export class OptionsComponent implements OnInit {
     } else {
       this.changeToError('The description must be at least 4 characters');
     }
-    
+
     this.newTeamDescription = '';
   }
 
@@ -71,7 +77,16 @@ export class OptionsComponent implements OnInit {
     const teamLeadId: number = this.newTeamLead.id;
     if (teamLeadId) {
       this.teamViewService.changeTeamLeadUser({ userId: this.newTeamLead.id, teamId: this.teamId }).subscribe((res) => {
-        // *TODO: Should send a notification to the new team lead user
+        const notification = {
+          content: `${this.loggedUser.firstName} indicated you for the new Team Lead Team ${this.teamName} `,
+          type: 'viewTeam',
+          nameType: this.teamName,
+          userId: teamLeadId,
+        }
+        console.log(notification);
+        this.notificationService.addNotification(notification).subscribe(res => {
+          console.log(res);
+        });
         this.teamViewService.setTeamLead(teamLeadId);
         this.showHide = false;
       });
@@ -83,7 +98,7 @@ export class OptionsComponent implements OnInit {
   }
 
   leaveTeamModal(content): void {
-    this.modalShowHide = false;    
+    this.modalShowHide = false;
     this.modalRef = this.modalService.open(content);
   }
 

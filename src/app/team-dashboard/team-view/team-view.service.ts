@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { AssigneeTicketUsers } from '../../models/tickets/assigned-ticket-users';
 import { FullNameUserInput } from '../../models/user/addMember';
 
+
 @Injectable()
 export class TeamViewService {
   teamLeadId: number;
@@ -21,6 +22,10 @@ export class TeamViewService {
   getAllTeamUsers(id: number): Observable<FullNameUserInput[]> {
     const route: string = '/getAllUsersOnTeam/' + id;
     return this.reqService.get(route).pipe(map(res => res as FullNameUserInput[]));
+  }
+  getTeamName(id: number) {
+    const route: string = '/getTeamName/' + id;
+    return this.reqService.get(route);
   }
 
   usersForAddMember(id: number): Observable<FullNameUserInput[]> {
@@ -59,4 +64,6 @@ export class TeamViewService {
   setTeamLead(id): void {
     this.teamLeadId = id;
   }
+
+
 }

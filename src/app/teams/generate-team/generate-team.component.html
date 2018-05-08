@@ -1,15 +1,16 @@
 <div class="home-wrapper">
   <div class="row container page-wraper text-center mrg ">
     <div class="col-md-6 text-center all-forms forms-wrapper cold">
-      <h1>Create team:</h1>
+      <h1>Create team</h1>
       <div class="sign-in-form">
         <div *ngIf="isError" class="error-message">
           {{ errorMessage }}
         </div>
         <form #teamsForm='ngForm' (ngSubmit)='teamsFormsData(teamsForm)' return='falce'>
           <div class="form-group">
-            <label>Title:</label>
-            <input type='text' name='name' required ngModel>
+            <label>
+              <span class="star">*</span>Title:</label>
+            <input type='text' name='name' (click)='isError=false' required ngModel>
           </div>
           <div class="form-group">
             <label>Description:</label>
@@ -28,7 +29,9 @@
 
             </div>
           </div>
-          <button>Create</button>
+          <div class="form-group">
+            <button>Create</button>
+          </div>
         </form>
       </div>
     </div>

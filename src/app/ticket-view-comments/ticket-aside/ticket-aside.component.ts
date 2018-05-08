@@ -134,7 +134,7 @@ export class TicketAsideComponent implements OnInit {
       };
       this.requesterModel.name = '';
       this.ticketView.newRequester(oldNewRequester).subscribe((res) => {
-        // *TODO: Send notification about the change of the reqester
+
         const notificationNewRequest = {
           content: `${this.loggedUser.firstName} requested you a ticket ${this.ticket.title}`,
           type: 'ticket',
@@ -163,7 +163,7 @@ export class TicketAsideComponent implements OnInit {
   changeStatus(status: string): boolean {
     if (this.ticket.status !== status) {
       if (status === 'COMPLETED') {
-        // *TODO: Send notification to the requester
+
         const notificationCompleted = {
           content: `the tickets ${this.ticket.title} is COMPLETED`,
           type: 'ticket',

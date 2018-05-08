@@ -16,18 +16,18 @@
         <div class="forms-wrapper">
           <div class="row forms-switch">
             <a [ngClass]="{'active': !formSwitch}" (click)="formSwitch && formShow()" class="col-lg-6 forms-top-btn">Sign in</a>
-            <a [ngClass]="{'active': formSwitch}"(click)="!formSwitch && formShow()" class="col-lg-6 forms-top-btn" >Register</a>
+            <a [ngClass]="{'active': formSwitch}" (click)="!formSwitch && formShow()" class="col-lg-6 forms-top-btn">Register</a>
           </div>
           <div *ngIf="isError" class="error-message">
             {{ errorMessage }}
           </div>
           <div *ngIf="!formSwitch" class="sign-in-form">
             <form #signInForm="ngForm" (ngSubmit)="onLogin(signInForm, '/login')">
-              <div class="form-group">
+              <div class="form-group ">
                 <label>Email</label>
                 <input type="email" name="email" required ngModel>
               </div>
-              <div class="form-group">
+              <div class="form-group ">
                 <label>Password</label>
                 <input type="password" name="password" required ngModel>
               </div>
@@ -37,33 +37,38 @@
           </div>
           <div *ngIf="formSwitch" class="register-form">
             <form #signUpForm="ngForm" (ngSubmit)="onLogin(signUpForm, '/register')">
-                <div class="form-group">
-                  <label>First name</label>
-                  <input name="firstName" type="text" ngModel>
-                </div>
-                <div class="form-group">
-                  <label>Last Name</label>
-                  <input name="lastName" type="text" ngModel>
-                </div>
-                <div class="form-group">
-                  <label>Email</label>
-                  <input name="email" type="text" ngModel>
-                </div>
-                <div class="form-group">
-                  <label>Password</label> 
-                  <input name="password" type="password" ngModel>
-                </div>
-                <div class="form-group">
-                  <label>Repeat password</label>
-                  <input name="repeatPassword" type="password" ngModel>
-                </div>
-                <button>Register</button>
-              </form>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>First name</label>
+                <input name="firstName" type="text" ngModel>
+              </div>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Last Name</label>
+                <input name="lastName" type="text" ngModel>
+              </div>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Email</label>
+                <input name="email" type="text" ngModel>
+              </div>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Password</label>
+                <input name="password" type="password" ngModel>
+              </div>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Repeat password</label>
+                <input name="repeatPassword" type="password" ngModel>
+              </div>
+              <button>Register</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-<!-- auth testing -->
-<!-- <button (click)="onAuth()">Test Auth</button> -->
+  <!-- auth testing -->
+  <!-- <button (click)="onAuth()">Test Auth</button> -->
 </section>

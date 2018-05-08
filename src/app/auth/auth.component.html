@@ -23,11 +23,11 @@
           </div>
           <div *ngIf="!formSwitch" class="sign-in-form">
             <form #signInForm="ngForm" (ngSubmit)="onLogin(signInForm, '/login')">
-              <div class="form-group mandatory">
+              <div class="form-group ">
                 <label>Email</label>
                 <input type="email" name="email" required ngModel>
               </div>
-              <div class="form-group mandatory">
+              <div class="form-group ">
                 <label>Password</label>
                 <input type="password" name="password" required ngModel>
               </div>
@@ -37,24 +37,29 @@
           </div>
           <div *ngIf="formSwitch" class="register-form">
             <form #signUpForm="ngForm" (ngSubmit)="onLogin(signUpForm, '/register')">
-              <div class="form-group mandatory">
-                <label>First name</label>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>First name</label>
                 <input name="firstName" type="text" ngModel>
               </div>
-              <div class="form-group mandatory">
-                <label>Last Name</label>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Last Name</label>
                 <input name="lastName" type="text" ngModel>
               </div>
-              <div class="form-group mandatory">
-                <label>Email</label>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Email</label>
                 <input name="email" type="text" ngModel>
               </div>
-              <div class="form-group mandatory">
-                <label>Password</label>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Password</label>
                 <input name="password" type="password" ngModel>
               </div>
-              <div class="form-group mandatory">
-                <label>Repeat password</label>
+              <div class="form-group ">
+                <label>
+                  <span class="star">*</span>Repeat password</label>
                 <input name="repeatPassword" type="password" ngModel>
               </div>
               <button>Register</button>

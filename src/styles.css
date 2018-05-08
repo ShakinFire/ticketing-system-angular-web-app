@@ -156,8 +156,7 @@ a:hover {
   margin-bottom: 15px;
 }
 
-.mandatory ::before {
-  content: "*";
-  margin-right: 6px;
+.star {
   color: red;
+  padding-right: 5px;
 }

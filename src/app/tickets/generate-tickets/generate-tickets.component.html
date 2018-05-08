@@ -7,38 +7,45 @@
           {{ errorMessage }}
         </div>
         <form #ticketForm='ngForm' (ngSubmit)='ticketFormsData(ticketForm)' return='falce'>
-          <div class="form-group mandatory ">
-            <label for='title'>Title:</label>
+          <div class="form-group ">
+            <label for='title'>
+              <span class="star">*</span>Title:</label>
             <input type='text' name='title' (click)='isError=false' required ngModel>
           </div>
-          <div class="form-group mandatory ">
-            <label for='labels'>Label:</label>
+          <div class="form-group ">
+            <label for='labels'>
+              <span class="star">*</span>Label:</label>
             <input type='text' name='labels' (click)='isError=false' required ngModel>
           </div>
-          <div class="form-group mandatory">
-            <label for='description'>Description:</label>
+          <div class="form-group">
+            <label for='description'>
+              <span class="star">*</span>Description:</label>
             <textarea class="form-control " name='description' (click)='isError=false' required ngModel></textarea>
           </div>
-          <div class="form-group mandatory">
-            <label for='team'>Choose a team:</label>
-            <input id='team' name='team' type='text' class='form-control' (click)='isError=false' [(ngModel)]='teamss' [ngbTypeahead]="searchTeam"
+          <div class="form-group">
+            <label for='team'>
+              <span class="star">*</span>Choose a team:</label>
+            <input id='team' name='team' type='text' class='form-control' (keyup.enter)='fun()' (select)='fun()' (click)=' isError=false'
+              [(ngModel)]='teamss' [ngbTypeahead]="searchTeam" />
+          </div>
+          <div class="form-group">
+            <label for="requesterName">
+              <span class="star">*</span>Requester:</label>
+            <input id="requesterName" name='requesterName' type="text" class="form-control" [(ngModel)]="requester" [ngbTypeahead]="searchRequester"
             />
           </div>
-          <div class="form-group mandatory">
-            <label for="requesterName">Requester:</label>
-            <input id="requesterName" name='requesterName' type="text" (click)="'fun()'; 'isError=false'" class="form-control" [(ngModel)]="requester"
-              [ngbTypeahead]="searchRequester" />
-          </div>
-          <div class="form-group mandatory">
-            <label for="assigneeName">Assignee:</label>
+          <div class="form-group">
+            <label for="assigneeName">
+              <span class="star">*</span>Assignee:</label>
             <input id="assigneeName" name='assigneeName' type="text" class="form-control" (click)='isError=false' [(ngModel)]="assignee"
               [ngbTypeahead]="searchAssignee" />
 
           </div>
           <!-- <input type='hidden' name='status' [ngModel]='isOpen' required> -->
-          <div class="form-group mandatory">
-            <label for='estimated'>Estimated:</label>
-            <input type='date' class="form-control" name='estimated' (click)='isError=false' required ngModel>
+          <div class="form-group">
+            <label for='estimated'>
+              <span class="star">*</span>Estimated:</label>
+            <input type='date' class="form-control" name='estimated' required ngModel>
           </div>
           <!-- <div class="form-group">
             <label for='attach'>Attach:</label>

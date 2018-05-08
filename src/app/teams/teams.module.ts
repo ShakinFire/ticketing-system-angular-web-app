@@ -9,11 +9,11 @@ import { TicketsModule } from '../tickets/tickets.module';
 import { TeamsService } from './generate-team/teams.service';
 import { NotificationModule } from '../notification/notification.module';
 import { NotificationService } from '../notification/notification.service';
-
-
+import { TeamsRoutingModule } from './teams-routing.module';
 
 @NgModule({
   imports: [
+    TeamsRoutingModule,
     CommonModule,
     FormsModule,
     NgbTypeaheadModule,

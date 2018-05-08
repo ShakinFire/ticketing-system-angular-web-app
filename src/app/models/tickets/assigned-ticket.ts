@@ -1,4 +1,5 @@
 import { AssigneeTicketUsers } from './assigned-ticket-users';
+import { TeamResponse } from '../teams/my-team-response';
 
 export class AssigneeTicket {
     createdAt: string;
@@ -10,4 +11,5 @@ export class AssigneeTicket {
     userId: number;
     users: AssigneeTicketUsers;
     totalComments: number;
+    teams: TeamResponse;
 }

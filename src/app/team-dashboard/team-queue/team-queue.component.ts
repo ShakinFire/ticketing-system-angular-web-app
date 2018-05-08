@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TeamQueue } from '../../models/teams/team-queue';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-queue',
@@ -8,9 +9,14 @@ import { TeamQueue } from '../../models/teams/team-queue';
 })
 export class TeamQueueComponent implements OnInit {
   @Input() teamQueue: TeamQueue;
-  constructor() { }
+  constructor(private router: Router) { }
   
   ngOnInit() {
+  }
+
+  goToTicket(ticketId: number): void {
+    const route: string = '/ticket-view/' + ticketId;
+    this.router.navigateByUrl(route);
   }
 
 }

@@ -1,12 +1,12 @@
 <div class="create-comment">
   <div class="empty-space">
-      <img src="../../../assets/img/the-guy.jpeg">
+      <img src="../../../assets/img/the-guy.png">
   </div>
   <form #newComment="ngForm" (ngSubmit)="addComment(newComment)">
     <div class="title">
       Leave a reply
     </div>
-    <textarea (keydown.enter)="addComment(newComment);false" autosize name="content" placeholder="Comment something..." ngModel></textarea>
+    <textarea (keydown.enter)="addComment(newComment);false" name="content" placeholder="Comment something..." ngModel></textarea>
     <div class="button-wrapper">
       <button>Reply</button>
     </div>

@@ -37,7 +37,7 @@ export class OptionsComponent implements OnInit {
     this.showHide = false;
     this.modalShowHide = false;
     this.loggedUser = this.authService.getUser();
-    this.teamViewService.getTeamName(this.teamId).subscribe(res => {
+    this.teamViewService.getTeamName(this.teamId).map(res => res as { teamName: string}).subscribe(res => {
       this.teamName = res.teamName;
     });
   }

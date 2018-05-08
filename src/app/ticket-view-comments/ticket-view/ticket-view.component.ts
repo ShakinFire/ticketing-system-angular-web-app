@@ -39,7 +39,6 @@ export class TicketViewComponent implements OnInit {
   commentFromChild(commentData) {
     this.ticketView.postComment(commentData).subscribe((res) => {
       this.ticket.comments.push(res.comment);
-      console.log(this.ticket.comments);
     });
     const notificationNewComentfromAssignee = {
       content: `${this.loggedUser.firstName} comment ticket ${this.ticket.title}`,

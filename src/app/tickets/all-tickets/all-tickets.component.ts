@@ -47,7 +47,6 @@ export class AllTicketsComponent implements OnInit {
   assignedTicketsTab(): void {
     this.assignedTickets.getAssigneeTicket()
       .subscribe((res) => {
-        console.log(res.tickets);
         this.assigTickets = res.tickets;
 
         if (this.assigTickets.length === 0) {
@@ -74,7 +73,6 @@ export class AllTicketsComponent implements OnInit {
     this.teamService.getMyTeams()
       .subscribe((res) => {
         this.myTeams = res.teams;
-        console.log(this.myTeams);
         if (this.myTeams.length === 0) {
           this.notingHereSwitch = true;
         } else {

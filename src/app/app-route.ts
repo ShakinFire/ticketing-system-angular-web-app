@@ -22,16 +22,16 @@ export const ROUTES: Routes = [
     {
         path: 'team-view', loadChildren: './team-dashboard/team-dashboard.module#TeamDashboardModule'
     },
-    {
-        path: 'create-ticket', loadChildren: './tickets/tickets.module#TicketsModule'
-    },
-    // { path: 'create-ticket', component: GenerateTicketsComponent },  
-    {
-        path: 'notification', loadChildren: './notification/notification.module#NotificationModule'
-    },
-    // { path: 'notification', component: NotificationComponent }
-    {
-        path: 'create-team', loadChildren: './teams/teams.module#TeamsModule'
-    },
-    // { path: 'create-team', component: GenerateTeamComponent },
+    // {
+    //     path: 'create-team', loadChildren: './teams/teams.module#TeamsModule'
+    // },
+    // {
+    //     path: '', pathMatch: 'full', loadChildren: './tickets/tickets.module#TicketsModule'
+    // },
+    // {
+    //     path: 'notification', loadChildren: './notification/notification.module#NotificationModule'
+    // },
+    { path: 'create-ticket', component: GenerateTicketsComponent },
+    { path: 'create-team', component: GenerateTeamComponent },
+    { path: 'notification', component: NotificationComponent }
 ];

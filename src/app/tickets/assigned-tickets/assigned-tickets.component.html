@@ -1,10 +1,13 @@
 <section class="assigned-tickets">
   <div class="ticket">
     <div class="left-side-ticket">
-      <img src="../../../assets/img/the-guy.jpeg">
+      <img src="../../../assets/img/the-guy.png">
       <div class="main-info">
         <div class="title-status-label">
           <div class="wrapper-slt">
+            <a (click)="goToTeam(ticket?.teams[0].id)" class="team-name">
+              {{ ticket?.teams[0].name }}
+            </a>
             <span [appLabelStatusColor]="ticket.status" class="status info">
               {{ ticket.status }}
             </span>
@@ -19,7 +22,7 @@
         <div class="name-date">
           <div class="wrapper-name-date">
             <span class="full-name">{{ ticket.users.firstName }} {{ ticket.users.lastName }}</span>
-            <span class="date">{{ ticket.createdAt | amTimeAgo }}</span>
+            <span class="date">{{ ticket.createdAt | amFromUtc | amDateFormat: 'YYYY-MM-DD' }}</span>
           </div>
         </div>
       </div>

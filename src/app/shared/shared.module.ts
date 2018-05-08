@@ -1,4 +1,3 @@
-import { Autosize } from 'ng-autosize';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WordBreakPipe } from './word-break/word-break.pipe';
@@ -16,7 +15,6 @@ import { ErrorSuccessMessageComponent } from './error-success-message/error-succ
     LabelStatusColorDirective,
     SetAttributeDirective,
     NothingHereComponent,
-    Autosize,
     ErrorSuccessMessageComponent,
 
   ],
@@ -25,7 +23,6 @@ import { ErrorSuccessMessageComponent } from './error-success-message/error-succ
     LabelStatusColorDirective,
     SetAttributeDirective,
     NothingHereComponent,
-    Autosize,
     ErrorSuccessMessageComponent,
   ]
 })

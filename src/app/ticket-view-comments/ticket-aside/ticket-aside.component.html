@@ -37,10 +37,10 @@
       </div>
     </div>
     <div class="due-in">
-      Due in 3 days
+      Due in {{ ticket?.estimated | amDifference: today: 'days'}} day/s
     </div>
     <div class="deadline">
-      on {{ ticket?.estimated | amDifference: today: 'days': true }}
+      on {{ ticket?.estimated | amUtc | amDateFormat: 'YYYY-MM-DD' }}
     </div>
   </div>
   <div class="about-author outline">
@@ -74,7 +74,7 @@
     </div>
     <div class="picture-name">
       <div class="img-wrapper">
-        <img src="../../../assets/img/the-guy.jpeg">
+        <img src="../../../assets/img/the-guy.png">
       </div>
       <div class="full-name">
         {{ assignee?.firstName }} {{ assignee?.lastName }}
@@ -116,7 +116,7 @@
     </div>
     <div class="picture-name">
       <div class="img-wrapper">
-        <img src="../../../assets/img/the-guy.jpeg">
+        <img src="../../../assets/img/the-guy.png">
       </div>
       <div class="full-name">
         {{ requester?.firstName }} {{ requester?.lastName }}

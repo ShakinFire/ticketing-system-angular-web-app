@@ -5,14 +5,14 @@
     </div>
     <div *ngFor="let ticket of teamQueue?.tickets" class="team-queue">
       <div class="image-wrapper">
-        <img src="../../../assets/img/the-guy.jpeg">
+        <img src="../../../assets/img/the-guy.png">
       </div>
       <div class="information-wrapper">
         <div class="main-information">
-          <span class="full-name">{{ ticket?.requester?.firstName }} {{ ticket?.requester?.lastName }}</span> assigned the ticket <span class="full-name">{{ ticket?.title }}</span> to <span class="full-name">{{ ticket?.assignee?.firstName }} {{ ticket?.assignee?.lastName }}</span>
+          <span class="full-name">{{ ticket?.requester?.firstName }} {{ ticket?.requester?.lastName }}</span> assigned the ticket <a (click)="goToTicket(ticket?.id)" class="full-name">{{ ticket?.title }}</a> to <span class="full-name">{{ ticket?.assignee?.firstName }} {{ ticket?.assignee?.lastName }}</span>
         </div>
         <div class="date">
-          {{ ticket?.createdAt }}
+          {{ ticket?.createdAt | amTimeAgo: true }}
         </div>
       </div>
     </div>

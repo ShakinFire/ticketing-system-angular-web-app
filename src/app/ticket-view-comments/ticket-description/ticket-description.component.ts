@@ -1,6 +1,7 @@
 import { AssigneeTicketUsers } from './../../models/tickets/assigned-ticket-users';
 import { Component, OnInit, Input } from '@angular/core';
 import { SingleTicket } from '../../models/tickets/single-ticket';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-description',
@@ -10,9 +11,14 @@ import { SingleTicket } from '../../models/tickets/single-ticket';
 export class TicketDescriptionComponent implements OnInit {
   @Input() ticket: SingleTicket;
   @Input() requester: AssigneeTicketUsers;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  goToTeam(teamId: number): void {
+    const route = '/team-view/' + teamId;
+    this.router.navigateByUrl(route);
   }
 
 }

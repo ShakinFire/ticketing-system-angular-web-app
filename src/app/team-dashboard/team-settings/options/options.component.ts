@@ -88,7 +88,7 @@ export class OptionsComponent implements OnInit {
           console.log(res);
         });
         this.teamViewService.setTeamLead(teamLeadId);
-        this.changeToSuccess('You successfully transfer team lead to ' + this.newTeamLead.name);
+        this.showHide = false;
       });
     } else {
       this.changeToError('There is no user with this name in your team!');

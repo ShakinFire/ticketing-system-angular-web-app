@@ -4,14 +4,15 @@ import { CommonModule } from '@angular/common';
 import { NotificationRoutingModule } from './notification-routing.module';
 import { NotificationComponent } from './notification.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { MomentModule } from 'ngx-moment';
 import { NotificationService } from './notification.service';
 
 @NgModule({
   imports: [
     CommonModule,
     NotificationRoutingModule,
-    SharedModule
+    SharedModule,
+    MomentModule
   ],
   declarations: [NotificationComponent,],
   providers: [

@@ -11,8 +11,7 @@ export class NotificationService {
   constructor(private req: RequestService) { }
 
   addNotification(notification: any) {
-    console.log(notification);
-    return this.req.post('/create-notification', notification);//.pipe(map(res => console.log(res)));
+    return this.req.post('/create-notification', notification);
   }
   getTicket() {
     return this.req.get('/getAllTicketsDataLessTwo').pipe(map((res) => res as TicketModel));

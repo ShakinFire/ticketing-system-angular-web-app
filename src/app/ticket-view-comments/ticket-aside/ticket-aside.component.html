@@ -37,10 +37,10 @@
       </div>
     </div>
     <div class="due-in">
-      Due in 3 days
+      Due in {{ ticket?.estimated | amDifference: today: 'days'}} day/s
     </div>
     <div class="deadline">
-      on {{ ticket?.estimated | amDifference: today: 'days': true }}
+      on {{ ticket?.estimated  | amUtc | amDateFormat: 'YYYY-MM-DD' }}
     </div>
   </div>
   <div class="about-author outline">
@@ -74,7 +74,7 @@
     </div>
     <div class="picture-name">
       <div class="img-wrapper">
-        <img src="../../../assets/img/the-guy.jpeg">
+        <img src="../../../assets/img/the-guy.png">
       </div>
       <div class="full-name">
         {{ assignee?.firstName }} {{ assignee?.lastName }}
@@ -96,7 +96,7 @@
       <ng-template #rt let-r="result" let-t="term">
         {{ r.name}}
       </ng-template>
-      <ng-template *ngIf="checkIfRequester()" windowClass="form-title input-field btn-modal footer-wrapper" #requesterModal let-c="close"
+      <ng-template windowClass="form-title input-field btn-modal footer-wrapper" #requesterModal let-c="close"
         let-d="dismiss">
         <div class="modal-header">
           <h4 class="modal-title">Change Requester</h4>
@@ -117,7 +117,7 @@
     </div>
     <div class="picture-name">
       <div class="img-wrapper">
-        <img src="../../../assets/img/the-guy.jpeg">
+        <img src="../../../assets/img/the-guy.png">
       </div>
       <div class="full-name">
         {{ requester?.firstName }} {{ requester?.lastName }}

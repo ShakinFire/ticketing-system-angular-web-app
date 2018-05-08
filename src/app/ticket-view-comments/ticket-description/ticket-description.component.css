@@ -54,10 +54,22 @@
     flex-basis: 70%;
 }
 
-.ticket-description .top-description .created-at {
+.ticket-description .top-description .date {
     font-size: 14px;
-    padding-left: 30px;
     color: rgb(180, 180, 180);
+}
+
+.ticket-description .top-description .created-at {
+    padding-left: 30px;
+}
+
+.ticket-description .top-description .team-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(51, 132, 207);
+    cursor: pointer;
+    text-align: right;
+    margin-top: 5px;
 }
 
 .ticket-description .description {

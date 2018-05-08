@@ -39,6 +39,13 @@
     text-align: center;
 }
 
+.assigned-tickets .main-info .team-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(51, 132, 207);
+    cursor: pointer;
+}
+
 .assigned-tickets .main-info .status {
     margin-right: 4px;
 }

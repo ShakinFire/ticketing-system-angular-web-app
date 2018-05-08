@@ -1,7 +1,7 @@
 <section class="ticket-description">
   <div class="ticket-wrapper">
     <div class="image-wrapper">
-      <img src="../../../assets/img/the-guy.jpeg">
+      <img src="../../../assets/img/the-guy.png">
       <div class="full-name">
         {{ requester?.firstName }} {{ requester?.lastName }}
       </div>
@@ -12,7 +12,14 @@
           {{ ticket?.title }}
         </div>
         <div class="created-at">
-          {{ ticket?.date }}
+          <div class="date">
+            {{ ticket?.date }}
+          </div>
+          <div class="team-name">
+            <a (click)="goToTeam(ticket?.teams[0].id)">
+              {{ ticket?.teams[0].name }}
+            </a>
+          </div>
         </div>
       </div>
       <div class="description break-long-words">

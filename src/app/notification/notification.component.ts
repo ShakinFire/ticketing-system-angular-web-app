@@ -39,7 +39,7 @@ export class NotificationComponent implements OnInit {
       team: name,
     };
     console.log(notificationId);
-    // this.teamService.postUserInTeam(obj).subscribe();
+    this.teamService.postUserInTeam(obj).subscribe();
     this.notifService.updateNotification(notificationId).subscribe(data => console.log(data));
 
   }

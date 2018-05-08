@@ -1,7 +1,6 @@
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { TeamDashboardRoutingModule } from './team-dashboard-routing.module';
 import { TeamViewComponent } from './team-view/team-view.component';
 import { TicketsModule } from '../tickets/tickets.module';
@@ -15,6 +14,7 @@ import { OptionsComponent } from './team-settings/options/options.component';
 import { RemoveUserComponent } from './team-settings/remove-user/remove-user.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MomentModule } from 'ngx-moment';
 import { TeamViewService } from './team-view/team-view.service';
 
 @NgModule({
@@ -26,6 +26,7 @@ import { TeamViewService } from './team-view/team-view.service';
     FormsModule,
     NgbModule,
     SharedModule,
+    MomentModule,
   ],
   declarations: [
     TeamViewComponent,

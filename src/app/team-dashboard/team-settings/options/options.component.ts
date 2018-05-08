@@ -73,7 +73,7 @@ export class OptionsComponent implements OnInit {
       this.teamViewService.changeTeamLeadUser({ userId: this.newTeamLead.id, teamId: this.teamId }).subscribe((res) => {
         // *TODO: Should send a notification to the new team lead user
         this.teamViewService.setTeamLead(teamLeadId);
-        this.changeToSuccess('You successfully transfer team lead to ' + this.newTeamLead.name);
+        this.showHide = false;
       });
     } else {
       this.changeToError('There is no user with this name in your team!');
